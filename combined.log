@@ -52,3 +52,95 @@
 2025-03-20T18:58:08.178Z [error]: FDA recall API error for Depression Device: Request failed with status code 404
 2025-03-20T18:58:08.179Z [info]: Fetching FDA data from registrationlisting: https://api.fda.gov/device/registrationlisting.json?search=device_name:"Depression Device"&limit=100
 2025-03-20T18:58:08.413Z [error]: FDA registrationlisting API error for Depression Device: Request failed with status code 404
+2025-03-20T19:00:15.122Z [info]: GET /api/competitors - Query params: 
+2025-03-20T19:00:15.176Z [info]: GET /api/analytics/marketshare - Query params: 
+2025-03-20T19:00:15.177Z [info]: Processing market data for LivaNova
+2025-03-20T19:00:15.178Z [info]: Fetching CMS Part B data for CPT: 64568, year: 2020 (confirmed)
+2025-03-20T19:00:15.324Z [info]: Found 8 records for CPT 64568, year 2020 (page 1)
+2025-03-20T19:00:15.325Z [warn]: No data found for LivaNova, code 64568, year 2020
+2025-03-20T19:00:15.325Z [info]: Fetching CMS Part B data for CPT: 64568, year: 2021 (confirmed)
+2025-03-20T19:00:15.338Z [info]: Found 8 records for CPT 64568, year 2021 (page 1)
+2025-03-20T19:00:15.338Z [warn]: No data found for LivaNova, code 64568, year 2021
+2025-03-20T19:00:15.338Z [info]: Fetching CMS Part B data for CPT: 64568, year: 2022 (confirmed)
+2025-03-20T19:00:15.354Z [info]: Found 8 records for CPT 64568, year 2022 (page 1)
+2025-03-20T19:00:15.355Z [warn]: No data found for LivaNova, code 64568, year 2022
+2025-03-20T19:00:15.355Z [info]: Fetching CMS Part B data for CPT: 61885, year: 2020 (confirmed)
+2025-03-20T19:00:15.367Z [info]: Found 48 records for CPT 61885, year 2020 (page 1)
+2025-03-20T19:00:15.368Z [warn]: No data found for LivaNova, code 61885, year 2020
+2025-03-20T19:00:15.368Z [info]: Fetching CMS Part B data for CPT: 61885, year: 2021 (confirmed)
+2025-03-20T19:00:15.381Z [info]: Found 48 records for CPT 61885, year 2021 (page 1)
+2025-03-20T19:00:15.382Z [warn]: No data found for LivaNova, code 61885, year 2021
+2025-03-20T19:00:15.382Z [info]: Fetching CMS Part B data for CPT: 61885, year: 2022 (confirmed)
+2025-03-20T19:00:15.394Z [info]: Found 48 records for CPT 61885, year 2022 (page 1)
+2025-03-20T19:00:15.394Z [warn]: No data found for LivaNova, code 61885, year 2022
+2025-03-20T19:00:15.394Z [info]: Processing market data for Medtronic
+2025-03-20T19:00:15.394Z [info]: Fetching CMS Part B data for CPT: 61863, year: 2020 (confirmed)
+2025-03-20T19:00:15.407Z [info]: Found 24 records for CPT 61863, year 2020 (page 1)
+2025-03-20T19:00:15.407Z [warn]: No data found for Medtronic, code 61863, year 2020
+2025-03-20T19:00:15.408Z [info]: Fetching CMS Part B data for CPT: 61863, year: 2021 (confirmed)
+2025-03-20T19:00:15.420Z [info]: Found 24 records for CPT 61863, year 2021 (page 1)
+2025-03-20T19:00:15.421Z [warn]: No data found for Medtronic, code 61863, year 2021
+2025-03-20T19:00:15.421Z [info]: Fetching CMS Part B data for CPT: 61863, year: 2022 (confirmed)
+2025-03-20T19:00:15.431Z [info]: Found 24 records for CPT 61863, year 2022 (page 1)
+2025-03-20T19:00:15.432Z [warn]: No data found for Medtronic, code 61863, year 2022
+2025-03-20T19:00:15.432Z [info]: Fetching CMS Part B data for CPT: 61864, year: 2020 (confirmed)
+2025-03-20T19:00:15.444Z [info]: Found 19 records for CPT 61864, year 2020 (page 1)
+2025-03-20T19:00:15.444Z [warn]: No data found for Medtronic, code 61864, year 2020
+2025-03-20T19:00:15.444Z [info]: Fetching CMS Part B data for CPT: 61864, year: 2021 (confirmed)
+2025-03-20T19:00:15.456Z [info]: Found 19 records for CPT 61864, year 2021 (page 1)
+2025-03-20T19:00:15.457Z [warn]: No data found for Medtronic, code 61864, year 2021
+2025-03-20T19:00:15.457Z [info]: Fetching CMS Part B data for CPT: 61864, year: 2022 (confirmed)
+2025-03-20T19:00:15.470Z [info]: Found 19 records for CPT 61864, year 2022 (page 1)
+2025-03-20T19:00:15.470Z [warn]: No data found for Medtronic, code 61864, year 2022
+2025-03-20T19:00:15.470Z [warn]: No data found for Medtronic, code 61885, year 2020
+2025-03-20T19:00:15.471Z [warn]: No data found for Medtronic, code 61885, year 2021
+2025-03-20T19:00:15.471Z [warn]: No data found for Medtronic, code 61885, year 2022
+2025-03-20T19:00:15.471Z [info]: Fetching CMS Part B data for CPT: 61886, year: 2020 (confirmed)
+2025-03-20T19:00:15.483Z [info]: Found 49 records for CPT 61886, year 2020 (page 1)
+2025-03-20T19:00:15.484Z [warn]: No data found for Medtronic, code 61886, year 2020
+2025-03-20T19:00:15.484Z [info]: Fetching CMS Part B data for CPT: 61886, year: 2021 (confirmed)
+2025-03-20T19:00:15.496Z [info]: Found 49 records for CPT 61886, year 2021 (page 1)
+2025-03-20T19:00:15.497Z [warn]: No data found for Medtronic, code 61886, year 2021
+2025-03-20T19:00:15.497Z [info]: Fetching CMS Part B data for CPT: 61886, year: 2022 (confirmed)
+2025-03-20T19:00:15.511Z [info]: Found 49 records for CPT 61886, year 2022 (page 1)
+2025-03-20T19:00:15.512Z [warn]: No data found for Medtronic, code 61886, year 2022
+2025-03-20T19:00:15.512Z [info]: Processing market data for NeuroPace
+2025-03-20T19:00:15.512Z [info]: Fetching CMS Part B data for CPT: 61850, year: 2020 (confirmed)
+2025-03-20T19:00:15.526Z [info]: Found 1 records for CPT 61850, year 2020 (page 1)
+2025-03-20T19:00:15.527Z [warn]: No data found for NeuroPace, code 61850, year 2020
+2025-03-20T19:00:15.527Z [info]: Fetching CMS Part B data for CPT: 61850, year: 2021 (confirmed)
+2025-03-20T19:00:15.539Z [info]: Found 1 records for CPT 61850, year 2021 (page 1)
+2025-03-20T19:00:15.539Z [warn]: No data found for NeuroPace, code 61850, year 2021
+2025-03-20T19:00:15.540Z [info]: Fetching CMS Part B data for CPT: 61850, year: 2022 (confirmed)
+2025-03-20T19:00:15.551Z [info]: Found 1 records for CPT 61850, year 2022 (page 1)
+2025-03-20T19:00:15.552Z [warn]: No data found for NeuroPace, code 61850, year 2022
+2025-03-20T19:00:15.552Z [info]: Fetching CMS Part B data for CPT: 61860, year: 2020 (confirmed)
+2025-03-20T19:00:15.564Z [info]: Found 1 records for CPT 61860, year 2020 (page 1)
+2025-03-20T19:00:15.564Z [warn]: No data found for NeuroPace, code 61860, year 2020
+2025-03-20T19:00:15.565Z [info]: Fetching CMS Part B data for CPT: 61860, year: 2021 (confirmed)
+2025-03-20T19:00:15.576Z [info]: Found 1 records for CPT 61860, year 2021 (page 1)
+2025-03-20T19:00:15.576Z [warn]: No data found for NeuroPace, code 61860, year 2021
+2025-03-20T19:00:15.576Z [info]: Fetching CMS Part B data for CPT: 61860, year: 2022 (confirmed)
+2025-03-20T19:00:15.588Z [info]: Found 1 records for CPT 61860, year 2022 (page 1)
+2025-03-20T19:00:15.588Z [warn]: No data found for NeuroPace, code 61860, year 2022
+2025-03-20T19:00:15.588Z [warn]: No data found for NeuroPace, code 61863, year 2020
+2025-03-20T19:00:15.589Z [warn]: No data found for NeuroPace, code 61863, year 2021
+2025-03-20T19:00:15.589Z [warn]: No data found for NeuroPace, code 61863, year 2022
+2025-03-20T19:00:15.589Z [warn]: No data found for NeuroPace, code 61885, year 2020
+2025-03-20T19:00:15.589Z [warn]: No data found for NeuroPace, code 61885, year 2021
+2025-03-20T19:00:15.589Z [warn]: No data found for NeuroPace, code 61885, year 2022
+2025-03-20T19:00:15.589Z [info]: Fetching CMS Part B data for CPT: 61889, year: 2020 (confirmed)
+2025-03-20T19:00:15.601Z [warn]: No data found for CPT 61889, year 2020
+2025-03-20T19:00:15.601Z [info]: Using fallback API for CPT 61889, year 2020
+2025-03-20T19:00:15.614Z [warn]: No data found for NeuroPace, code 61889, year 2020
+2025-03-20T19:00:15.615Z [info]: Fetching CMS Part B data for CPT: 61889, year: 2021 (confirmed)
+2025-03-20T19:00:15.629Z [warn]: No data found for CPT 61889, year 2021
+2025-03-20T19:00:15.630Z [info]: Using fallback API for CPT 61889, year 2021
+2025-03-20T19:00:15.641Z [warn]: No data found for NeuroPace, code 61889, year 2021
+2025-03-20T19:00:15.641Z [info]: Fetching CMS Part B data for CPT: 61889, year: 2022 (confirmed)
+2025-03-20T19:00:15.654Z [warn]: No data found for CPT 61889, year 2022
+2025-03-20T19:00:15.654Z [info]: Using fallback API for CPT 61889, year 2022
+2025-03-20T19:00:15.666Z [warn]: No data found for NeuroPace, code 61889, year 2022
+2025-03-20T19:00:15.666Z [info]: Estimating market share from 0 CMS records
+2025-03-20T19:00:15.667Z [info]: Market share calculation: total implants = 0
+2025-03-20T19:00:15.667Z [info]: Market shares by competitor: {}
