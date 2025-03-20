@@ -1,0 +1,5 @@
+[ERROR] 2025-03-20T18:51:31.664Z - HCUP XLSX not found at C:\Users\sinis\Desktop\update\FSNationalTrendsInpatientStays-dy21Deliverable-08Apr2024.xlsx. Some functionality will be limited. {}
+[WARN] 2025-03-20T18:51:31.665Z - Proceeding without HCUP file. Some functionality will be limited. {}
+[ERROR] 2025-03-20T18:51:39.006Z - HCUP XLSX not found at C:\Users\sinis\Desktop\update\FSNationalTrendsInpatientStays-dy21Deliverable-08Apr2024.xlsx. Some functionality will be limited. {}
+[WARN] 2025-03-20T18:51:39.007Z - Proceeding without HCUP file. Some functionality will be limited. {}
+[INFO] 2025-03-20T18:51:39.011Z - Server running on port 3000 {}

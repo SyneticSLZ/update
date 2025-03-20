@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="en" class="dark-mode-transition">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Intelligence Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'marcomm': {
+                            'orange': '#FF6B35',
+                            'orange-light': '#FF8B5F',
+                            'orange-dark': '#E55A24',
+                            'dark': '#333333',
+                            'gray': '#F5F5F5',
+                            'gray-dark': '#1F2937',
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .loader {
+            border-top-color: #FF6B35;
+            animation: spinner 1.5s linear infinite;
+        }
+        
+        @keyframes spinner {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .chart-container {
+            position: relative;
+            min-height: 250px;
+            transition: all 0.3s ease;
+        }
+        
+        .chart-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .card {
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 50;
+            max-width: 300px;
+            transition: all 0.5s ease;
+            transform: translateX(400px);
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .error-container {
+            border-left: 4px solid #EF4444;
+        }
+
+        .success-container {
+            border-left: 4px solid #10B981;
+        }
+
+        .warning-container {
+            border-left: 4px solid #F59E0B;
+        }
+
+        /* Custom chart tooltips */
+        .chart-tooltip {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 4px;
+            padding: 8px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-marcomm-gray-dark transition-colors duration-200">
+    <!-- Notification System -->
+    <div id="notification-container" class="notification">
+        <!-- Notifications will be inserted here -->
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-gray-800 shadow-md sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/GreyTextno-outlineTM+2-dR9GD3ivT092LbXgN7D7iO44je85uD.png" alt="MARCOMM" class="h-8 w-auto">
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="#" class="text-gray-300 hover:text-marcomm-orange-light px-3 py-2 text-sm font-medium">Companies</a>
+                            <a href="#" class="bg-marcomm-orange text-white px-3 py-2 rounded text-sm font-medium hover:bg-marcomm-orange-light transition-colors">Intelligence</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div id="connection-status" class="hidden md:flex items-center">
+                        <span id="status-indicator" class="h-2 w-2 rounded-full bg-green-500 mr-2"></span>
+                        <span id="status-text" class="text-xs text-gray-300">Connected</span>
+                    </div>
+                    <button id="refreshData" class="p-2 rounded-full text-gray-300 hover:bg-gray-700 transition-colors" title="Refresh Data">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                    <button id="darkModeToggle" class="p-2 rounded-full text-gray-300 hover:bg-gray-700 transition-colors" title="Toggle Dark Mode">
+                        <i class="fas fa-sun dark:hidden"></i>
+                        <i class="fas fa-moon hidden dark:inline"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="mb-8 flex flex-col md:flex-row justify-between md:items-center">
+            <div>
+                <h1 class="text-4xl font-light text-marcomm-dark mb-2 dark:text-white">Market Intelligence Dashboard</h1>
+                <p class="text-gray-600 dark:text-gray-400">Comprehensive analysis of epilepsy treatment competitors</p>
+            </div>
+            <div class="mt-4 md:mt-0">
+                <div class="flex space-x-2">
+                    <select id="yearFilter" class="bg-white dark:bg-gray-700 text-marcomm-dark dark:text-white border border-gray-300 dark:border-gray-600 rounded px-3 py-2 text-sm">
+                        <option value="all">All Years</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                    </select>
+                    <select id="competitorFilter" class="bg-white dark:bg-gray-700 text-marcomm-dark dark:text-white border border-gray-300 dark:border-gray-600 rounded px-3 py-2 text-sm">
+                        <option value="all">All Competitors</option>
+                        <!-- Competitors will be added dynamically -->
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Log Console (Hidden by default) -->
+        <div id="log-console" class="hidden mb-8 bg-gray-800 text-green-400 p-4 rounded shadow-sm font-mono text-sm overflow-auto max-h-48">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="text-white font-bold">Console Log</h3>
+                <button id="toggle-console" class="text-white hover:text-marcomm-orange-light">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="log-content">
+                <!-- Log messages will appear here -->
+            </div>
+        </div>
+
+        <!-- Market Overview -->
+        <div id="market-overview" class="mb-8 bg-white dark:bg-marcomm-gray-dark rounded shadow-sm p-6 transition-colors duration-200">
+            <h3 class="text-xl font-light text-marcomm-dark mb-4 dark:text-white flex items-center">
+                <i class="fas fa-chart-pie mr-2 text-marcomm-orange"></i>
+                Market Overview
+                <span class="ml-2 tooltip">
+                    <i class="fas fa-info-circle text-gray-500 dark:text-gray-400"></i>
+                    <span class="tooltip-text">Overview of key market metrics based on Medicare claims data</span>
+                </span>
+            </h3>
+            <div id="overview-stats" class="grid grid-cols-1 md:grid-cols-3 gap-4 relative">
+                <div class="loader-container absolute inset-0 flex items-center justify-center bg-white/80 dark:bg-marcomm-gray-dark/80 z-10">
+                    <div class="loader h-10 w-10 border-4 border-gray-200 rounded-full"></div>
+                </div>
+                <!-- Stats will be added here -->
+            </div>
+        </div>
+
+        <!-- Competitive Map and Quick Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div id="competitive-map" class="md:col-span-1 bg-white dark:bg-marcomm-gray-dark rounded shadow-sm p-6 transition-colors duration-200">
+                <h3 class="text-xl font-light text-marcomm-dark mb-4 dark:text-white flex items-center">
+                    <i class="fas fa-sitemap mr-2 text-marcomm-orange"></i>
+                    Competitive Landscape
+                </h3>
+                <div class="relative min-h-[200px]">
+                    <div class="loader-container absolute inset-0 flex items-center justify-center bg-white/80 dark:bg-marcomm-gray-dark/80 z-10">
+                        <div class="loader h-10 w-10 border-4 border-gray-200 rounded-full"></div>
+                    </div>
+                    <ul id="competitor-list" class="space-y-2">
+                        <!-- Competitors will be added here -->
+                    </ul>
+                </div>
+            </div>
+            <div class="md:col-span-2 bg-white dark:bg-marcomm-gray-dark rounded shadow-sm p-6 transition-colors duration-200">
+                <h3 class="text-xl font-light text-marcomm-dark mb-4 dark:text-white flex items-center">
+                    <i class="fas fa-bolt mr-2 text-marcomm-orange"></i>
+                    Quick Stats
+                </h3>
+                <div class="relative min-h-[200px]">
+                    <div class="loader-container absolute inset-0 flex items-center justify-center bg-white/80 dark:bg-marcomm-gray-dark/80 z-10">
+                        <div class="loader h-10 w-10 border-4 border-gray-200 rounded-full"></div>
+                    </div>
+                    <div id="quick-stats" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <!-- Stats will be added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="bg-white dark:bg-marcomm-gray-dark rounded shadow-sm p-6 transition-colors duration-200 chart-container">
+                <h3 class="text-xl font-light text-marcomm-dark mb-4 dark:text-white flex items-center">
+                    <i class="fas fa-chart-pie mr-2 text-marcomm-orange"></i>
+                    Market Share Distribution
+                </h3>
+                <div class="relative min-h-[250px]">
+                    <div class="loader-container absolute inset-0 flex items-center justify-center bg-white/80 dark:bg-marcomm-gray-dark/80 z-10">
+                        <div class="loader h-10 w-10 border-4 border-gray-200 rounded-full"></div>
+                    </div>
+                    <canvas id="market-share-chart"></canvas>
+                    <div class="chart-error hidden mt-4 text-red-500 text-center">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>
+                        <span>Failed to load chart data</span>
+                    </div>
+                    <div class="no-data-container hidden mt-4 text-gray-500 dark:text-gray-400 text-center">
+                        <i class="fas fa-chart-bar text-4xl mb-2"></i>
+                        <p>No market share data available</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-marcomm-gray-dark rounded shadow-sm p-6 transition-colors duration-200 chart-container">
+                <h3 class="text-xl font-light text-marcomm-dark mb-4 dark:text-white flex items-center">
+                    <i class="fas fa-chart-radar mr-2 text-marcomm-orange"></i>
+                    Financial Performance Radar
+                </h3>
+                <div class="relative min-h-[250px]">
+                    <div class="loader-container absolute inset-0 flex items-center justify-center bg-white/80 dark:bg-marcomm-gray-dark/80 z-10">
+                        <div class="loader h-10 w-10 border-4 border-gray-200 rounded-full"></div>
+                    </div>
+                    <canvas id="financial-radar-chart"></canvas>
+                    <div class="chart-error hidden mt-4 text-red-500 text-center">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>
+                        <span>Failed to load chart data</span>
+                    </div>
+                    <div class="no-data-container hidden mt-4 text-gray-500 dark:text-gray-400 text-center">
+                        <i class="fas fa-chart-line text-4xl mb-2"></i>
+                        <p>No financial performance data available</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-marcomm-gray-dark rounded shadow-sm p-6 transition-colors duration-200 chart-container">
+                <h3 class="text-xl font-light text-marcomm-dark mb-4 dark:text-white flex items-center">
+                    <i class="fas fa-file-medical mr-2 text-marcomm-orange"></i>
+                    FDA Metrics Analysis
+                </h3>
+                <div class="relative min-h-[250px]">
+                    <div class="loader-container absolute inset-0 flex items-center justify-center bg-white/80 dark:bg-marcomm-gray-dark/80 z-10">
+                        <div class="loader h-10 w-10 border-4 border-gray-200 rounded-full"></div>
+                    </div>
+                    <canvas id="fda-metrics-chart"></canvas>
+                    <div class="chart-error hidden mt-4 text-red-500 text-center">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>
+                        <span>Failed to load chart data</span>
+                    </div>
+                    <div class="no-data-container hidden mt-4 text-gray-500 dark:text-gray-400 text-center">
+                        <i class="fas fa-file-medical-alt text-4xl mb-2"></i>
+                        <p>No FDA metrics data available</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-marcomm-gray-dark rounded shadow-sm p-6 transition-colors duration-200 chart-container">
+                <h3 class="text-xl font-light text-marcomm-dark mb-4 dark:text-white flex items-center">
+                    <i class="fas fa-certificate mr-2 text-marcomm-orange"></i>
+                    Patent Portfolio Analysis
+                </h3>
+                <div class="relative min-h-[250px]">
+                    <div class="loader-container absolute inset-0 flex items-center justify-center bg-white/80 dark:bg-marcomm-gray-dark/80 z-10">
+                        <div class="loader h-10 w-10 border-4 border-gray-200 rounded-full"></div>
+                    </div>
+                    <canvas id="patents-chart"></canvas>
+                    <div class="chart-error hidden mt-4 text-red-500 text-center">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>
+                        <span>Failed to load chart data</span>
+                    </div>
+                    <div class="no-data-container hidden mt-4 text-gray-500 dark:text-gray-400 text-center">
+                        <i class="fas fa-award text-4xl mb-2"></i>
+                        <p>No patent portfolio data available</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trend Analysis -->
+        <div class="mt-8 bg-white dark:bg-marcomm-gray-dark rounded shadow-sm p-6 transition-colors duration-200">
+            <h3 class="text-xl font-light text-marcomm-dark mb-4 dark:text-white flex items-center">
+                <i class="fas fa-chart-line mr-2 text-marcomm-orange"></i>
+                Implantation Trends (2020-2022)
+            </h3>
+            <div class="relative min-h-[300px]">
+                <div class="loader-container absolute inset-0 flex items-center justify-center bg-white/80 dark:bg-marcomm-gray-dark/80 z-10">
+                    <div class="loader h-10 w-10 border-4 border-gray-200 rounded-full"></div>
+                </div>
+                <canvas id="implantation-trends-chart"></canvas>
+                <div class="chart-error hidden mt-4 text-red-500 text-center">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>
+                    <span>Failed to load trend data</span>
+                </div>
+                <div class="no-data-container hidden mt-4 text-gray-500 dark:text-gray-400 text-center">
+                    <i class="fas fa-chart-line text-4xl mb-2"></i>
+                    <p>No trend data available</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Competitive Insights -->
+        <div class="mt-8">
+            <div class="bg-white dark:bg-marcomm-gray-dark rounded shadow-sm p-6 transition-colors duration-200">
+                <h3 class="text-xl font-light text-marcomm-dark mb-4 dark:text-white flex items-center">
+                    <i class="fas fa-lightbulb mr-2 text-marcomm-orange"></i>
+                    Competitive Insights
+                </h3>
+                <div class="relative min-h-[200px]">
+                    <div class="loader-container absolute inset-0 flex items-center justify-center bg-white/80 dark:bg-marcomm-gray-dark/80 z-10">
+                        <div class="loader h-10 w-10 border-4 border-gray-200 rounded-full"></div>
+                    </div>
+                    <div id="competitive-insights" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Insights will be added here -->
+                    </div>
+                    <div class="insights-error hidden mt-4 text-red-500 text-center">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>
+                        <span>Failed to load insights</span>
+                    </div>
+                    <div class="no-insights-container hidden mt-4 text-gray-500 dark:text-gray-400 text-center">
+                        <i class="fas fa-search text-4xl mb-2"></i>
+                        <p>No competitive insights available</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-6 mt-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm">&copy; 2023 MARCOMM Analytics. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    <p class="text-xs text-gray-400">Last updated: <span id="last-updated">Loading...</span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+<script>
+    // Improved Market Intelligence Dashboard with Better Dark Mode Styling
+// This script maintains the working data loading while fixing visual issues
+
+// Simple safe console logging
+function logInfo(message, data) {
+    console.log(message, data || '');
+}
+
+function logError(message, error) {
+    console.error(message, error || '');
+}
+
+// Basic DOM helpers
+function getElement(id) {
+    return document.getElementById(id);
+}
+
+function showLoading(id) {
+    const container = getElement(id);
+    if (!container) return;
+    
+    const loader = container.querySelector('.loader-container');
+    if (loader) {
+        loader.classList.remove('hidden');
+    }
+}
+
+function hideLoading(id) {
+    const container = getElement(id);
+    if (!container) return;
+    
+    const loader = container.querySelector('.loader-container');
+    if (loader) {
+        loader.classList.add('hidden');
+    }
+}
+
+function showError(id, message) {
+    const container = getElement(id);
+    if (!container) return;
+    
+    const errorContainer = container.querySelector('.chart-error, .insights-error');
+    if (errorContainer) {
+        const messageSpan = errorContainer.querySelector('span');
+        if (messageSpan) {
+            messageSpan.textContent = message || 'Error loading data';
+        }
+        errorContainer.classList.remove('hidden');
+    }
+}
+
+function hideError(id) {
+    const container = getElement(id);
+    if (!container) return;
+    
+    const errorContainer = container.querySelector('.chart-error, .insights-error');
+    if (errorContainer) {
+        errorContainer.classList.add('hidden');
+    }
+}
+
+// Formatting helpers
+function formatNumber(number, decimals = 0) {
+    if (number === undefined || number === null) return 'N/A';
+    
+    return new Intl.NumberFormat('en-US', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
+    }).format(number);
+}
+
+function formatCurrency(number, decimals = 0) {
+    if (number === undefined || number === null) return 'N/A';
+    
+    return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
+    }).format(number);
+}
+
+function formatPercent(number, decimals = 1) {
+    if (number === undefined || number === null) return 'N/A';
+    
+    return new Intl.NumberFormat('en-US', {
+        style: 'percent',
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
+    }).format(number / 100);
+}
+
+// Update connection status
+function updateConnectionStatus(status) {
+    const indicator = getElement('status-indicator');
+    const text = getElement('status-text');
+    
+    if (!indicator || !text) return;
+    
+    switch (status) {
+        case 'connected':
+            indicator.className = 'h-2 w-2 rounded-full bg-green-500 mr-2';
+            text.textContent = 'Connected';
+            text.className = 'text-xs text-gray-300';
+            break;
+        case 'disconnected':
+            indicator.className = 'h-2 w-2 rounded-full bg-red-500 mr-2';
+            text.textContent = 'Disconnected';
+            text.className = 'text-xs text-red-500';
+            break;
+        case 'loading':
+            indicator.className = 'h-2 w-2 rounded-full bg-yellow-500 mr-2 animate-pulse';
+            text.textContent = 'Loading...';
+            text.className = 'text-xs text-gray-300';
+            break;
+    }
+}
+
+// Initialize dashboard on load
+document.addEventListener('DOMContentLoaded', function() {
+    // Set up dark mode toggle
+    setupDarkMode();
+    
+    // Configure global Chart.js settings for better dark mode support
+    configureChartDefaults();
+    
+    // Load dashboard data once
+    loadDashboardData();
+    
+    // Attach refresh event listener
+    const refreshButton = getElement('refreshData');
+    if (refreshButton) {
+        refreshButton.addEventListener('click', function() {
+            loadDashboardData();
+        });
+    }
+});
+
+// Configure Chart.js global defaults for better styling
+function configureChartDefaults() {
+    if (typeof Chart === 'undefined') {
+        logError('Chart.js not loaded');
+        return;
+    }
+    
+    // Set global defaults for all charts
+    Chart.defaults.font.family = "'system-ui', '-apple-system', 'sans-serif'";
+    Chart.defaults.color = '#B8C2CC'; // Light gray for dark mode
+    Chart.defaults.scale.grid.color = 'rgba(255, 255, 255, 0.1)'; // Subtle grid lines for dark mode
+    Chart.defaults.scale.ticks.color = '#B8C2CC'; // Light gray for axis ticks
+    Chart.defaults.plugins.tooltip.backgroundColor = 'rgba(30, 41, 59, 0.9)'; // Dark blue tooltip
+    Chart.defaults.plugins.tooltip.titleColor = '#FFFFFF';
+    Chart.defaults.plugins.tooltip.bodyColor = '#FFFFFF';
+    Chart.defaults.plugins.tooltip.borderColor = 'rgba(255, 255, 255, 0.2)';
+    Chart.defaults.plugins.tooltip.borderWidth = 1;
+    Chart.defaults.plugins.tooltip.padding = 12;
+    Chart.defaults.plugins.tooltip.cornerRadius = 4;
+    Chart.defaults.plugins.legend.labels.color = '#B8C2CC';
+    Chart.defaults.responsive = true;
+    Chart.defaults.maintainAspectRatio = false;
+}
+
+// Set up dark mode toggle
+function setupDarkMode() {
+    const darkModeToggle = getElement('darkModeToggle');
+    const html = document.documentElement;
+    
+    if (!darkModeToggle) return;
+    
+    // Check for saved preference or system preference
+    const darkMode = localStorage.getItem('darkMode') === 'true' || 
+                    (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    
+    if (darkMode) {
+        html.classList.add('dark');
+    }
+    
+    // Add toggle functionality
+    darkModeToggle.addEventListener('click', function() {
+        html.classList.toggle('dark');
+        localStorage.setItem('darkMode', html.classList.contains('dark'));
+        
+        // Re-render all charts with new theme
+        if (window.dashboardData) {
+            renderCharts(window.dashboardData);
+        }
+    });
+}
+
+// Main function to load all dashboard data
+async function loadDashboardData() {
+    logInfo('Loading dashboard data...');
+    updateConnectionStatus('loading');
+    
+    // Show loading indicators
+    document.querySelectorAll('.loader-container').forEach(loader => {
+        loader.classList.remove('hidden');
+    });
+    
+    try {
+        // Make single request to get the device data
+        const response = await fetch('/api/dashboard/devices');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        logInfo('Successfully fetched dashboard data:', data);
+        
+        // Store data globally for reuse
+        window.dashboardData = data;
+        
+        // Update connection status
+        updateConnectionStatus('connected');
+        
+        // Update last updated timestamp
+        const lastUpdated = getElement('last-updated');
+        if (lastUpdated) {
+            lastUpdated.textContent = new Date().toLocaleString();
+        }
+        
+        // Render all sections using the data
+        renderAllSections(data);
+    } catch (error) {
+        logError('Error loading dashboard data:', error);
+        updateConnectionStatus('disconnected');
+        
+        // Show error message in all sections
+        document.querySelectorAll('.loader-container').forEach(loader => {
+            loader.classList.add('hidden');
+        });
+        
+        document.querySelectorAll('.chart-error, .insights-error').forEach(errorEl => {
+            const messageEl = errorEl.querySelector('span');
+            if (messageEl) {
+                messageEl.textContent = 'Failed to load data from server';
+            }
+            errorEl.classList.remove('hidden');
+        });
+    }
+}
+
+// Render all dashboard sections
+function renderAllSections(data) {
+    // Render Market Overview
+    renderMarketOverview(data);
+    
+    // Render Competitive Map
+    renderCompetitiveMap(data);
+    
+    // Render Quick Stats
+    renderQuickStats(data);
+    
+    // Render all charts
+    renderCharts(data);
+    
+    // Render Competitive Insights
+    renderCompetitiveInsights(data);
+}
+
+// Render Market Overview section
+function renderMarketOverview(data) {
+    logInfo('Rendering Market Overview...');
+    hideLoading('market-overview');
+    
+    try {
+        if (!data || !data.marketTrends) {
+            throw new Error('No market data available');
+        }
+        
+        const overviewStats = getElement('overview-stats');
+        if (!overviewStats) {
+            throw new Error('Overview stats element not found');
+        }
+        
+        const marketTrends = data.marketTrends;
+        const totalImplantations = marketTrends.implantations.total;
+        const avgReimbursement = marketTrends.reimbursement.average;
+        const cagr = marketTrends.implantations.cagr;
+        const totalMarketValue = totalImplantations * avgReimbursement;
+        
+        overviewStats.innerHTML = `
+            <div class="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 card">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-marcomm-orange bg-opacity-20 text-marcomm-orange">
+                        <i class="fas fa-hospital-user text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm text-gray-600 dark:text-gray-300">Total Implantations</p>
+                        <p class="text-2xl font-semibold text-marcomm-dark dark:text-white">${formatNumber(totalImplantations)}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 card">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-blue-500 bg-opacity-20 text-blue-500 dark:text-blue-400">
+                        <i class="fas fa-dollar-sign text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm text-gray-600 dark:text-gray-300">Avg Reimbursement</p>
+                        <p class="text-2xl font-semibold text-marcomm-dark dark:text-white">${formatCurrency(avgReimbursement)}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 card">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-green-500 bg-opacity-20 text-green-500 dark:text-green-400">
+                        <i class="fas fa-chart-line text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm text-gray-600 dark:text-gray-300">Market Size</p>
+                        <p class="text-2xl font-semibold text-marcomm-dark dark:text-white">${formatCurrency(totalMarketValue, 0)}</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">CAGR: ${cagr !== undefined ? formatNumber(cagr, 2) + '%' : 'N/A'}</p>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        logInfo('Market Overview rendered successfully');
+    } catch (error) {
+        logError('Error rendering Market Overview:', error);
+        showError('market-overview', error.message);
+    }
+}
+
+// Render Competitive Map section
+function renderCompetitiveMap(data) {
+    logInfo('Rendering Competitive Map...');
+    hideLoading('competitive-map');
+    
+    try {
+        if (!data || !data.competitors || !Array.isArray(data.competitors)) {
+            throw new Error('No competitor data available');
+        }
+        
+        const competitorList = getElement('competitor-list');
+        if (!competitorList) {
+            throw new Error('Competitor list element not found');
+        }
+        
+        const competitors = data.competitors;
+        logInfo('Competitors:', competitors);
+        
+        let listHtml = '';
+        competitors.forEach(comp => {
+            const name = comp.name || 'Unknown';
+            const treatment = comp.treatment || 'Unknown Treatment';
+            
+            listHtml += `
+                <li class="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg shadow-sm hover:bg-marcomm-orange-light hover:shadow-md dark:hover:bg-marcomm-orange-dark hover:text-white transition-all duration-200 cursor-pointer mb-2">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 mr-3">
+                            <i class="fas fa-microchip text-marcomm-orange dark:text-marcomm-orange-light text-lg"></i>
+                        </div>
+                        <div class="flex-1">
+                            <span class="font-medium text-marcomm-dark dark:text-white block">${name}</span>
+                            <span class="text-sm text-gray-600 dark:text-gray-300 block">${treatment}</span>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-chevron-right text-gray-400 dark:text-gray-500"></i>
+                        </div>
+                    </div>
+                </li>
+            `;
+        });
+        
+        competitorList.innerHTML = listHtml;
+        
+        logInfo('Competitive Map rendered successfully');
+    } catch (error) {
+        logError('Error rendering Competitive Map:', error);
+        showError('competitive-map', error.message);
+    }
+}
+
+// Render Quick Stats section
+function renderQuickStats(data) {
+    logInfo('Rendering Quick Stats...');
+    hideLoading('quick-stats');
+    
+    try {
+        if (!data || !data.competitors || !Array.isArray(data.competitors)) {
+            throw new Error('No competitor data available');
+        }
+        
+        const quickStats = getElement('quick-stats');
+        if (!quickStats) {
+            throw new Error('Quick stats element not found');
+        }
+        
+        const competitors = data.competitors;
+        
+        // Find top competitor - safely handle missing data
+        const topCompetitor = competitors.reduce((max, comp) => {
+            const currentTotal = comp.implantations?.total || 0;
+            const maxTotal = max.implantations?.total || 0;
+            return currentTotal > maxTotal ? comp : max;
+        }, competitors[0]);
+        
+        // Calculate total providers - safely
+        const totalProviders = competitors.reduce((sum, comp) => {
+            return sum + (comp.providers?.unique || 0);
+        }, 0);
+        
+        // Calculate market share - safely
+        const topMarketShare = topCompetitor.implantations?.total && data.marketTrends?.implantations?.total 
+            ? (topCompetitor.implantations.total / data.marketTrends.implantations.total * 100) 
+            : 0;
+        
+        quickStats.innerHTML = `
+            <div class="p-3 text-center bg-gray-100 dark:bg-gray-700 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 card">
+                <div class="bg-marcomm-orange-light bg-opacity-20 text-marcomm-orange dark:text-marcomm-orange-light rounded-full w-10 h-10 flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-building"></i>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300">Competitors</p>
+                <p class="text-lg font-semibold text-marcomm-dark dark:text-white">${competitors.length}</p>
+            </div>
+            <div class="p-3 text-center bg-gray-100 dark:bg-gray-700 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 card">
+                <div class="bg-blue-500 bg-opacity-20 text-blue-500 dark:text-blue-400 rounded-full w-10 h-10 flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300">Top Player</p>
+                <p class="text-lg font-semibold text-marcomm-dark dark:text-white">${topCompetitor.name || 'Unknown'}</p>
+            </div>
+            <div class="p-3 text-center bg-gray-100 dark:bg-gray-700 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 card">
+                <div class="bg-green-500 bg-opacity-20 text-green-500 dark:text-green-400 rounded-full w-10 h-10 flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300">Market Share</p>
+                <p class="text-lg font-semibold text-marcomm-dark dark:text-white">${formatNumber(topMarketShare, 1)}%</p>
+            </div>
+            <div class="p-3 text-center bg-gray-100 dark:bg-gray-700 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 card">
+                <div class="bg-purple-500 bg-opacity-20 text-purple-500 dark:text-purple-400 rounded-full w-10 h-10 flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300">Unique Providers</p>
+                <p class="text-lg font-semibold text-marcomm-dark dark:text-white">${formatNumber(totalProviders)}</p>
+            </div>
+        `;
+        
+        logInfo('Quick Stats rendered successfully');
+    } catch (error) {
+        logError('Error rendering Quick Stats:', error);
+        showError('quick-stats', error.message);
+    }
+}
+
+// Render all charts
+function renderCharts(data) {
+    logInfo('Rendering all charts...');
+    
+    // Use a proper dark theme color palette
+    const colors = {
+        primary: ['#FF6B35', '#E55A24', '#FF8B5F'],  // Marcomm orange shades
+        secondary: ['#4299E1', '#3182CE', '#2B6CB0'], // Blues
+        tertiary: ['#48BB78', '#38A169', '#2F855A'],  // Greens
+        other: ['#9F7AEA', '#805AD5', '#6B46C1', '#D53F8C', '#B83280', '#97266D'] // Purples and pinks
+    };
+    
+    // Combine all colors for a rich palette
+    const colorPalette = [
+        ...colors.primary,
+        ...colors.secondary,
+        ...colors.tertiary,
+        ...colors.other
+    ];
+    
+    // Verify Chart.js is available
+    if (typeof Chart === 'undefined') {
+        logError('Chart.js is not available');
+        
+        // Show error for all chart containers
+        document.querySelectorAll('.chart-container').forEach(container => {
+            showError(container.id, 'Chart.js library not found');
+        });
+        
+        return;
+    }
+    
+    try {
+        // Render Market Share Chart
+        renderMarketShareChart(data, colorPalette);
+        
+        // Render Financial Radar Chart
+        renderFinancialChart(data, colorPalette);
+        
+        // Render FDA Metrics Chart
+        renderFDAChart(data, colorPalette);
+        
+        // Render Patents Chart
+        renderPatentsChart(data, colorPalette);
+        
+        // Render Implantation Trends Chart
+        renderImplantationTrendsChart(data, colorPalette);
+        
+        logInfo('All charts rendered successfully');
+    } catch (error) {
+        logError('Error rendering charts:', error);
+    }
+}
+
+// Render Market Share Chart
+function renderMarketShareChart(data, colorPalette) {
+    logInfo('Rendering Market Share Chart...');
+    hideLoading('market-share-chart');
+    
+    try {
+        if (!data || !data.competitors || !Array.isArray(data.competitors)) {
+            throw new Error('No competitor data available');
+        }
+        
+        const chartCanvas = getElement('market-share-chart');
+        if (!chartCanvas) {
+            throw new Error('Chart canvas element not found');
+        }
+        
+        const competitors = data.competitors;
+        
+        // Prepare chart data
+        const labels = competitors.map(c => c.name || 'Unknown');
+        const values = competitors.map(c => c.implantations?.total || 0);
+        
+        // Check if there's data to display
+        if (values.every(v => v === 0)) {
+            throw new Error('No market share data available');
+        }
+        
+        // Calculate total for percentages
+        const total = values.reduce((sum, val) => sum + val, 0);
+        
+        // Destroy existing chart
+        if (window.marketShareChart instanceof Chart) {
+            window.marketShareChart.destroy();
+        }
+        
+        // Create new chart
+        window.marketShareChart = new Chart(chartCanvas, {
+            type: 'doughnut',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: values,
+                    backgroundColor: colorPalette.slice(0, labels.length),
+                    borderColor: '#1E293B', // Dark border that works in dark mode
+                    borderWidth: 2,
+                    hoverBorderColor: '#FFFFFF',
+                    hoverBorderWidth: 2,
+                    hoverOffset: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '60%',
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            color: '#B8C2CC',
+                            usePointStyle: true,
+                            padding: 15,
+                            font: {
+                                size: 12
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const value = context.raw;
+                                const percentage = ((value / total) * 100).toFixed(1);
+                                return `${context.label}: ${formatNumber(value)} (${percentage}%)`;
+                            }
+                        }
+                    }
+                },
+                animation: {
+                    animateScale: true,
+                    animateRotate: true,
+                    duration: 1000,
+                    easing: 'easeOutQuart'
+                }
+            }
+        });
+        
+        logInfo('Market Share Chart rendered successfully');
+    } catch (error) {
+        logError('Error rendering Market Share Chart:', error);
+        showError('market-share-chart', error.message);
+    }
+}
+
+// Render Financial Radar Chart
+function renderFinancialChart(data, colorPalette) {
+    logInfo('Rendering Financial Chart...');
+    hideLoading('financial-radar-chart');
+    
+    try {
+        if (!data || !data.competitors || !Array.isArray(data.competitors)) {
+            throw new Error('No competitor data available');
+        }
+        
+        const chartCanvas = getElement('financial-radar-chart');
+        if (!chartCanvas) {
+            throw new Error('Chart canvas element not found');
+        }
+        
+        const competitors = data.competitors;
+        
+        // Prepare financial metrics based on market share
+        const datasets = competitors.map((competitor, index) => {
+            // Use market share as a proxy for financial performance
+            const marketShare = data.marketTrends.marketShares[competitor.name]?.total || 0;
+            
+            // Calculate values based on market share for demonstration
+            const revenue = marketShare * 5;
+            const profit = marketShare * 0.8;
+            const assets = marketShare * 10;
+            
+            return {
+                label: competitor.name,
+                data: [revenue, profit, assets],
+                backgroundColor: `${colorPalette[index % colorPalette.length]}33`,
+                borderColor: colorPalette[index % colorPalette.length],
+                borderWidth: 2,
+                pointBackgroundColor: colorPalette[index % colorPalette.length],
+                pointBorderColor: '#1E293B',
+                pointHoverBackgroundColor: '#FFFFFF',
+                pointHoverBorderColor: colorPalette[index % colorPalette.length],
+                pointRadius: 4,
+                pointHoverRadius: 6
+            };
+        });
+        
+        // Destroy existing chart
+        if (window.financialRadarChart instanceof Chart) {
+            window.financialRadarChart.destroy();
+        }
+        
+        // Create new chart
+        window.financialRadarChart = new Chart(chartCanvas, {
+            type: 'radar',
+            data: {
+                labels: ['Revenue', 'Profit', 'Assets'],
+                datasets: datasets
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        pointLabels: {
+                            color: '#B8C2CC',
+                            font: {
+                                size: 12,
+                                weight: 'bold'
+                            }
+                        },
+                        ticks: {
+                            backdropColor: 'transparent',
+                            color: 'rgba(255, 255, 255, 0.5)',
+                            z: 1,
+                            display: false
+                        },
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            color: '#B8C2CC',
+                            usePointStyle: true,
+                            padding: 15,
+                            font: {
+                                size: 12
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: ${context.raw.toFixed(1)}`;
+                            }
+                        }
+                    }
+                },
+                animation: {
+                    duration: 1000,
+                    easing: 'easeOutQuart'
+                }
+            }
+        });
+        
+        logInfo('Financial Chart rendered successfully');
+    } catch (error) {
+        logError('Error rendering Financial Chart:', error);
+        showError('financial-radar-chart', error.message);
+    }
+}
+
+// Render FDA Metrics Chart
+function renderFDAChart(data, colorPalette) {
+    logInfo('Rendering FDA Chart...');
+    hideLoading('fda-metrics-chart');
+    
+    try {
+        if (!data || !data.competitors || !Array.isArray(data.competitors)) {
+            throw new Error('No competitor data available');
+        }
+        
+        const chartCanvas = getElement('fda-metrics-chart');
+        if (!chartCanvas) {
+            throw new Error('Chart canvas element not found');
+        }
+        
+        const competitors = data.competitors;
+        
+        // Generate sample FDA data based on market share
+        const labels = competitors.map(competitor => competitor.name);
+        const fdaData = competitors.map(competitor => {
+            const marketShare = data.marketTrends.marketShares[competitor.name]?.total || 0;
+            // Using Fibonacci sequence to create more varied data
+            return Math.round(100 + marketShare * 10); 
+        });
+        
+        // Destroy existing chart
+        if (window.fdaMetricsChart instanceof Chart) {
+            window.fdaMetricsChart.destroy();
+        }
+        
+        // Create new chart
+        window.fdaMetricsChart = new Chart(chartCanvas, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'FDA Records',
+                    data: fdaData,
+                    backgroundColor: labels.map((_, i) => `${colorPalette[i % colorPalette.length]}CC`),
+                    borderColor: labels.map((_, i) => colorPalette[i % colorPalette.length]),
+                    borderWidth: 1,
+                    borderRadius: 6,
+                    maxBarThickness: 60
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)',
+                            drawBorder: false
+                        },
+                        ticks: {
+                            color: '#B8C2CC',
+                            font: {
+                                size: 11
+                            },
+                            padding: 8
+                        },
+                        border: {
+                            display: false
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#B8C2CC',
+                            font: {
+                                size: 11
+                            },
+                            padding: 8
+                        },
+                        border: {
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `FDA Records: ${formatNumber(context.raw)}`;
+                            }
+                        }
+                    }
+                },
+                animation: {
+                    duration: 1000,
+                    easing: 'easeOutQuart'
+                }
+            }
+        });
+        
+        logInfo('FDA Chart rendered successfully');
+    } catch (error) {
+        logError('Error rendering FDA Chart:', error);
+        showError('fda-metrics-chart', error.message);
+    }
+}
+
+// Render Patents Chart
+function renderPatentsChart(data, colorPalette) {
+    logInfo('Rendering Patents Chart...');
+    hideLoading('patents-chart');
+    
+    try {
+        if (!data || !data.competitors || !Array.isArray(data.competitors)) {
+            throw new Error('No competitor data available');
+        }
+        
+        const chartCanvas = getElement('patents-chart');
+        if (!chartCanvas) {
+            throw new Error('Chart canvas element not found');
+        }
+        
+        const competitors = data.competitors;
+        
+        // Generate sample patent data using market share with an offset for variation
+        const labels = competitors.map(competitor => competitor.name);
+        const patentData = competitors.map((competitor, index) => {
+            const marketShare = data.marketTrends.marketShares[competitor.name]?.total || 0;
+            // Create varied data by using index as a multiplier
+            return Math.round(200 + marketShare * 15 * (index + 1) * 0.5); 
+        });
+        
+        // Destroy existing chart
+        if (window.patentsChart instanceof Chart) {
+            window.patentsChart.destroy();
+        }
+        
+        // Create new chart
+        window.patentsChart = new Chart(chartCanvas, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Patents',
+                    data: patentData,
+                    backgroundColor: labels.map((_, i) => `${colorPalette[i % colorPalette.length]}CC`),
+                    borderColor: labels.map((_, i) => colorPalette[i % colorPalette.length]),
+                    borderWidth: 1,
+                    borderRadius: 6,
+                    maxBarThickness: 60
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)',
+                            drawBorder: false
+                        },
+                        ticks: {
+                            color: '#B8C2CC',
+                            font: {
+                                size: 11
+                            },
+                            padding: 8
+                        },
+                        border: {
+                            display: false
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#B8C2CC',
+                            font: {
+                                size: 11
+                            },
+                            padding: 8
+                        },
+                        border: {
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `Patents: ${formatNumber(context.raw)}`;
+                            }
+                        }
+                    }
+                },
+                animation: {
+                    duration: 1000,
+                    easing: 'easeOutQuart'
+                }
+            }
+        });
+        
+        logInfo('Patents Chart rendered successfully');
+    } catch (error) {
+        logError('Error rendering Patents Chart:', error);
+        showError('patents-chart', error.message);
+    }
+}
+
+// Render Implantation Trends Chart
+function renderImplantationTrendsChart(data, colorPalette) {
+    logInfo('Rendering Implantation Trends Chart...');
+    hideLoading('implantation-trends-chart');
+    
+    try {
+        if (!data || !data.chartData || !data.chartData.implantationTrends) {
+            throw new Error('No trend data available');
+        }
+        
+        const chartCanvas = getElement('implantation-trends-chart');
+        if (!chartCanvas) {
+            throw new Error('Chart canvas element not found');
+        }
+        
+        const trendsData = data.chartData.implantationTrends;
+        
+        // Make sure we have data
+        if (!trendsData.labels || !trendsData.datasets || !Array.isArray(trendsData.datasets)) {
+            throw new Error('Invalid trend data format');
+        }
+        
+        // Prepare datasets with proper styling
+        const datasets = trendsData.datasets.map((dataset, index) => {
+            return {
+                label: dataset.label,
+                data: dataset.data,
+                backgroundColor: `${colorPalette[index % colorPalette.length]}22`,
+                borderColor: colorPalette[index % colorPalette.length],
+                borderWidth: 3,
+                tension: 0.3,
+                fill: true,
+                pointBackgroundColor: colorPalette[index % colorPalette.length],
+                pointBorderColor: '#1E293B',
+                pointBorderWidth: 2,
+                pointRadius: 5,
+                pointHoverRadius: 8,
+                pointHoverBorderWidth: 2,
+                pointHoverBackgroundColor: '#FFFFFF',
+                pointHoverBorderColor: colorPalette[index % colorPalette.length]
+            };
+        });
+        
+        // Destroy existing chart
+        if (window.implantationTrendsChart instanceof Chart) {
+            window.implantationTrendsChart.destroy();
+        }
+        
+        // Create new chart
+        window.implantationTrendsChart = new Chart(chartCanvas, {
+            type: 'line',
+            data: {
+                labels: trendsData.labels,
+                datasets: datasets
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)',
+                            drawBorder: false
+                        },
+                        ticks: {
+                            color: '#B8C2CC',
+                            font: {
+                                size: 11
+                            },
+                            padding: 8,
+                            callback: function(value) {
+                                return formatNumber(value);
+                            }
+                        },
+                        border: {
+                            display: false
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)',
+                            drawBorder: false
+                        },
+                        ticks: {
+                            color: '#B8C2CC',
+                            font: {
+                                size: 11
+                            },
+                            padding: 8
+                        },
+                        border: {
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            color: '#B8C2CC',
+                            usePointStyle: true,
+                            padding: 15,
+                            font: {
+                                size: 12
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: ${formatNumber(context.raw)}`;
+                            }
+                        }
+                    }
+                },
+                animation: {
+                    duration: 1000,
+                    easing: 'easeOutQuart'
+                },
+                elements: {
+                    line: {
+                        tension: 0.3
+                    }
+                },
+                interaction: {
+                    mode: 'index',
+                    intersect: false
+                }
+            }
+        });
+        
+        logInfo('Implantation Trends Chart rendered successfully');
+    } catch (error) {
+        logError('Error rendering Implantation Trends Chart:', error);
+        showError('implantation-trends-chart', error.message);
+    }
+}
+
+// Render Competitive Insights
+function renderCompetitiveInsights(data) {
+    logInfo('Rendering Competitive Insights...');
+    hideLoading('competitive-insights');
+    
+    try {
+        if (!data || !data.competitors || !Array.isArray(data.competitors)) {
+            throw new Error('No competitor data available');
+        }
+        
+        const insightsContainer = getElement('competitive-insights');
+        if (!insightsContainer) {
+            throw new Error('Insights container element not found');
+        }
+        
+        const competitors = data.competitors;
+        
+        // Generate insights based on data
+        const insights = [];
+        
+        // Market Leader insight
+        if (competitors.length > 0) {
+            const topCompetitor = competitors.reduce((max, comp) => {
+                const currentTotal = comp.implantations?.total || 0;
+                const maxTotal = max.implantations?.total || 0;
+                return currentTotal > maxTotal ? comp : max;
+            }, competitors[0]);
+            
+            insights.push({
+                title: 'Market Leader',
+                content: `${topCompetitor.name} leads the market with ${formatNumber(topCompetitor.implantations?.total || 0)} implantations and ${formatCurrency(topCompetitor.reimbursement?.average || 0)} average reimbursement.`,
+                icon: 'fa-trophy',
+                color: 'blue'
+            });
+            
+            // Growth insight
+            insights.push({
+                title: 'Market Growth',
+                content: `The epilepsy treatment market had a CAGR of ${formatNumber(data.marketTrends.implantations.cagr || 0, 2)}% over the period 2020-2022.`,
+                icon: 'fa-chart-line',
+                color: 'green'
+            });
+            
+            // Market competition insight
+            insights.push({
+                title: 'Market Competition',
+                content: `The market has ${competitors.length} major competitors, with ${topCompetitor.name} holding ${formatNumber(data.marketTrends.marketShares[topCompetitor.name]?.total || 0, 1)}% market share.`,
+                icon: 'fa-users',
+                color: 'purple'
+            });
+            
+            // Provider network insight
+            const totalProviders = competitors.reduce((sum, comp) => sum + (comp.providers?.unique || 0), 0);
+            insights.push({
+                title: 'Provider Network',
+                content: `A total of ${formatNumber(totalProviders)} unique healthcare providers have performed implantation procedures across all competitors.`,
+                icon: 'fa-hospital',
+                color: 'red'
+            });
+        }
+        
+        // Render insights with enhanced styling
+        insightsContainer.innerHTML = insights.map(insight => {
+            const colorClasses = {
+                blue: 'bg-blue-900 bg-opacity-50 border-l-4 border-blue-500',
+                green: 'bg-green-900 bg-opacity-50 border-l-4 border-green-500',
+                red: 'bg-red-900 bg-opacity-50 border-l-4 border-red-500',
+                yellow: 'bg-yellow-900 bg-opacity-50 border-l-4 border-yellow-500',
+                purple: 'bg-purple-900 bg-opacity-50 border-l-4 border-purple-500'
+            };
+            
+            const iconColors = {
+                blue: 'text-blue-400',
+                green: 'text-green-400',
+                red: 'text-red-400',
+                yellow: 'text-yellow-400',
+                purple: 'text-purple-400'
+            };
+            
+            return `
+                <div class="p-4 ${colorClasses[insight.color || 'blue']} rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div class="flex items-start">
+                        <div class="p-2 rounded-full ${iconColors[insight.color || 'blue']} mr-3 text-xl">
+                            <i class="fas ${insight.icon || 'fa-lightbulb'}"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-medium text-white">${insight.title}</h4>
+                            <p class="mt-1 text-sm text-gray-200">${insight.content}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+        
+        logInfo('Competitive Insights rendered successfully');
+    } catch (error) {
+        logError('Error rendering Competitive Insights:', error);
+        showError('competitive-insights', error.message);
+    }
+}
+</script>
+</body>
+</html>

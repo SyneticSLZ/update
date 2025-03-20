@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en" class="dark-mode-transition">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competitor Details - Marcomm Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'marcomm': {
+                            'orange': '#FF6B35',
+                            'orange-light': '#FF8B5F',
+                            'orange-dark': '#E55A24',
+                            'dark': '#1F2A44',
+                            'gray': '#F5F7FA',
+                            'gray-dark': '#1E293B',
+                            'blue': '#3B82F6',
+                            'blue-dark': '#2563EB',
+                            'green': '#10B981',
+                            'green-light': '#34D399',
+                            'red': '#EF4444',
+                            'yellow': '#F59E0B'
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        .dark-mode-transition {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .skeleton {
+            animation: skeleton-loading 1s linear infinite alternate;
+        }
+        
+        @keyframes skeleton-loading {
+            0% {
+                background-color: rgba(156, 163, 175, 0.1);
+            }
+            100% {
+                background-color: rgba(156, 163, 175, 0.2);
+            }
+        }
+        
+        .dark .skeleton {
+            animation: skeleton-loading-dark 1s linear infinite alternate;
+        }
+        
+        @keyframes skeleton-loading-dark {
+            0% {
+                background-color: rgba(55, 65, 81, 0.3);
+            }
+            100% {
+                background-color: rgba(55, 65, 81, 0.5);
+            }
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-marcomm-gray dark:bg-marcomm-dark font-sans text-gray-900 dark:text-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-marcomm-gray-dark shadow-lg sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <!-- <img src="https://logoipsum.com/artwork/357" alt="MARCOMM" class="h-8 w-auto"> -->
+                     <div class="h-8 w-auto">
+                        <svg id="logo-36" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M18.9523 11.0726C18.5586 7.69873 18.1429 4.13644 18.1429 0H21.8571C21.8571 4.08998 21.4434 7.64774 21.0502 11.0254C20.7299 13.778 20.4235 16.411 20.3666 19.115C22.2316 17.1697 23.863 15.107 25.572 12.9463C27.6791 10.2823 29.9043 7.46945 32.829 4.54464L35.4554 7.17104C32.5633 10.0631 29.7547 12.2861 27.0884 14.3966L27.0859 14.3985C24.9141 16.1178 22.8365 17.7624 20.885 19.6334C23.579 19.5765 26.1911 19.2717 28.9272 18.9524C32.3011 18.5586 35.8636 18.1429 40 18.1429V21.8571C35.9102 21.8571 32.3524 21.4432 28.9749 21.0502L28.9724 21.05C26.2204 20.7298 23.5882 20.4236 20.885 20.3666C22.829 22.2302 24.8906 23.8609 27.0499 25.5687L27.0533 25.5716C29.7174 27.6789 32.5304 29.9039 35.4554 32.829L32.829 35.4554C29.9369 32.5634 27.714 29.755 25.6038 27.0889L25.5988 27.082L25.5946 27.0765C23.8775 24.9081 22.2349 22.8338 20.3666 20.885C20.4235 23.589 20.7299 26.222 21.0502 28.9746C21.4434 32.3523 21.8571 35.91 21.8571 40H18.1429C18.1429 35.8636 18.5586 32.3013 18.9523 28.9274L18.9531 28.9219C19.272 26.1877 19.5765 23.5772 19.6334 20.885C17.7651 22.8338 16.1225 24.9081 14.4054 27.0765L14.4012 27.082L14.3962 27.0889C12.286 29.755 10.0631 32.5634 7.17104 35.4554L4.54464 32.829C7.46959 29.9039 10.2826 27.6789 12.9467 25.5716L12.9501 25.5687C15.1094 23.8609 17.171 22.2302 19.115 20.3666C16.411 20.4237 13.7779 20.73 11.0251 21.0502C7.6476 21.4432 4.08984 21.8571 0 21.8571V18.1429C4.13644 18.1429 7.69894 18.5586 11.0728 18.9524C13.8089 19.2717 16.421 19.5765 19.115 19.6334C17.1627 17.7617 15.0843 16.1166 12.9116 14.3966C10.2453 12.2861 7.43666 10.0631 4.54464 7.17104L7.17104 4.54464C10.0957 7.46945 12.3209 10.2823 14.428 12.9463C16.137 15.1069 17.7684 17.1696 19.6334 19.1148C19.5765 16.4227 19.272 13.8123 18.9531 11.0781L18.9523 11.0726Z" class="ccustom" fill="#FFA589"></path> </svg>
+                    </div>
+                    <div class="ml-6 flex space-x-4">
+                        <a href="index.html" class="text-gray-600 dark:text-gray-300 px-3 py-2 rounded-md text-sm font-medium hover:text-marcomm-orange">Companies</a>
+                        <a href="intelligence.html" class="text-gray-600 dark:text-gray-300 px-3 py-2 rounded-md text-sm font-medium hover:text-marcomm-orange">Intelligence Hub</a>
+                        <!-- <a href="#" class="text-gray-600 dark:text-gray-300 px-3 py-2 rounded-md text-sm font-medium hover:text-marcomm-orange">Dashboard</a> -->
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="dark-mode-toggle" class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-marcomm-gray transition-colors">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Loading Indicator -->
+        <div id="loading-indicator" class="bg-white dark:bg-marcomm-gray-dark rounded-xl shadow-md p-6 mb-8 text-center">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-marcomm-orange"></div>
+            <p class="mt-2 text-gray-600 dark:text-gray-400">Loading competitor data...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div id="error-message" class="bg-white dark:bg-marcomm-gray-dark rounded-xl shadow-md p-6 mb-8 text-center hidden">
+            <div class="text-red-500 text-xl mb-2"><i class="fas fa-exclamation-circle"></i></div>
+            <p id="error-text" class="text-red-500">Error loading competitor data. Please try again later.</p>
+            <button id="retry-button" class="mt-4 bg-marcomm-orange text-white px-3 py-1.5 rounded-md text-sm hover:bg-marcomm-orange-dark transition-colors">
+                <i class="fas fa-redo mr-1"></i> Retry error message
+            </button>
+        </div>
+
+        <!-- Competitor Header -->
+        <div id="competitor-header" class="bg-white dark:bg-marcomm-gray-dark rounded-xl shadow-md p-6 mb-8 hidden">
+            <div class="flex flex-col md:flex-row justify-between items-start">
+                <div>
+                    <div class="flex items-center">
+                        <div id="competitor-icon" class="h-14 w-14 rounded-full flex items-center justify-center mr-4 bg-marcomm-orange/10 text-marcomm-orange">
+                            <i class="fas fa-pills text-2xl"></i>
+                        </div>
+                        <div>
+                            <h1 id="competitor-name" class="text-2xl sm:text-3xl font-semibold text-marcomm-dark dark:text-white">Competitor Name</h1>
+                            <div class="flex items-center mt-1">
+                                <span id="competitor-type-badge" class="px-3 py-1 bg-marcomm-blue/10 text-marcomm-blue dark:bg-marcomm-blue/20 dark:text-marcomm-blue-dark rounded-full text-sm mr-2">Type</span>
+                                <p id="competitor-treatment" class="text-gray-600 dark:text-gray-400">Treatment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex mt-4 md:mt-0">
+                    <a href="index.html" class="flex items-center px-3 py-1.5 bg-gray-100 dark:bg-gray-700 rounded-md text-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors text-gray-700 dark:text-gray-300">
+                        <i class="fas fa-arrow-left mr-1.5"></i> Back to Companies
+                    </a>
+                    <button id="export-report" class="flex items-center px-3 py-1.5 bg-marcomm-blue text-white rounded-md text-sm hover:bg-marcomm-blue-dark transition-colors ml-2">
+                        <i class="fas fa-file-download mr-1.5"></i> Export Report
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary & Metrics Cards -->
+        <div id="summary-metrics" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 hidden">
+            <!-- Card 1 - Market Metrics -->
+            <div class="bg-white dark:bg-marcomm-gray-dark rounded-xl shadow-md p-5">
+                <div class="flex items-center mb-4">
+                    <div class="h-10 w-10 rounded-full bg-marcomm-orange/20 flex items-center justify-center mr-3">
+                        <i class="fas fa-chart-line text-marcomm-orange"></i>
+                    </div>
+                    <h2 class="text-lg font-semibold text-marcomm-dark dark:text-white">Market Metrics</h2>
+                </div>
+                <div id="market-metrics-content" class="space-y-3">
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-500 dark:text-gray-400">Market Share</span>
+                        <span id="market-share" class="text-sm font-medium"></span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span id="revenue-head"  class="text-sm text-gray-500 dark:text-gray-400">Total Implantations</span>
+                        <span id="revenue" class="text-sm font-medium"></span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-500 dark:text-gray-400">avgReimbursement</span>
+                        <span id="growth-rate" class="text-sm font-medium"></span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-500 dark:text-gray-400">yoyGrowth</span>
+                        <span id="medicare-claims" class="text-sm font-medium"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 2 - Regulatory -->
+            <div class="bg-white dark:bg-marcomm-gray-dark rounded-xl shadow-md p-5">
+                <div class="flex items-center mb-4">
+                    <div class="h-10 w-10 rounded-full bg-marcomm-blue/20 flex items-center justify-center mr-3">
+                        <i class="fas fa-file-medical text-marcomm-blue"></i>
+                    </div>
+                    <h2 class="text-lg font-semibold text-marcomm-dark dark:text-white">Regulatory</h2>
+                </div>
+                <div id="regulatory-content" class="space-y-3">
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-500 dark:text-gray-400">FDA Status</span>
+                        <span id="fda-status" class="text-sm font-medium"></span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-500 dark:text-gray-400">Latest Approval</span>
+                        <span id="latest-approval" class="text-sm font-medium"></span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-500 dark:text-gray-400">Trials</span>
+                        <span id="active-trials" class="text-sm font-medium"></span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-500 dark:text-gray-400">Recalls</span>
+                        <span id="recalls" class="text-sm font-medium"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 3 - IP & Legal -->
+            <div class="bg-white dark:bg-marcomm-gray-dark rounded-xl shadow-md p-5">
+                <div class="flex items-center mb-4">
+                    <div class="h-10 w-10 rounded-full bg-marcomm-green/20 flex items-center justify-center mr-3">
+                        <i class="fas fa-gavel text-marcomm-green"></i>
+                    </div>
+                    <h2 class="text-lg font-semibold text-marcomm-dark dark:text-white">IP & Legal</h2>
+                </div>
+                <div id="ip-legal-content" class="space-y-3">
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-500 dark:text-gray-400">Patents</span>
+                        <span id="patent-count" class="text-sm font-medium"></span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-500 dark:text-gray-400">Recent Filings</span>
+                        <span id="recent-filings" class="text-sm font-medium"></span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-500 dark:text-gray-400">Patent Expiry</span>
+                        <span id="patent-expiry" class="text-sm font-medium"></span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-500 dark:text-gray-400">SEC Status</span>
+                        <span id="sec-status" class="text-sm font-medium"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div id="tab-navigation" class="bg-white dark:bg-marcomm-gray-dark rounded-xl shadow-md overflow-hidden mb-8 hidden">
+            <div class="border-b border-gray-200 dark:border-marcomm-dark">
+                <nav class="flex space-x-1 p-4 overflow-x-auto" aria-label="Tabs">
+                    <button class="tab-button flex-shrink-0 px-4 py-2 text-marcomm-orange border-b-2 border-marcomm-orange font-semibold text-sm transition-colors" data-tab="fda-data">FDA Data</button>
+                    <button class="tab-button flex-shrink-0 px-4 py-2 text-gray-500 dark:text-gray-400 hover:text-marcomm-orange dark:hover:text-marcomm-orange-light border-b-2 border-transparent font-semibold text-sm transition-colors" data-tab="trials-content">Clinical Trials</button>
+                    <button class="tab-button flex-shrink-0 px-4 py-2 text-gray-500 dark:text-gray-400 hover:text-marcomm-orange dark:hover:text-marcomm-orange-light border-b-2 border-transparent font-semibold text-sm transition-colors" data-tab="patent-ip">Patents & IP</button>
+                    <button class="tab-button flex-shrink-0 px-4 py-2 text-gray-500 dark:text-gray-400 hover:text-marcomm-orange dark:hover:text-marcomm-orange-light border-b-2 border-transparent font-semibold text-sm transition-colors" data-tab="market-data">Market Data</button>
+                    <button id="sec-filings-tab" class="tab-button flex-shrink-0 px-4 py-2 text-gray-500 dark:text-gray-400 hover:text-marcomm-orange dark:hover:text-marcomm-orange-light border-b-2 border-transparent font-semibold text-sm transition-colors hidden" data-tab="sec-filings">SEC Filings</button>
+                </nav>
+            </div>
+
+            <!-- Tab Contents -->
+            <div class="p-6">
+                <!-- FDA Data Tab -->
+                <div id="fda-data" class="tab-content active">
+                    <div class="flex flex-col md:flex-row justify-between mb-4">
+                        <h3 class="text-xl font-semibold text-marcomm-dark dark:text-white mb-2 md:mb-0">FDA Data</h3>
+                        <div class="flex space-x-2">
+                            <div class="relative">
+                                <input id="fdaSearch" type="text" placeholder="Search FDA records..." 
+                                       class="px-3 py-1.5 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 w-56">
+                                <svg class="absolute right-3 top-2 h-4 w-4 text-gray-400 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                </svg>
+                            </div>
+                            <button id="refresh-fda" class="flex items-center px-3 py-1.5 bg-gray-100 dark:bg-gray-700 rounded-md text-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                                <i class="fas fa-sync mr-1.5"></i> Refresh
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="fda-loading" class="text-center p-8 hidden">
+                        <div class="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-marcomm-orange"></div>
+                        <p class="mt-2 text-gray-600 dark:text-gray-400">Loading FDA data...</p>
+                    </div>
+                    
+                    <div id="fda-error" class="text-center p-8 hidden">
+                        <p class="text-red-500"><i class="fas fa-exclamation-circle mr-2"></i>Error loading FDA data</p>
+                    </div>
+                    
+                    <div id="fda-content">
+                        <!-- FDA Status Card -->
+                        <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 mb-6">
+                            <h4 class="text-lg font-semibold text-marcomm-dark dark:text-white mb-2">FDA Status Summary</h4>
+                            <div id="fda-summary-content" class="text-sm text-gray-600 dark:text-gray-400">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <!-- FDA Charts Section -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+                                <h4 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-4">Timeline Distribution</h4>
+                                <div class="h-64">
+                                    <canvas id="fda-timeline-chart"></canvas>
+                                </div>
+                            </div>
+                            <div class="chart-container bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                                <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">Source Distribution</h3>
+                                <div class="relative w-full max-w-md mx-auto">
+                                    <canvas id="fda-source-chart"></canvas>
+                                </div>
+                            </div>
+<!-- 
+                            <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+                                <h4 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-4">Source Distribution</h4>
+                                <div class="h-64">
+                                    <canvas id="fda-source-chart"></canvas>
+                                </div>
+                            </div> -->
+                        </div>
+                        
+                        <!-- FDA Results -->
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow mb-6">
+                            <div class="p-4 border-b border-gray-200 dark:border-gray-700">
+                                <h4 class="text-lg font-semibold text-marcomm-dark dark:text-white">FDA Records</h4>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                                    <thead class="bg-gray-50 dark:bg-gray-800">
+                                        <tr>
+                                            <th scope="col" colspan="5" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">FDA Records by Source</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="fda-table-body" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                                        <!-- Will be populated by JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <!-- Pagination Controls -->
+                            <div class="px-6 py-3 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between">
+                                <div class="text-sm text-gray-500 dark:text-gray-400">
+                                    Showing <span id="fdaPageStart">1</span> to <span id="fdaPageEnd">10</span> of <span id="fdaTotal">0</span> records
+                                </div>
+                                <div class="flex space-x-2">
+                                    <button id="fdaPrevPage" class="px-3 py-1.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md text-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors disabled:opacity-50">
+                                        <i class="fas fa-chevron-left mr-1"></i> Previous
+                                    </button>
+                                    <button id="fdaNextPage" class="px-3 py-1.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md text-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors disabled:opacity-50">
+                                        Next <i class="fas fa-chevron-right ml-1"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FDA Detail Modal - Will be created by JavaScript if not present -->
+                <div id="fda-detail-modal" class="fixed inset-0 z-50 hidden overflow-auto bg-black bg-opacity-50 flex items-center justify-center p-4">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-2xl w-full max-h-screen overflow-y-auto">
+                        <div class="flex justify-between items-center border-b dark:border-gray-700 p-4">
+                            <h3 id="fda-modal-title" class="text-lg font-medium text-gray-900 dark:text-white">Record Details</h3>
+                            <button id="fda-modal-close" class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300">
+                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div id="fda-modal-content" class="p-6"></div>
+                    </div>
+                </div>
+
+                <!-- Clinical Trials Tab -->
+                <div id="trial-detail-modal" class="fixed inset-0 z-50 hidden overflow-auto bg-black bg-opacity-50 flex items-center justify-center p-4">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-4xl w-full max-h-screen overflow-y-auto">
+                      <div class="flex justify-between items-center border-b dark:border-gray-700 p-4">
+                        <h3 id="trial-modal-title" class="text-lg font-medium text-gray-900 dark:text-white">Trial Details</h3>
+                        <button id="trial-modal-close" class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300">
+                          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                      </div>
+                      <div id="trial-modal-content" class="p-6">
+                        <!-- Trial details will be loaded here -->
+                      </div>
+                    </div>
+                  </div>
+
+                <div id="trials-loading" class="flex items-center justify-center p-8 hidden">
+                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-marcomm-blue"></div>
+                  </div>
+                  
+                  <div id="trials-error" class="hidden">
+                    <div class="bg-red-50 dark:bg-red-900 rounded-lg p-6 text-center">
+                      <svg class="mx-auto h-12 w-12 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                      </svg>
+                      <h3 class="mt-2 text-lg font-medium text-red-800 dark:text-red-200">Error Loading Data</h3>
+                      <p class="mt-1 text-sm text-red-700 dark:text-red-300 error-text">Failed to load clinical trial data. Please try again.</p>
+                      <div class="mt-4">
+                        <button id="retry-button" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors">
+                          Retry
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div id="trials-content" class="tab-content space-y-6">
+                    <!-- Metrics Section -->
+                    <div id="trial-metrics-container" class="">
+                      <!-- Metrics will be inserted here -->
+                    </div>
+                    
+                    <!-- Charts Section -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                      <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow md:col-span-1">
+                        <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">Distribution by Phase</h3>
+                        <div class="h-60">
+                          <canvas id="trial-phase-chart"></canvas>
+                        </div>
+                      </div>
+                      <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow md:col-span-1">
+                        <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">Distribution by Status</h3>
+                        <div class="h-60">
+                          <canvas id="trial-status-chart"></canvas>
+                        </div>
+                      </div>
+                      <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow md:col-span-1">
+                        <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">Timeline</h3>
+                        <div class="h-60">
+                          <canvas id="trial-timeline-chart"></canvas>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Table Section -->
+                    <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                      <div class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 mb-4">
+                        <h3 class="text-lg font-medium text-gray-700 dark:text-gray-300">Clinical Trials</h3>
+                        
+                        <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-3 w-full md:w-auto">
+                          <div class="flex space-x-2">
+                            <select id="trial-status-filter" class="form-select rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 text-sm">
+                              <option value="all">All Status</option>
+                              <option value="Recruiting">Recruiting</option>
+                              <option value="Active, not recruiting">Active</option>
+                              <option value="Not yet recruiting">Not Yet Recruiting</option>
+                              <option value="Completed">Completed</option>
+                              <option value="Terminated">Terminated</option>
+                            </select>
+                            
+                            <select id="trial-phase-filter" class="form-select rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 text-sm">
+                              <option value="all">All Phases</option>
+                              <option value="Phase 1">Phase 1</option>
+                              <option value="Phase 2">Phase 2</option>
+                              <option value="Phase 3">Phase 3</option>
+                              <option value="Phase 4">Phase 4</option>
+                            </select>
+                          </div>
+                          
+                          <div class="relative flex-grow md:max-w-xs">
+                            <input id="trial-search" type="text" placeholder="Search trials..." 
+                                   class="w-full pl-10 pr-3 py-2 border rounded-md text-sm border-gray-300 dark:border-gray-600 dark:bg-gray-700">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                              <svg class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
+                        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                          <thead class="bg-gray-50 dark:bg-gray-700">
+                            <tr>
+                              <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Status</th>
+                              <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Title</th>
+                              <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Phase</th>
+                              <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Enrollment</th>
+                              <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Details</th>
+                            </tr>
+                          </thead>
+                          <tbody id="trials-table-body" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                            <!-- Trial data rows will be inserted here -->
+                          </tbody>
+                        </table>
+                      </div>
+                      
+                      <div class="flex flex-col sm:flex-row justify-between items-center mt-4 text-sm text-gray-600 dark:text-gray-400">
+                        <div>
+                          Showing <span id="trial-showing-start">0</span>-<span id="trial-showing-end">0</span> of <span id="trial-total-count">0</span> trials
+                        </div>
+                        <div class="flex items-center space-x-2 mt-2 sm:mt-0">
+                          <button id="trial-prev-page" class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors disabled:opacity-50">
+                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                            </svg>
+                          </button>
+                          <span>Page <span id="trial-current-page">1</span> of <span id="trial-total-pages">1</span></span>
+                          <button id="trial-next-page" class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors disabled:opacity-50">
+                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <!-- Patents & IP Tab -->
+                <div id="patent-ip" class="tab-content">
+                    <div id="trials-metrics-summary" class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6" style="display: none;">
+                        <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                          <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Total Trials</h3>
+                          <p id="total-trials-count" class="text-xl font-light mt-2 text-gray-900 dark:text-white">0</p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                          <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Recruiting</h3>
+                          <p id="recruiting-trials-count" class="text-xl font-light mt-2 text-gray-900 dark:text-white">0</p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                          <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Active (Not Recruiting)</h3>
+                          <p id="active-trials-count" class="text-xl font-light mt-2 text-gray-900 dark:text-white">0</p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                          <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Completed</h3>
+                          <p id="completed-trials-count" class="text-xl font-light mt-2 text-gray-900 dark:text-white">0</p>
+                        </div>
+                      </div>
+                    <!-- Orange Book Section (for drugs) -->
+                    <div id="orange-book-section" class="hidden">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                          <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                            <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Orange Book Products</h3>
+                            <p id="ob-products-count" class="text-xl font-light mt-2 text-gray-900 dark:text-white">0</p>
+                          </div>
+                          <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                            <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Orange Book Patents</h3>
+                            <p id="ob-patents-count" class="text-xl font-light mt-2 text-gray-900 dark:text-white">0</p>
+                          </div>
+                          <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                            <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Exclusivity End</h3>
+                            <p id="ob-exclusivity-end" class="text-xl font-light mt-2 text-gray-900 dark:text-white">Unknown</p>
+                          </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                          <div id="ob-products-container" class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                            <!-- Orange Book products will be displayed here -->
+                          </div>
+                          <div id="ob-exclusivity-container" class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                            <!-- Patent exclusivity timeline will be displayed here -->
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <!-- Metrics Section -->
+                      <div id="patent-metrics-container" class="">
+                        <!-- Metrics will be inserted here -->
+                      </div>
+                      <!-- Replace the existing patent types grid with this structure -->
+
+                      
+                      <!-- Charts Section -->
+                      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                          <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">Patent Timeline</h3>
+                          <div class="h-60">
+                            <canvas id="patent-timeline-chart"></canvas>
+                          </div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                          <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">Top Assignees</h3>
+                          <div class="h-60">
+                            <canvas id="patent-assignees-chart"></canvas>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <!-- Table Section -->
+                      <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 mb-4">
+                          <h3 class="text-lg font-medium text-gray-700 dark:text-gray-300">Patents</h3>
+                          
+                          <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-3 w-full md:w-auto">
+                            <div class="flex space-x-2">
+                              <select id="patent-sort-by" class="form-select rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 text-sm">
+                                <option value="date">Sort by Date</option>
+                                <option value="number">Sort by Number</option>
+                                <option value="title">Sort by Title</option>
+                                <option value="assignee">Sort by Assignee</option>
+                              </select>
+                              
+                              <select id="patent-sort-dir" class="form-select rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 text-sm">
+                                <option value="desc">Descending</option>
+                                <option value="asc">Ascending</option>
+                              </select>
+                            </div>
+                            
+                            <div class="relative flex-grow md:max-w-xs">
+                              <input id="patent-search" type="text" placeholder="Search patents..." 
+                                     class="w-full pl-10 pr-3 py-2 border rounded-md text-sm border-gray-300 dark:border-gray-600 dark:bg-gray-700">
+                              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
+                          <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                            <thead class="bg-gray-50 dark:bg-gray-700">
+                              <tr>
+                                <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Number</th>
+                                <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Title</th>
+                                <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Assignee</th>
+                                <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Date</th>
+                                <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Details</th>
+                              </tr>
+                            </thead>
+                            <tbody id="patents-table-body" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                              <!-- Patent data rows will be inserted here -->
+                            </tbody>
+                          </table>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row justify-between items-center mt-4 text-sm text-gray-600 dark:text-gray-400">
+                          <div>
+                            Showing <span id="patent-showing-start">0</span>-<span id="patent-showing-end">0</span> of <span id="patent-total-count">0</span> patents
+                          </div>
+                          <div class="flex items-center space-x-2 mt-2 sm:mt-0">
+                            <button id="patent-prev-page" class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors disabled:opacity-50">
+                              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                              </svg>
+                            </button>
+                            <span>Page <span id="patent-current-page">1</span> of <span id="patent-total-pages">1</span></span>
+                            <button id="patent-next-page" class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors disabled:opacity-50">
+                              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                   
+                </div>
+
+                <div id="patent-detail-modal" class="fixed inset-0 z-50 hidden overflow-auto bg-black bg-opacity-50 flex items-center justify-center p-4">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-2xl w-full max-h-screen overflow-y-auto">
+                      <div class="flex justify-between items-center border-b dark:border-gray-700 p-4">
+                        <h3 id="patent-modal-title" class="text-lg font-medium text-gray-900 dark:text-white">Patent Details</h3>
+                        <button id="patent-modal-close" class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300">
+                          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                      </div>
+                      <div id="patent-modal-content" class="p-6">
+                        <!-- Patent details will be loaded here -->
+                      </div>
+                    </div>
+                  </div>
+
+                <div id="patents-loading" class="flex items-center justify-center p-8 hidden">
+                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-marcomm-blue"></div>
+                  </div>
+                  
+                  <div id="patents-error" class="hidden">
+                    <div class="bg-red-50 dark:bg-red-900 rounded-lg p-6 text-center">
+                      <svg class="mx-auto h-12 w-12 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                      </svg>
+                      <h3 class="mt-2 text-lg font-medium text-red-800 dark:text-red-200">Error Loading Data</h3>
+                      <p class="mt-1 text-sm text-red-700 dark:text-red-300 error-text">Failed to load patent data. Please try again.</p>
+                      <div class="mt-4">
+                        <button id="retry-button" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors">
+                          Retry
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  
+
+
+                <!-- Market Data Tab (continued) -->
+                <div id="market-data" class="tab-content">
+                    <div class="flex flex-col md:flex-row justify-between mb-4">
+                        <h3 class="text-xl font-semibold text-marcomm-dark dark:text-white mb-2 md:mb-0">Market Data</h3>
+                        <div class="flex space-x-2">
+                            <button id="refresh-market" class="flex items-center px-3 py-1.5 bg-gray-100 dark:bg-gray-700 rounded-md text-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                                <i class="fas fa-sync mr-1.5"></i> Refresh
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="market-loading" class="text-center p-8 hidden">
+                        <div class="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-marcomm-orange"></div>
+                        <p class="mt-2 text-gray-600 dark:text-gray-400">Loading market data...</p>
+                    </div>
+                    
+                    <div id="market-error" class="text-center p-8 hidden">
+                        <p class="text-red-500"><i class="fas fa-exclamation-circle mr-2"></i>Error loading market data</p>
+                    </div>
+                    
+                    <div id="market-content">
+                        <!-- Device Market Data (conditionally shown) -->
+                        <!-- <div id="device-market-section" class="hidden">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">CPT Codes</h3>
+                                    <p id="cpt-codes" class="text-xl font-light mt-2 text-gray-900 dark:text-white">Unknown</p>
+                                </div>
+                                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Total Implantations</h3>
+                                    <p id="total-implantations" class="text-xl font-light mt-2 text-gray-900 dark:text-white">0</p>
+                                </div>
+                                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Avg Reimbursement</h3>
+                                    <p id="avg-reimbursement" class="text-xl font-light mt-2 text-gray-900 dark:text-white">$0</p>
+                                </div>
+                                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">YoY Growth (Implantations)</h3>
+                                    <p id="yoy-growth" class="text-xl font-light mt-2 text-gray-900 dark:text-white">N/A</p>
+                                </div>
+                                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Market Share</h3>
+                                    <p id="market-share-device" class="text-xl font-light mt-2 text-gray-900 dark:text-white">0%</p>
+                                </div>
+                                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">CAGR</h3>
+                                    <p id="cagr-device" class="text-xl font-light mt-2 text-gray-900 dark:text-white">N/A</p>
+                                </div>
+                            </div> -->
+                            <div id="device-market-section" class="hidden">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+                                        <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">CPT Codes</h3>
+                                        <p id="cpt-codes" class="text-2xl font-semibold text-gray-900 dark:text-white truncate">Unknown</p>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+                                        <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">Total Implantations</h3>
+                                        <p id="total-implantations" class="text-2xl font-semibold text-gray-900 dark:text-white">0</p>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+                                        <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">Avg Reimbursement</h3>
+                                        <p id="avg-reimbursement" class="text-2xl font-semibold text-gray-900 dark:text-white">$0</p>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+                                        <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">YoY Growth (Implantations)</h3>
+                                        <p id="yoy-growth" class="text-2xl font-semibold text-gray-900 dark:text-white">N/A</p>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+                                        <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">Market Share</h3>
+                                        <p id="market-share-device" class="text-2xl font-semibold text-gray-900 dark:text-white">0%</p>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+                                        <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">CAGR</h3>
+                                        <p id="cagr-device" class="text-2xl font-semibold text-gray-900 dark:text-white">N/A</p>
+                                    </div>
+                                </div>
+                        
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                                    <h3 class="text-lg font-medium mb-4">Implantation Trends</h3>
+                                    <canvas id="device-trends-chart" height="300"></canvas>
+                                </div>
+                                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                                    <h3 class="text-lg font-medium mb-4">Company Comparison</h3>
+                                    <canvas id="device-comparison-chart" height="300"></canvas>
+                                </div>
+                            </div>
+                        
+                            <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h3 class="text-lg font-medium">Detailed Data</h3>
+                                    <input id="cms-part-b-search" type="text" placeholder="Search..." class="px-3 py-2 border rounded dark:bg-gray-700 dark:text-white">
+                                </div>
+                                <table class="min-w-full">
+                                    <thead>
+                                        <tr class="bg-gray-100 dark:bg-gray-700">
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">Year</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">Implantations</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">Total Payment</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">Avg Reimbursement</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">Growth (Implantations)</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">Growth (Payment)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cms-part-b-table-body"></tbody>
+                                </table>
+                                <div class="flex justify-between items-center mt-4">
+                                    <button id="cms-part-b-prev-page" class="px-4 py-2 bg-gray-200 dark:bg-gray-600 rounded">Previous</button>
+                                    <span><span id="cms-part-b-page-start">1</span>-<span id="cms-part-b-page-end">10</span> of <span id="cms-part-b-total">0</span></span>
+                                    <button id="cms-part-b-next-page" class="px-4 py-2 bg-gray-200 dark:bg-gray-600 rounded">Next</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Drug Market Data (conditionally shown) -->
+                        <div id="drug-market-section" class="hidden">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Total Claims</h3>
+                                    <p id="total-claims" class="text-xl font-light mt-2 text-gray-900 dark:text-white">0</p>
+                                </div>
+                                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Total Spending</h3>
+                                    <p id="total-spending" class="text-xl font-light mt-2 text-gray-900 dark:text-white">$0</p>
+                                </div>
+                                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Avg Cost/Claim</h3>
+                                    <p id="avg-cost-per-claim" class="text-xl font-light mt-2 text-gray-900 dark:text-white">$0</p>
+                                </div>
+                                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Market Share</h3>
+                                    <p id="market-share-drug" class="text-xl font-light mt-2 text-gray-900 dark:text-white">0%</p>
+                                </div>
+                                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">CAGR</h3>
+                                    <p id="cagr-drug" class="text-xl font-light mt-2 text-gray-900 dark:text-white">N/A</p>
+                                </div>
+                                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Product Status</h3>
+                                    <p id="product-status" class="text-xl font-light mt-2 text-gray-900 dark:text-white">Unknown</p>
+                                </div>
+                            </div>
+                        
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                                    <h3 class="text-lg font-medium mb-4">Spending & Claims Trends</h3>
+                                    <canvas id="drug-trends-chart" height="300"></canvas>
+                                </div>
+                                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                                    <h3 class="text-lg font-medium mb-4">Company Comparison</h3>
+                                    <canvas id="drug-comparison-chart" height="300"></canvas>
+                                </div>
+                            </div>
+                        
+                            <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h3 class="text-lg font-medium">Detailed Data</h3>
+                                    <input id="cms-part-d-search" type="text" placeholder="Search..." class="px-3 py-2 border rounded dark:bg-gray-700 dark:text-white">
+                                </div>
+                                <table class="min-w-full">
+                                    <thead>
+                                        <tr class="bg-gray-100 dark:bg-gray-700">
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">Year</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">Spending</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">Claims</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">Avg Cost/Claim</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">Growth (Spending)</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">Growth (Claims)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cms-part-d-table-body"></tbody>
+                                </table>
+                                <div class="flex justify-between items-center mt-4">
+                                    <button id="cms-part-d-prev-page" class="px-4 py-2 bg-gray-200 dark:bg-gray-600 rounded">Previous</button>
+                                    <span><span id="cms-part-d-page-start">1</span>-<span id="cms-part-d-page-end">10</span> of <span id="cms-part-d-total">0</span></span>
+                                    <button id="cms-part-d-next-page" class="px-4 py-2 bg-gray-200 dark:bg-gray-600 rounded">Next</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Early-Stage Market Data (conditionally shown) -->
+                        <div id="early-stage-market-section" class="hidden">
+                            <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-6">
+                                <h4 class="text-lg font-semibold text-marcomm-dark dark:text-white mb-4">Early-Stage Company Profile</h4>
+                                <p id="early-stage-description" class="text-gray-600 dark:text-gray-400 mb-4">Limited market data available for early-stage companies. Data will be collected as the company advances and gains market presence.</p>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div>
+                                        <h5 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">Development Stage</h5>
+                                        <p id="development-stage" class="text-sm text-gray-700 dark:text-gray-300">Research & Development</p>
+                                    </div>
+                                    <div>
+                                        <h5 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">Funding (if available)</h5>
+                                        <p id="funding-info" class="text-sm text-gray-700 dark:text-gray-300">Unknown</p>
+                                    </div>
+                                    <div>
+                                        <h5 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">Threat Level</h5>
+                                        <p id="threat-level" class="text-sm text-gray-700 dark:text-gray-300">Medium</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEC Filings Tab -->
+                <div id="sec-filings" class="tab-content">
+                    <div class="flex flex-col md:flex-row justify-between mb-4">
+                        <h3 class="text-xl font-semibold text-marcomm-dark dark:text-white mb-2 md:mb-0">SEC Filings</h3>
+                        <div class="flex space-x-2">
+                            <button id="refresh-sec" class="flex items-center px-3 py-1.5 bg-gray-100 dark:bg-gray-700 rounded-md text-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                                <i class="fas fa-sync mr-1.5"></i> Refresh
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="sec-loading" class="text-center p-8 hidden">
+                        <div class="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-marcomm-orange"></div>
+                        <p class="mt-2 text-gray-600 dark:text-gray-400">Loading SEC filings data...</p>
+                    </div>
+                    
+                    <div id="sec-error" class="text-center p-8 hidden">
+                        <p class="text-red-500"><i class="fas fa-exclamation-circle mr-2"></i>Error loading SEC filings data</p>
+                    </div>
+                    
+                    <div id="sec-content">
+                        <!-- SEC Company Info -->
+                        <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 mb-6" id="sec-company-info">
+                            <h4 class="text-lg font-semibold text-marcomm-dark dark:text-white mb-2">Company Information</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">CIK: <span id="sec-cik" class="font-medium">-</span></p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Exchange: <span id="sec-exchange" class="font-medium">-</span></p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Ticker: <span id="sec-ticker" class="font-medium">-</span></p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">SIC: <span id="sec-sic" class="font-medium">-</span></p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">SIC Description: <span id="sec-sic-desc" class="font-medium">-</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- SEC Filings Results -->
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                                <thead class="bg-gray-50 dark:bg-gray-800">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Form Type</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Description</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Filing Date</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Report Date</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Link</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sec-filings-table-body" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                                    <!-- Will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <!-- Trial Detail Modal -->
+   <div id="trial-detail-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white dark:bg-marcomm-gray-dark rounded-xl shadow-lg max-w-3xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+        <div class="border-b border-gray-200 dark:border-gray-700 px-6 py-4 flex justify-between items-center">
+            <h3 id="trial-modal-title" class="text-xl font-semibold text-marcomm-dark dark:text-white">Trial Details</h3>
+            <button id="trial-modal-close" class="text-gray-500 hover:text-marcomm-orange transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div id="trial-modal-content" class="p-6">
+            <!-- Content will be dynamically inserted here -->
+        </div>
+    </div>
+</div>
+
+<!-- Patent Detail Modal -->
+<div id="patent-detail-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white dark:bg-marcomm-gray-dark rounded-xl shadow-lg max-w-3xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+        <div class="border-b border-gray-200 dark:border-gray-700 px-6 py-4 flex justify-between items-center">
+            <h3 id="patent-modal-title" class="text-xl font-semibold text-marcomm-dark dark:text-white">Patent Details</h3>
+            <button id="patent-modal-close" class="text-gray-500 hover:text-marcomm-orange transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div id="patent-modal-content" class="p-6">
+            <!-- Content will be dynamically inserted here -->
+        </div>
+    </div>
+</div>
+
+    <script src="competitor-detail.js"></script>
+</body>
+</html>

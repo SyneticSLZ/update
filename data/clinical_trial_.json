@@ -1,0 +1,2728 @@
+{
+  "query": "epilepsy",
+  "timestamp": "2025-03-20T10:58:32.042Z",
+  "competitors": [
+    {
+      "competitor": {
+        "name": "Precisis AG",
+        "type": "early-stage",
+        "treatment": "EASEE",
+        "keywords": [
+          "EASEE epilepsy"
+        ],
+        "cik": null
+      },
+      "relevance": 30
+    },
+    {
+      "competitor": {
+        "name": "Epi-Minder",
+        "type": "early-stage",
+        "treatment": "Seizure Monitoring",
+        "keywords": [
+          "Epi-Minder epilepsy"
+        ],
+        "cik": null
+      },
+      "relevance": 30
+    },
+    {
+      "competitor": {
+        "name": "Flow Medical",
+        "type": "early-stage",
+        "treatment": "Depression Device",
+        "keywords": [
+          "Flow Medical epilepsy"
+        ],
+        "cik": null
+      },
+      "relevance": 30
+    }
+  ],
+  "cptCodes": [],
+  "products": [],
+  "trials": [
+    {
+      "title": "Efficacy of Phosphatidylserine Enriched With n-3 PUFA Supplementation on ADHD in Children With Epilepsy",
+      "status": "COMPLETED",
+      "phase": "PHASE3",
+      "enrollment": 77,
+      "startDate": "2015-03",
+      "completionDate": "2018-10",
+      "sponsor": "Hospices Civils de Lyon",
+      "conditions": "Attention Deficit Disorder With Hyperactivity",
+      "nctId": "NCT02348073",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Effects of L-Carnitine on Gastric Emptying in Children With Drug Resistant Epilepsy on Ketogenic Diet",
+      "status": "COMPLETED",
+      "phase": "NA",
+      "enrollment": 30,
+      "startDate": "2023-01-20",
+      "completionDate": "2023-11-15",
+      "sponsor": "Ain Shams University",
+      "conditions": "Ketogenic Diet",
+      "nctId": "NCT06255873",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Bioavailability and Food Effect Study of 3 Types of Carisbamate",
+      "status": "COMPLETED",
+      "phase": "PHASE1",
+      "enrollment": 33,
+      "startDate": "2020-08-27",
+      "completionDate": "2021-10-06",
+      "sponsor": "SK Life Science, Inc.",
+      "conditions": "Healthy Subjects",
+      "nctId": "NCT04520360",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "The Study of Pharmacokinetics of Levetiracetam in Patients Undergoing Intermittent Hemodialysis",
+      "status": "COMPLETED",
+      "phase": "Unknown",
+      "enrollment": 12,
+      "startDate": "2018-11-01",
+      "completionDate": "2019-10-10",
+      "sponsor": "Phramongkutklao College of Medicine and Hospital",
+      "conditions": "Seizures",
+      "nctId": "NCT04511676",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Basimglurant (NOE-101) in Children, Adolescents, and Young Adults With TSC",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "phase": "PHASE2",
+      "enrollment": 61,
+      "startDate": "2022-03-03",
+      "completionDate": "2026-01-31",
+      "sponsor": "Noema Pharma AG",
+      "conditions": "Tuberous Sclerosis Complex",
+      "nctId": "NCT05059327",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Getting SMART for Pediatric Epilepsy",
+      "status": "RECRUITING",
+      "phase": "PHASE2",
+      "enrollment": 120,
+      "startDate": "2022-07-18",
+      "completionDate": "2024-07-30",
+      "sponsor": "National Taiwan University Hospital",
+      "conditions": "Epilepsy in Children",
+      "nctId": "NCT05439876",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Phase III Randomized, Double-Blind, Placebo-Controlled Study of Oral Topiramate for Lennox-Gastaut Syndrome",
+      "status": "COMPLETED",
+      "phase": "PHASE3",
+      "enrollment": 10,
+      "startDate": "1993-11",
+      "completionDate": "N/A",
+      "sponsor": "National Center for Research Resources (NCRR)",
+      "conditions": "Lennox-Gastaut Syndrome",
+      "nctId": "NCT00004776",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Serum Profile of Inflammatory Factors, Immune and Angiogenic in Temporal Lobe Epilepsy",
+      "status": "COMPLETED",
+      "phase": "NA",
+      "enrollment": 70,
+      "startDate": "2011-10",
+      "completionDate": "2013-09",
+      "sponsor": "University Hospital, Montpellier",
+      "conditions": "Epilepsy",
+      "nctId": "NCT01563627",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "An Open-Label Extension Study of STK-001 for Patients With Dravet Syndrome",
+      "status": "ENROLLING_BY_INVITATION",
+      "phase": "PHASE2",
+      "enrollment": 60,
+      "startDate": "2021-01-21",
+      "completionDate": "2027-03-03",
+      "sponsor": "Stoke Therapeutics, Inc",
+      "conditions": "Dravet Syndrome",
+      "nctId": "NCT04740476",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Mapping Epileptic Networks Using Multimodal Imaging",
+      "status": "RECRUITING",
+      "phase": "Unknown",
+      "enrollment": 75,
+      "startDate": "2017-09-14",
+      "completionDate": "2030-09-13",
+      "sponsor": "Imagine Institute",
+      "conditions": "Epilepsy in Children",
+      "nctId": "NCT06202976",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Stimulation of the Thalamus for Arousal Restoral in Temporal Lobe Epilepsy",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "phase": "NA",
+      "enrollment": 5,
+      "startDate": "2021-10-31",
+      "completionDate": "2025-08-31",
+      "sponsor": "Yale University",
+      "conditions": "Epilepsy, Temporal Lobe",
+      "nctId": "NCT04897776",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Epidemiologic Follow Up Study of Newly Diagnosed Epilepsy Among Seniors",
+      "status": "COMPLETED",
+      "phase": "Unknown",
+      "enrollment": 97,
+      "startDate": "2011-01",
+      "completionDate": "2014-09",
+      "sponsor": "University of Arizona",
+      "conditions": "Epileptic Seizures",
+      "nctId": "NCT01351727",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Delirium in the (Neuro)Intensive/Critical Care in the Adult and Paediatric Czech Populations",
+      "status": "RECRUITING",
+      "phase": "Unknown",
+      "enrollment": 700,
+      "startDate": "2023-09-07",
+      "completionDate": "2027-12",
+      "sponsor": "Masaryk University",
+      "conditions": "Delirium",
+      "nctId": "NCT05891873",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "A Study of the Efficacy and Safety of Topiramate as add-on Therapy in the Treatment of Epilepsy Patients With Difficult to Treat, Partial-onset Seizures.",
+      "status": "COMPLETED",
+      "phase": "PHASE2",
+      "enrollment": 47,
+      "startDate": "1989-10",
+      "completionDate": "1993-05",
+      "sponsor": "Johnson & Johnson Pharmaceutical Research & Development, L.L.C.",
+      "conditions": "Epilepsy",
+      "nctId": "NCT00236873",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Fecal Microbiota Transplantation for Epilepsy",
+      "status": "RECRUITING",
+      "phase": "PHASE2",
+      "enrollment": 50,
+      "startDate": "2016-11",
+      "completionDate": "2025-12",
+      "sponsor": "The Second Hospital of Nanjing Medical University",
+      "conditions": "Epilepsy",
+      "nctId": "NCT02889627",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Efficacy of Tranexamic Acid in Brain Tumor Resections",
+      "status": "UNKNOWN",
+      "phase": "PHASE3",
+      "enrollment": 100,
+      "startDate": "2012-07",
+      "completionDate": "N/A",
+      "sponsor": "Colombian Foundation for Epilepsy and Neurological Disease",
+      "conditions": "Brain Tumors",
+      "nctId": "NCT01655927",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Safety & Efficacy Study of Study Drug (Eszopiclone) in Children and Adolescents With Attention-deficit/Hyperactivity Disorder - Associated Insomnia",
+      "status": "COMPLETED",
+      "phase": "PHASE3",
+      "enrollment": 486,
+      "startDate": "2009-05",
+      "completionDate": "2011-07",
+      "sponsor": "Sumitomo Pharma America, Inc.",
+      "conditions": "Insomnia",
+      "nctId": "NCT00856973",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "A Health Economic Study Evaluating the Brain Sentinel® GTC Seizure Detection and Information Systems Impact on Epilepsy and Healthcare Utilization",
+      "status": "TERMINATED",
+      "phase": "Unknown",
+      "enrollment": 5,
+      "startDate": "2016-05",
+      "completionDate": "2017-02",
+      "sponsor": "Brain Sentinel",
+      "conditions": "Epilepsy",
+      "nctId": "NCT02752373",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Stimulation of Sleep in Patients With Epilepsy",
+      "status": "RECRUITING",
+      "phase": "NA",
+      "enrollment": 120,
+      "startDate": "2020-07-29",
+      "completionDate": "2025-12",
+      "sponsor": "University Children's Hospital, Zurich",
+      "conditions": "Epilepsy",
+      "nctId": "NCT04716673",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Retraining and Control Therapy (ReACT): Sense of Control and Symptom Expectations As Targets of a Treatment for PNES",
+      "status": "RECRUITING",
+      "phase": "NA",
+      "enrollment": 68,
+      "startDate": "2021-10-28",
+      "completionDate": "2026-07-31",
+      "sponsor": "University of Alabama at Birmingham",
+      "conditions": "Convulsion, Non-Epileptic",
+      "nctId": "NCT05096273",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Recording \"Fast Ripples\" Using Microelectrodes During Stereo-encephalography in Patients With Drug-resistant Partial Epilepsy",
+      "status": "COMPLETED",
+      "phase": "NA",
+      "enrollment": 54,
+      "startDate": "2015-03",
+      "completionDate": "2022-09-18",
+      "sponsor": "University Hospital, Toulouse",
+      "conditions": "Epilepsy",
+      "nctId": "NCT02491476",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Efficacy, Tolerability and Adherence of the Modified Atkins Diet on Drug-resistant Epilepsy",
+      "status": "COMPLETED",
+      "phase": "NA",
+      "enrollment": 14,
+      "startDate": "2015-09-01",
+      "completionDate": "2016-12-30",
+      "sponsor": "Instituto Mexicano del Seguro Social",
+      "conditions": "Epilepsy, Drug Resistant",
+      "nctId": "NCT03183076",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Uncovering a Novel Therapeutic Target to Reduce Dementia Risk in Parkinson's Disease",
+      "status": "RECRUITING",
+      "phase": "PHASE2",
+      "enrollment": 28,
+      "startDate": "2021-02-09",
+      "completionDate": "2025-12",
+      "sponsor": "The University of Queensland",
+      "conditions": "Parkinson Disease",
+      "nctId": "NCT04643327",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Electrocardiographic Changes Among Epileptic and Non Epileptic Seizures in Children at Sohag University Hospital",
+      "status": "NOT_YET_RECRUITING",
+      "phase": "Unknown",
+      "enrollment": 160,
+      "startDate": "2023-09-25",
+      "completionDate": "2024-09-25",
+      "sponsor": "Sohag University",
+      "conditions": "Seizures",
+      "nctId": "NCT06045676",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Compare Tolerability of an Overnight Switch to Gradual Switch Between Two Different Forms of Depakote",
+      "status": "UNKNOWN",
+      "phase": "PHASE4",
+      "enrollment": 20,
+      "startDate": "2006-03",
+      "completionDate": "2006-10",
+      "sponsor": "Veterans Affairs Medical Center, Miami",
+      "conditions": "Epilepsy",
+      "nctId": "NCT00312676",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "A Study of Orally Administered JBPOS0101 in Refractory Infantile Spasms Patients",
+      "status": "TERMINATED",
+      "phase": "PHASE2",
+      "enrollment": 16,
+      "startDate": "2020-04-15",
+      "completionDate": "2021-12-10",
+      "sponsor": "Bio-Pharm Solutions Co., Ltd.",
+      "conditions": "Refractory Infantile Spasms",
+      "nctId": "NCT03976076",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Impact of Age on Cardiovascular, Cerebrovascular and Cognitive Health in Spinal Cord Injury",
+      "status": "COMPLETED",
+      "phase": "Unknown",
+      "enrollment": 120,
+      "startDate": "2013-07",
+      "completionDate": "2017-07",
+      "sponsor": "James J. Peters Veterans Affairs Medical Center",
+      "conditions": "Spinal Cord Injury",
+      "nctId": "NCT01984476",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Memory Retrieval and Encoding Investigated by Neural Stimulation",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "phase": "NA",
+      "enrollment": 800,
+      "startDate": "2014-10-12",
+      "completionDate": "2024-12-31",
+      "sponsor": "University of Pennsylvania",
+      "conditions": "Epilepsy Intractable",
+      "nctId": "NCT04286776",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "The Effect of Sleep Hygiene Given to Epilepsy Patients on Seizure Frequency and Sleep Quality",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "phase": "NA",
+      "enrollment": 160,
+      "startDate": "2023-06-01",
+      "completionDate": "2024-12-01",
+      "sponsor": "Marmara University",
+      "conditions": "Epilepsy",
+      "nctId": "NCT06352476",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Neuromodulation With Percutaneous Electrical Nerve Field Stimulation for Adults With COVID-19",
+      "status": "COMPLETED",
+      "phase": "NA",
+      "enrollment": 55,
+      "startDate": "2020-07-13",
+      "completionDate": "2022-03-22",
+      "sponsor": "Olive View-UCLA Education & Research Institute",
+      "conditions": "COVID-19",
+      "nctId": "NCT04514627",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Investigation of the Effect of Unilateral Right, Unilateral Left and Bilateral Applications of Transcutaneous Auricular Vagus Nerve Stimulation on Autonomic Nervous System Activity in Healthy People",
+      "status": "UNKNOWN",
+      "phase": "NA",
+      "enrollment": 90,
+      "startDate": "2022-07-15",
+      "completionDate": "2022-09-15",
+      "sponsor": "Bahçeşehir University",
+      "conditions": "Health, Subjective",
+      "nctId": "NCT05370027",
+      "associatedCompetitors": [
+        "LivaNova"
+      ]
+    },
+    {
+      "title": "Motivational Interviewing to Enhance Adherence of Patients With Psychogenic Non-epileptic Seizures",
+      "status": "COMPLETED",
+      "phase": "NA",
+      "enrollment": 60,
+      "startDate": "2015-08",
+      "completionDate": "2017-06",
+      "sponsor": "Brigham and Women's Hospital",
+      "conditions": "Psychogenic Non-epileptic Seizures, Motivational Interviewing",
+      "nctId": "NCT02598076",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Use of the Atkins Diet for Adults With Intractable Epilepsy",
+      "status": "COMPLETED",
+      "phase": "NA",
+      "enrollment": 30,
+      "startDate": "2004-06",
+      "completionDate": "2007-06",
+      "sponsor": "Johns Hopkins University",
+      "conditions": "Epilepsy",
+      "nctId": "NCT00121927",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Effect of Repeat Administration of Eslicarbazepine Acetate on the Pharmacokinetics of a Combined Oral Contraceptive",
+      "status": "COMPLETED",
+      "phase": "PHASE1",
+      "enrollment": 20,
+      "startDate": "2008-09",
+      "completionDate": "2008-11",
+      "sponsor": "Bial - Portela C S.A.",
+      "conditions": "Partial Epilepsy",
+      "nctId": "NCT00898560",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "The Effect of Yoga on Sleep and Quality of Life in Epilepsy Patients",
+      "status": "UNKNOWN",
+      "phase": "NA",
+      "enrollment": 60,
+      "startDate": "2021-06-30",
+      "completionDate": "2021-08-30",
+      "sponsor": "Zülfünaz ÖZER",
+      "conditions": "Epilepsy",
+      "nctId": "NCT04828876",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Repeated HBO Therapy in Myeloma Patients Undergoing High-Dose Therapy and Auto-HCT",
+      "status": "RECRUITING",
+      "phase": "EARLY_PHASE1",
+      "enrollment": 15,
+      "startDate": "2022-04-22",
+      "completionDate": "2025-05-30",
+      "sponsor": "University of Rochester",
+      "conditions": "Myeloma",
+      "nctId": "NCT04862676",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Single Neurons Responses During Visual Recognition in Epileptic Patients",
+      "status": "UNKNOWN",
+      "phase": "NA",
+      "enrollment": 20,
+      "startDate": "2016-05",
+      "completionDate": "2023-05",
+      "sponsor": "Central Hospital, Nancy, France",
+      "conditions": "Epilepsy",
+      "nctId": "NCT02877576",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Sleep Problems in Epileptic Children and Their Caregivers",
+      "status": "UNKNOWN",
+      "phase": "Unknown",
+      "enrollment": 120,
+      "startDate": "2021-01-01",
+      "completionDate": "2022-12-31",
+      "sponsor": "Ege University",
+      "conditions": "Epileptic Children,Sleep Disturbances,Maladaptive Behaviors",
+      "nctId": "NCT05191576",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Sleep Intervention for Pediatric Epilepsy",
+      "status": "COMPLETED",
+      "phase": "NA",
+      "enrollment": 100,
+      "startDate": "2015-09-01",
+      "completionDate": "2018-08-31",
+      "sponsor": "National Taiwan University Hospital",
+      "conditions": "Epilepsy",
+      "nctId": "NCT02514291",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Equivalence Among Antiepileptic Drug Generic and Brand Products in People With Epilepsy: Single-Dose 6-Period Replicate Design (EQUIGEN Single-Dose Study)",
+      "status": "COMPLETED",
+      "phase": "PHASE4",
+      "enrollment": 54,
+      "startDate": "2012-12-12",
+      "completionDate": "2016-09-26",
+      "sponsor": "University of Cincinnati",
+      "conditions": "Epilepsy",
+      "nctId": "NCT01733394",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "A Multicenter Comparative Trial of Zonisamide and Topiramate as Initial Monotherapy in Untreated Epilepsies",
+      "status": "COMPLETED",
+      "phase": "PHASE4",
+      "enrollment": 140,
+      "startDate": "2005-09",
+      "completionDate": "2008-12",
+      "sponsor": "Eisai Korea Inc.",
+      "conditions": "Epilepsy",
+      "nctId": "NCT00154076",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Physiologic Studies of Spasticity",
+      "status": "COMPLETED",
+      "phase": "Unknown",
+      "enrollment": 48,
+      "startDate": "2001-04-13",
+      "completionDate": "2010-11-01",
+      "sponsor": "National Institute of Neurological Disorders and Stroke (NINDS)",
+      "conditions": "Muscle Spasticity",
+      "nctId": "NCT00014976",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Neuroliten MVP System Clinical Observation Study",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "phase": "Unknown",
+      "enrollment": 20,
+      "startDate": "2022-10-31",
+      "completionDate": "2024-12",
+      "sponsor": "Enliten AI",
+      "conditions": "Epilepsy",
+      "nctId": "NCT05520476",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Role of Hypothermia in Endovascular Stroke Thrombectomy",
+      "status": "NOT_YET_RECRUITING",
+      "phase": "NA",
+      "enrollment": 200,
+      "startDate": "2023-12-01",
+      "completionDate": "2027-03-31",
+      "sponsor": "Xinqiao Hospital of Chongqing",
+      "conditions": "Stroke, Acute Ischemic",
+      "nctId": "NCT06109376",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Embodied Virtual Reality Therapy for Functional Neurological Symptom/ Conversion Disorder",
+      "status": "TERMINATED",
+      "phase": "NA",
+      "enrollment": 15,
+      "startDate": "2016-05",
+      "completionDate": "2021-12",
+      "sponsor": "Stanford University",
+      "conditions": "Conversion Disorder",
+      "nctId": "NCT02764476",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Tolerability and Pharmacokinetics of a Single 900 mg Oral Dose of BIA 2-093 and Oxcarbazepine in Healthy Volunteers",
+      "status": "COMPLETED",
+      "phase": "PHASE1",
+      "enrollment": 13,
+      "startDate": "2002-03",
+      "completionDate": "2002-04",
+      "sponsor": "Bial - Portela C S.A.",
+      "conditions": "Epilepsy",
+      "nctId": "NCT01678976",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Clinical and Genetic Studies of Familial Presenile Dementia With Neuronal Inclusion Bodies",
+      "status": "COMPLETED",
+      "phase": "Unknown",
+      "enrollment": 100,
+      "startDate": "2000-08-10",
+      "completionDate": "2009-08-04",
+      "sponsor": "National Human Genome Research Institute (NHGRI)",
+      "conditions": "Familial Dementia With Neuroserpin Inclusion Bodies",
+      "nctId": "NCT00006176",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Expanded Access Use of Stiripentol in Dravet Syndrome or Sodium Channel Mutation Epileptic Encephalopathies",
+      "status": "NO_LONGER_AVAILABLE",
+      "phase": "Unknown",
+      "enrollment": 0,
+      "startDate": "N/A",
+      "completionDate": "N/A",
+      "sponsor": "Cook Children's Health Care System",
+      "conditions": "Dravet Syndrome",
+      "nctId": "NCT02239276",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Managing Epilepsy Well- WebEase Project",
+      "status": "COMPLETED",
+      "phase": "NA",
+      "enrollment": 194,
+      "startDate": "2008-07",
+      "completionDate": "2010-11",
+      "sponsor": "Emory University",
+      "conditions": "Epilepsy",
+      "nctId": "NCT00726076",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Anisodine Hydrobromide For The Preventive Treatment Of Episodic Migraine",
+      "status": "RECRUITING",
+      "phase": "PHASE3",
+      "enrollment": 288,
+      "startDate": "2023-10-30",
+      "completionDate": "2025-12-31",
+      "sponsor": "Second Affiliated Hospital, School of Medicine, Zhejiang University",
+      "conditions": "Migraine Without Aura",
+      "nctId": "NCT05416476",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Neurodevelopmental Outcome in Newborn With Hypoxic-ischemic Encephalopathy Treated With Therapeutic Hypothermia",
+      "status": "RECRUITING",
+      "phase": "Unknown",
+      "enrollment": 70,
+      "startDate": "2021-04-28",
+      "completionDate": "2027-12-31",
+      "sponsor": "Fondazione Policlinico Universitario Agostino Gemelli IRCCS",
+      "conditions": "Encephalopathy, Hypoxic Ischemic",
+      "nctId": "NCT05767476",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "EEG Cap for Identification of Non-Convulsive Status Epilepticus",
+      "status": "COMPLETED",
+      "phase": "NA",
+      "enrollment": 20,
+      "startDate": "2017-05-30",
+      "completionDate": "2018-08-16",
+      "sponsor": "Mayo Clinic",
+      "conditions": "Nonconvulsive Status Epilepticus",
+      "nctId": "NCT03138876",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Scrambler Trial for Pain in NMOSD",
+      "status": "COMPLETED",
+      "phase": "NA",
+      "enrollment": 22,
+      "startDate": "2018-02-21",
+      "completionDate": "2019-08-29",
+      "sponsor": "Johns Hopkins University",
+      "conditions": "Neuromyelitis Optica",
+      "nctId": "NCT03452176",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "A Prospective, Remote Observational Study in Pediatric Participants With Early-Onset SCN2A-Developmental and Epileptic Encephalopathy",
+      "status": "COMPLETED",
+      "phase": "Unknown",
+      "enrollment": 5,
+      "startDate": "2022-04-15",
+      "completionDate": "2023-03-31",
+      "sponsor": "Praxis Precision Medicines",
+      "conditions": "SCN2A-DEE",
+      "nctId": "NCT05407727",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Continued Anticonvulsants After Resolution of Neonatal Seizures: a Patient-centered Comparative Effectiveness Study",
+      "status": "COMPLETED",
+      "phase": "Unknown",
+      "enrollment": 303,
+      "startDate": "2016-10",
+      "completionDate": "2020-03-24",
+      "sponsor": "University of Michigan",
+      "conditions": "Neonatal Seizures",
+      "nctId": "NCT02789176",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "A Trial of Two Fixed Doses of ZX008 (Fenfluramine HCl) in Children and Young Adults With Dravet Syndrome",
+      "status": "COMPLETED",
+      "phase": "PHASE3",
+      "enrollment": 262,
+      "startDate": "2016-01-15",
+      "completionDate": "2020-07-29",
+      "sponsor": "Zogenix International Limited, Inc., a subsidiary of Zogenix, Inc.",
+      "conditions": "Dravet Syndrome",
+      "nctId": "NCT02682927",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Serum and Urine Ghrelin in Adult Epileptic Patients",
+      "status": "COMPLETED",
+      "phase": "Unknown",
+      "enrollment": 80,
+      "startDate": "2018-06-01",
+      "completionDate": "2019-02-05",
+      "sponsor": "Zagazig University",
+      "conditions": "Epilepsy",
+      "nctId": "NCT03926273",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Pharmacokinetics (PK) Study of AC480 for Recurrent Glioma",
+      "status": "COMPLETED",
+      "phase": "PHASE1",
+      "enrollment": 5,
+      "startDate": "2009-11",
+      "completionDate": "2012-06",
+      "sponsor": "Annick Desjardins",
+      "conditions": "Glioma",
+      "nctId": "NCT00979173",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "A Study of the Structure and Function of the Retina in Adult Patients With Refractory Complex Partial Seizures Treated With Vigabatrin (Sabril®)",
+      "status": "COMPLETED",
+      "phase": "PHASE4",
+      "enrollment": 65,
+      "startDate": "2010-12",
+      "completionDate": "2015-05",
+      "sponsor": "Lundbeck LLC",
+      "conditions": "Adult Refractory Complex Partial Seizures",
+      "nctId": "NCT01278173",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "The Metabolic Characteristics in Sublobar Areas of PRE Based on FDG-PET Study",
+      "status": "UNKNOWN",
+      "phase": "Unknown",
+      "enrollment": 100,
+      "startDate": "2020-11",
+      "completionDate": "2024-12",
+      "sponsor": "Second Affiliated Hospital, School of Medicine, Zhejiang University",
+      "conditions": "Interictal FDG-PET Hypometabolism Patterns",
+      "nctId": "NCT04642573",
+      "associatedCompetitors": [
+        "NeuroPace"
+      ]
+    },
+    {
+      "title": "A Study of Soticlestat as an Add-on Therapy in Children, Teenagers, and Adults With Lennox-Gastaut Syndrome",
+      "status": "COMPLETED",
+      "phase": "PHASE3",
+      "enrollment": 270,
+      "startDate": "2021-11-08",
+      "completionDate": "2024-01-25",
+      "sponsor": "Takeda",
+      "conditions": "Lennox Gastaut Syndrome (LGS)",
+      "nctId": "NCT04938427",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "ESIS in Pediatric DRE",
+      "status": "RECRUITING",
+      "phase": "Unknown",
+      "enrollment": 86,
+      "startDate": "2022-02-17",
+      "completionDate": "2027-12-31",
+      "sponsor": "Sarah Katie Ihnen",
+      "conditions": "Epilepsy",
+      "nctId": "NCT05469373",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "ONO-2017 Study Japanese Patients With Primary Generalized Tonic Clonic Seizures.",
+      "status": "RECRUITING",
+      "phase": "PHASE3",
+      "enrollment": 12,
+      "startDate": "2022-07-12",
+      "completionDate": "2027-01-31",
+      "sponsor": "Ono Pharmaceutical Co. Ltd",
+      "conditions": "Epilepsy, Generalized",
+      "nctId": "NCT06579573",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Study to Evaluate Serum Free Thyroxine (FT4) and Free Triiodothyronine (FT3) Measurements for Subjects Treated With Eslicarbazeine Acetate (ESL)",
+      "status": "COMPLETED",
+      "phase": "Unknown",
+      "enrollment": 71,
+      "startDate": "2015-09",
+      "completionDate": "2016-03",
+      "sponsor": "Sumitomo Pharma America, Inc.",
+      "conditions": "Epilepsy",
+      "nctId": "NCT02491073",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Long-term Outcomes After Different Management Strategies for High-level Cerebral Arteriovenous Malformation",
+      "status": "UNKNOWN",
+      "phase": "Unknown",
+      "enrollment": 1000,
+      "startDate": "2012-04-01",
+      "completionDate": "2024-12",
+      "sponsor": "Beijing Tiantan Hospital",
+      "conditions": "Arteriovenous Malformation of Brain",
+      "nctId": "NCT04136860",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "A Phase 2 Study of Radiprodil in Subjects With Drug-resistant Infantile Spasms (IS)",
+      "status": "TERMINATED",
+      "phase": "PHASE2",
+      "enrollment": 3,
+      "startDate": "2017-12-04",
+      "completionDate": "2018-10-02",
+      "sponsor": "UCB Biopharma S.P.R.L.",
+      "conditions": "Infantile Spasms (IS)",
+      "nctId": "NCT02829827",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Biomarker Signature of Stroke Aetiology Study: The BIOSIGNAL-Study",
+      "status": "UNKNOWN",
+      "phase": "Unknown",
+      "enrollment": 1800,
+      "startDate": "2014-09",
+      "completionDate": "2021-12",
+      "sponsor": "University of Zurich",
+      "conditions": "Stroke, Acute",
+      "nctId": "NCT02274727",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Treating Deep Seizure Foci With Noninvasive Surface Brain Stimulation",
+      "status": "COMPLETED",
+      "phase": "NA",
+      "enrollment": 5,
+      "startDate": "2015-01",
+      "completionDate": "2021-03-10",
+      "sponsor": "Beth Israel Deaconess Medical Center",
+      "conditions": "Epilepsy, Temporal Lobe",
+      "nctId": "NCT02339376",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "fMRI Investigation of Depression in Patients With Epilepsy",
+      "status": "WITHDRAWN",
+      "phase": "Unknown",
+      "enrollment": 250,
+      "startDate": "2005-09",
+      "completionDate": "N/A",
+      "sponsor": "Weill Medical College of Cornell University",
+      "conditions": "Epilepsy",
+      "nctId": "NCT00532376",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Cenobamate Expanded Access Program (EAP)",
+      "status": "APPROVED_FOR_MARKETING",
+      "phase": "Unknown",
+      "enrollment": 0,
+      "startDate": "N/A",
+      "completionDate": "N/A",
+      "sponsor": "SK Life Science, Inc.",
+      "conditions": "Partial Epilepsy",
+      "nctId": "NCT04513860",
+      "associatedCompetitors": [
+        "XCOPRI"
+      ]
+    },
+    {
+      "title": "A Prospective Study to Evaluate Clinical Outcomes in Anti-LGI1 Encephalitis",
+      "status": "RECRUITING",
+      "phase": "Unknown",
+      "enrollment": 60,
+      "startDate": "2022-05-18",
+      "completionDate": "2032-12-31",
+      "sponsor": "Second Affiliated Hospital, School of Medicine, Zhejiang University",
+      "conditions": "Autoimmune Encephalitis",
+      "nctId": "NCT06173076",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "ZX008 Expanded Access Protocol",
+      "status": "APPROVED_FOR_MARKETING",
+      "phase": "Unknown",
+      "enrollment": 0,
+      "startDate": "N/A",
+      "completionDate": "N/A",
+      "sponsor": "Zogenix, Inc.",
+      "conditions": "Dravet Syndrome",
+      "nctId": "NCT03780127",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Effectiveness of Virtual Reality Therapy in Alcohol Use Disorder Study",
+      "status": "RECRUITING",
+      "phase": "NA",
+      "enrollment": 156,
+      "startDate": "2023-11-01",
+      "completionDate": "2026-07-01",
+      "sponsor": "Assistance Publique - Hôpitaux de Paris",
+      "conditions": "Alcool Use Disorder",
+      "nctId": "NCT06104176",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Clinical Study of Lamotrigine to Treat Newly Diagnosed Typical Absence Seizure in Children and Adolescents",
+      "status": "COMPLETED",
+      "phase": "PHASE3",
+      "enrollment": 20,
+      "startDate": "2011-09",
+      "completionDate": "2015-11",
+      "sponsor": "GlaxoSmithKline",
+      "conditions": "Epilepsy",
+      "nctId": "NCT01431976",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Cardiac Arrhythmias in Epilepsy: the CARELINK-study",
+      "status": "COMPLETED",
+      "phase": "NA",
+      "enrollment": 49,
+      "startDate": "2013-06",
+      "completionDate": "2016-12",
+      "sponsor": "Stichting Epilepsie Instellingen Nederland",
+      "conditions": "Epilepsy",
+      "nctId": "NCT01946776",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Cannabidiol in Children With Refractory Epileptic Encephalopathy",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "phase": "PHASE1",
+      "enrollment": 20,
+      "startDate": "2017-04-26",
+      "completionDate": "2023-12-31",
+      "sponsor": "University of Saskatchewan",
+      "conditions": "Epileptic Encephalopathy",
+      "nctId": "NCT03024827",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Posterior Cingulate Cortex and Executive Control of Episodic Memory",
+      "status": "RECRUITING",
+      "phase": "NA",
+      "enrollment": 130,
+      "startDate": "2023-01-18",
+      "completionDate": "2027-04-30",
+      "sponsor": "University of Pennsylvania",
+      "conditions": "Episodic Memory",
+      "nctId": "NCT06540976",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Modulation of Cortical Brain Activity During Attentional Control",
+      "status": "NOT_YET_RECRUITING",
+      "phase": "Unknown",
+      "enrollment": 35,
+      "startDate": "2025-04-01",
+      "completionDate": "2025-06",
+      "sponsor": "National Council of Scientific and Technical Research, Argentina",
+      "conditions": "Rumination",
+      "nctId": "NCT06748976",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Optimizing (Longer, Deeper) Cooling for Neonatal Hypoxic-Ischemic Encephalopathy(HIE)",
+      "status": "TERMINATED",
+      "phase": "NA",
+      "enrollment": 364,
+      "startDate": "2010-09",
+      "completionDate": "2016-03",
+      "sponsor": "NICHD Neonatal Research Network",
+      "conditions": "Infant, Newborn",
+      "nctId": "NCT01192776",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "A Pilot Study of the Low Glycaemic Index Diet in Adults With Epilepsy",
+      "status": "COMPLETED",
+      "phase": "NA",
+      "enrollment": 8,
+      "startDate": "2019-03-19",
+      "completionDate": "2020-11-01",
+      "sponsor": "Sheffield Teaching Hospitals NHS Foundation Trust",
+      "conditions": "Epilepsy",
+      "nctId": "NCT03999827",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Clobazam as Adjunctive Therapy in Paediatric Patients Aged ≥1 to ≤16 Years With Dravet Syndrome",
+      "status": "WITHDRAWN",
+      "phase": "PHASE3",
+      "enrollment": 0,
+      "startDate": "2015-03",
+      "completionDate": "2015-08",
+      "sponsor": "H. Lundbeck A/S",
+      "conditions": "Dravet Syndrome",
+      "nctId": "NCT02174094",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Comitial Prophylaxis in Neurosurgery in Patients Who Have Undergone Intracranial Surgery Programmed Supratentorial Surgery (Exeresis or Biopsy) Between 2019 and 2022",
+      "status": "UNKNOWN",
+      "phase": "Unknown",
+      "enrollment": 700,
+      "startDate": "2022-11-22",
+      "completionDate": "2023-05-22",
+      "sponsor": "University Hospital, Brest",
+      "conditions": "Anti-epileptic Prophylaxis in Intracranial Neurosurgery",
+      "nctId": "NCT05670860",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "An Automated Navigation System for Deep Brain Electrode Implantation",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "phase": "Unknown",
+      "enrollment": 30,
+      "startDate": "2024-01-01",
+      "completionDate": "2025-12-31",
+      "sponsor": "Beijing Tiantan Hospital",
+      "conditions": "Advanced Parkinson's Disease",
+      "nctId": "NCT06396494",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Lemborexant Treatment of Insomnia Linked to Epilepsy",
+      "status": "RECRUITING",
+      "phase": "PHASE3",
+      "enrollment": 26,
+      "startDate": "2024-10-29",
+      "completionDate": "2027-04-18",
+      "sponsor": "University of Manitoba",
+      "conditions": "Epilepsy",
+      "nctId": "NCT06262594",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "REMS Retigabine Study",
+      "status": "COMPLETED",
+      "phase": "Unknown",
+      "enrollment": 1,
+      "startDate": "2013-02",
+      "completionDate": "2013-05",
+      "sponsor": "GlaxoSmithKline",
+      "conditions": "Epilepsy",
+      "nctId": "NCT01938560",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "First Add-on vs. Mono-therapy Study of Topiramate in Neuro-Surgical Patients",
+      "status": "COMPLETED",
+      "phase": "PHASE4",
+      "enrollment": 55,
+      "startDate": "2010-02",
+      "completionDate": "2011-01",
+      "sponsor": "Johnson & Johnson Taiwan Ltd",
+      "conditions": "Epilepsy",
+      "nctId": "NCT01627860",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Investigating Cerebral Oxygenation in the Newborn",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "phase": "Unknown",
+      "enrollment": 99,
+      "startDate": "2023-07-21",
+      "completionDate": "2027-05",
+      "sponsor": "University of Edinburgh",
+      "conditions": "Hypoxic Ischemic Encephalopathy of Newborn",
+      "nctId": "NCT05588960",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Comorbidities of Epilepsy(Cognitive and Psychiatric Dysfunction)",
+      "status": "UNKNOWN",
+      "phase": "Unknown",
+      "enrollment": 165,
+      "startDate": "2022-09",
+      "completionDate": "2023-06",
+      "sponsor": "Assiut University",
+      "conditions": "Epilepsy",
+      "nctId": "NCT05559060",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Lapatinib in Treating Patients With Recurrent Glioblastoma Multiforme",
+      "status": "COMPLETED",
+      "phase": "PHASE1",
+      "enrollment": 24,
+      "startDate": "2004-12",
+      "completionDate": "2007-11",
+      "sponsor": "National Cancer Institute (NCI)",
+      "conditions": "Brain and Central Nervous System Tumors",
+      "nctId": "NCT00099060",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Structural and Functional Connectivity in Partial Epilepsies Studied with MRI and MEG",
+      "status": "COMPLETED",
+      "phase": "Unknown",
+      "enrollment": 45,
+      "startDate": "2011-04-05",
+      "completionDate": "2013-10",
+      "sponsor": "Institut National de la Santé Et de la Recherche Médicale, France",
+      "conditions": "Epilepsies",
+      "nctId": "NCT01313260",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Adjunctive Anti-seizure Medication (ASM) Real World Evidence (RWE) Study",
+      "status": "RECRUITING",
+      "phase": "Unknown",
+      "enrollment": 300,
+      "startDate": "2023-05-02",
+      "completionDate": "2024-12-31",
+      "sponsor": "Aziende Chimiche Riunite Angelini Francesco S.p.A",
+      "conditions": "Epilepsy",
+      "nctId": "NCT05867160",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Study to Investigate Dosage, Efficacy, and Safety of Fycompa in Routine Clinical Care of Patients With Epilepsy",
+      "status": "COMPLETED",
+      "phase": "Unknown",
+      "enrollment": 2000,
+      "startDate": "2017-04-07",
+      "completionDate": "2019-03-15",
+      "sponsor": "Eisai Inc.",
+      "conditions": "Epilepsy",
+      "nctId": "NCT03208660",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Correlation of Serum Lactate and Activity of Multiple Sclerosis",
+      "status": "UNKNOWN",
+      "phase": "Unknown",
+      "enrollment": 80,
+      "startDate": "2019-12-23",
+      "completionDate": "2020-06-01",
+      "sponsor": "Mansoura University Hospital",
+      "conditions": "Multiple Sclerosis",
+      "nctId": "NCT04210960",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Stimulation-Induced Changes in Fronto-Limbic Network",
+      "status": "RECRUITING",
+      "phase": "NA",
+      "enrollment": 30,
+      "startDate": "2023-03-01",
+      "completionDate": "2025-06-01",
+      "sponsor": "University of Alabama at Birmingham",
+      "conditions": "Epilepsy",
+      "nctId": "NCT05854160",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Tolerance of a Motorized Orthosis Reproducing Walking Movement vs Conventional Standing-up Devices in Child With CP",
+      "status": "COMPLETED",
+      "phase": "NA",
+      "enrollment": 25,
+      "startDate": "2015-11",
+      "completionDate": "2018-11-18",
+      "sponsor": "Lille Catholic University",
+      "conditions": "CP (Cerebral Palsy)",
+      "nctId": "NCT02669160",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "PuLsE 2-Observational Long-Term Effectiveness Follow-Up Study of PuLsE 1",
+      "status": "COMPLETED",
+      "phase": "Unknown",
+      "enrollment": 81,
+      "startDate": "2011-03",
+      "completionDate": "2014-04",
+      "sponsor": "Cyberonics, Inc.",
+      "conditions": "Epilepsy",
+      "nctId": "NCT01281280",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Virtual Reality Compared to Other Forms of Optokinetic Stimulation in the Rehabilitation of Vestibular Syndromes.",
+      "status": "COMPLETED",
+      "phase": "NA",
+      "enrollment": 76,
+      "startDate": "2019-04-23",
+      "completionDate": "2024-03-04",
+      "sponsor": "University Hospital, Montpellier",
+      "conditions": "Vestibular Syndrome",
+      "nctId": "NCT03838562",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Giessen Stroke Registry",
+      "status": "RECRUITING",
+      "phase": "Unknown",
+      "enrollment": 2000,
+      "startDate": "2023-11-30",
+      "completionDate": "2027-12-31",
+      "sponsor": "University of Giessen",
+      "conditions": "Stroke, Acute",
+      "nctId": "NCT05295862",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Dose Optimization of Caffeine for HIE",
+      "status": "RECRUITING",
+      "phase": "PHASE1",
+      "enrollment": 16,
+      "startDate": "2024-07-26",
+      "completionDate": "2028-11",
+      "sponsor": "University of North Carolina, Chapel Hill",
+      "conditions": "Hypoxic-Ischemic Encephalopathy",
+      "nctId": "NCT06448780",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "A Study to Evaluate XEN1101 as Adjunctive Therapy in Focal Epilepsy",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "phase": "PHASE2",
+      "enrollment": 325,
+      "startDate": "2019-01-30",
+      "completionDate": "2028-10",
+      "sponsor": "Xenon Pharmaceuticals Inc.",
+      "conditions": "Focal Epilepsy",
+      "nctId": "NCT03796962",
+      "associatedCompetitors": []
+    }
+  ],
+  "patents": [
+    {
+      "title": "Method and pharmaceutical composition for use in the treatment of epilepsy",
+      "date": "2018-07-10",
+      "patentNumber": "10016424",
+      "abstract": "The present invention relates to a compound which is an antagonist of the GluK2/GluK5 receptor or an inhibitor of the GluK2/GluK5 receptor expression for use in the treatment or the prevention of epil...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Methanocarba derivatives of pseudoribose that inhibit adenosine kinase",
+      "date": "2018-07-10",
+      "patentNumber": "10016432",
+      "abstract": "Adenosine kinase inhibitors, including pharmaceutical compositions containing the adenosine kinase inhibitors, and their use for preventing epilepsy and its progression in patients. The adenosine kina...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Amphiphilic compounds with neuroprotective properties",
+      "date": "2018-07-10",
+      "patentNumber": "10017535",
+      "abstract": "Amphiphilic compounds with tetradecahydrophenanthrene skeleton and their enantiomers, exhibiting neuroprotective effects, their use in methods of treatment of neuropsychiatric disorders associated wit...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Urea compounds and their use as enzyme inhibitors",
+      "date": "2018-07-17",
+      "patentNumber": "10023541",
+      "abstract": "A compound having the following structure: or a pharmaceutically acceptable salt or derivative thereof. The compound may be used in the treatment or prevention of a disorder selected from appetite reg...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Cyclopropanamine compound and use thereof",
+      "date": "2018-08-21",
+      "patentNumber": "10053456",
+      "abstract": "The present invention provides a compound having a lysine-specific demethylase-1 inhibitory action, and useful as a medicament such as a prophylactic or therapeutic agent for schizophrenia, developmen...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Imidazolidinedione derivatives",
+      "date": "2018-08-28",
+      "patentNumber": "10058551",
+      "abstract": "The invention provides a compound of formula (Ia), and pharmaceutically acceptable salts thereof. The invention also provides use of the compounds or salts as modulators of Kv3.1 and/or Kv3.2, and in ...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Systems, devices and methods for the treatment of neurological disorders and conditions",
+      "date": "2018-08-28",
+      "patentNumber": "10058704",
+      "abstract": "The present disclosure relates to methods, devices, and systems used for the treatment of and/or promoting recovery from various neurological disorders and conditions, including epilepsy and other sei...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "KCNQ channels as therapeutic targets",
+      "date": "2018-09-04",
+      "patentNumber": "10064842",
+      "abstract": "The present disclosure relates to methods and compositions for modulating the activity of KCNQ channels as a means for reducing the effects of aberrant KCNQ channel function associated with epilepsy, ...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Method of treating insomnia with halogenated pyrazolo[1,5-a]pyrimidines",
+      "date": "2018-09-11",
+      "patentNumber": "10072000",
+      "abstract": "The invention provides novel halogenated pyrazolo[1,5-a]pyrimidines of formula (I) wherein R, R1, X and Y have different meanings, and pharmaceutically acceptable salts thereof. Compounds of formula (...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "KCNQ potassium channel agonists, method of preparation and method of use thereof",
+      "date": "2018-09-18",
+      "patentNumber": "10077245",
+      "abstract": "The present invention provides a compound represented by general formula I or a pharmaceutical acceptable salt thereof, the preparation method therefor and the use thereof in preparing a medicine for ...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Compositions and methods for modulating neuronal excitability and motor behavior",
+      "date": "2018-10-02",
+      "patentNumber": "10087443",
+      "abstract": "The invention is directed to compositions and methods for treating or reducing the likelihood of the development of epilepsy in an individual. The method comprises administering to the central nervous...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Use of cannabinoids in the treatment of epilepsy",
+      "date": "2018-10-09",
+      "patentNumber": "10092525",
+      "abstract": "The present disclosure relates to the use of cannabidiol (CBD) for the treatment of atonic seizures. In particular the CBD appears particularly effective in reducing atonic seizures in patients suffer...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Amino sulfonyl-based compounds, the preparation method therefor and use thereof",
+      "date": "2018-10-09",
+      "patentNumber": "10093679",
+      "abstract": "Disclosed are aminosulfonyl-based compounds represented by the general formula I or tautomers, enantiomers, racemates or pharmaceutically acceptable salts thereof, a method for preparing the same, pha...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "PDE10 inhibitors and related compositions and methods",
+      "date": "2018-10-23",
+      "patentNumber": "10106516",
+      "abstract": "Compounds that inhibit PDE10 are disclosed that have utility in the treatment of a variety of conditions, including (but not limited to) psychotic, anxiety, movement disorders and/or neurological diso...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Heterocyclic compound",
+      "date": "2018-10-23",
+      "patentNumber": "10106556",
+      "abstract": "The present invention provides a compound having an MAGL inhibitory action, which is expected to be useful as an agent for the prophylaxis or treatment of neurodegenerative diseases (e.g., Alzheimer's...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Use of cannabinoids in the treatment of epilepsy",
+      "date": "2018-10-30",
+      "patentNumber": "10111840",
+      "abstract": "The present disclosure relates to the use of cannabidiol (CBD) for the treatment of atonic seizures. In particular the CBD appears particularly effective in reducing atonic seizures in patients suffer...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Uses of ganaxolone",
+      "date": "2018-10-30",
+      "patentNumber": "10111889",
+      "abstract": "Absence epilepsy, a form of epilepsy characterized by nonconvulsive seizures, has proven to be refractive to conventional epilepsy therapies. It has been found that low doses of ganaxolone can be used...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Heterocyclic compounds having cholesterol 24-hydroxylase activity",
+      "date": "2018-10-30",
+      "patentNumber": "10112956",
+      "abstract": "An object of the present invention is to provide a compound having a superior CH24H inhibitory action, which is useful as an agent for the prophylaxis or treatment of epilepsy, neurodegenerative disea...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Kappa opioid ligands",
+      "date": "2018-11-06",
+      "patentNumber": "10118915",
+      "abstract": "The invention provides novel ligands of Kappa (κ) opioid receptors, such as can be used to modulate a Kappa opioid receptor. Methods of synthesis and methods of use are also provided. Compounds of the...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Use of cannabinoids in the treatment of epilepsy",
+      "date": "2018-11-27",
+      "patentNumber": "10137095",
+      "abstract": "The present disclosure relates to the use of cannabidiol (CBD) for the treatment of atonic seizures. In particular the CBD appears particularly effective in reducing atonic seizures in patients suffer...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Method of monitoring a patient for seizure activity and evaluating seizure risk",
+      "date": "2018-12-04",
+      "patentNumber": "10143415",
+      "abstract": "Patients afflicted by a seizure may be monitored for the presence of post-ictal motor manifestations that may indicate that the patient is at heightened risk of adverse effects of a seizure, including...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Systems approach to disease state and health assessment",
+      "date": "2019-01-08",
+      "patentNumber": "10172550",
+      "abstract": "Methods, systems, and apparatus for assessing a state of an epilepsy disease or a comorbidity thereof are provided. The methods comprise receiving at least one autonomic index, neurologic index, stres...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "N6-substituted adenosine derivatives and N6-substituted adenine derivatives and uses thereof",
+      "date": "2019-01-08",
+      "patentNumber": "10174033",
+      "abstract": "The present invention provides N6-substituted adenosine derivatives and N6-substituted adenine derivatives, manufacturing methods thereof, a pharmaceutical composition comprising the said compounds ab...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Anti-depression compounds",
+      "date": "2019-01-22",
+      "patentNumber": "10183011",
+      "abstract": "This technology relates generally to compounds and methods for stimulating neurogenesis (e.g., post-natal neurogenesis, including post-natal hippocampal and hypothalamic neurogenesis) and/or protectin...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Systems, methods and devices for a skull/brain interface",
+      "date": "2019-01-29",
+      "patentNumber": "10188860",
+      "abstract": "Methods, devices, and systems induce neuromodulation by focusing a source of stimulation through a skull/brain interface in the form of an aperture formed in the skull, a naturally occurring fenestrat...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Effervescent formulation based on pyridoxal-5-phosphate",
+      "date": "2019-02-05",
+      "patentNumber": "10195221",
+      "abstract": "Provided is a fast-dissolving effervescent pharmaceutical formulation of pyridoxal-5-phosphate, and to the use thereof in the treatment of neonatal epilepsy and also of metabolic disorders with a need...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Compositions and methods for the treatment of neurological disorders",
+      "date": "2019-02-19",
+      "patentNumber": "10208014",
+      "abstract": "The invention relates to valproic acid derivatives or pharmaceutical acceptable salts, as well as polymorphs, solvates, enantiomers, stereoisomers and hydrates thereof. The pharmaceutical compositions...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Heterocyclic inhibitors of the sodium channel",
+      "date": "2019-02-19",
+      "patentNumber": "10208023",
+      "abstract": "The invention relates to compounds useful in treating conditions associated with voltage-gated ion channel function, particularly conditions associated with sodium channel activity. More specifically,...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Glucose oxidase compositions as a neonate anticonvulsant",
+      "date": "2019-02-26",
+      "patentNumber": "10213491",
+      "abstract": "Neonatal seizure is different from adult seizure, and many antiepileptic drugs that are effective in adults often fail to treat neonatal seizure. Gluconic acid, a natural organic acid enriched in frui...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Induced expression of brain derived neurotrophic factor (BDNF) for treatment of Neuromuscular, neurodegenerative, autoimmune, developmental and/or metabolic diseases",
+      "date": "2019-03-05",
+      "patentNumber": "10220006",
+      "abstract": "A method of treating a host of neuromuscular, neurodegenerative, developmental, autoimmune and metabolic diseases/disorders related to aging, such as traumatic injury, stroke, Huntington's disease, Ep...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Apparatus, systems and methods for the treatment of neurological conditions",
+      "date": "2019-03-05",
+      "patentNumber": "10220144",
+      "abstract": "Various embodiments described herein provide an apparatus system, and method for detecting and treating various neurological events or conditions such as epilepsy and migraine headaches which are asso...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Detecting, assessing and managing a risk of death in epilepsy",
+      "date": "2019-03-12",
+      "patentNumber": "10226220",
+      "abstract": "A method for determining and responding in real-time to an increased risk of death relating to a patient with epilepsy is provided. The method includes receiving cardiac data and determining a cardiac...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Methods of treating and preventing/reducing the likelihood of Mesial temporal lobe epilepsy (TLE)",
+      "date": "2019-03-26",
+      "patentNumber": "10238622",
+      "abstract": "The invention provides methods of treatment that prevent the onset of Mesial temporal lobe epilepsy (TLE) in a subject, or which reduce the severity of TLE in a subject, by administering a NKCC1 inhib...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Benzamides-containing compounds and their use in the treatment of epilepsy",
+      "date": "2019-03-26",
+      "patentNumber": "10238654",
+      "abstract": "The present invention is directed to benzamide-containing compounds of formula I or pharmaceutically acceptable salts thereof which inhibit the P2X7 receptor, and their use in the treatment of epileps...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Benzenesulfonamide compounds and their use as therapeutic agents",
+      "date": "2019-04-02",
+      "patentNumber": "10246453",
+      "abstract": "This invention is directed to benzenesulfonamide compounds, as stereoisomers, enantiomers, tautomers thereof or mixtures thereof; or pharmaceutically acceptable salts, solvates or prodrugs thereof, fo...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Fatty acid cysteamine conjugates and their use as activators of autophagy",
+      "date": "2019-04-09",
+      "patentNumber": "10251845",
+      "abstract": "The invention relates to (i) 6-membered heteroaryl substituted fatty acid cystamine conjugates, compositions thereof, methods of treating diseases involving dysregulation of autophagy, such as cystic ...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Prodrug salts",
+      "date": "2019-04-16",
+      "patentNumber": "10258636",
+      "abstract": "Provided are novel prodrug salts of selective aquaporin inhibitors, their use as pharmaceuticals, and pharmaceutical compositions comprising them, and novel processes for their synthesis and novel int...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Biosynchronous transdermal drug delivery for longevity, anti-aging, fatigue management, obesity, weight loss, weight management, delivery of nutraceuticals, and the treatment of hyperglycemia, alzheimer's disease, sleep disorders, parkinson's disease, AIDs, epilepsy, attention deficit disorder, nicotine addiction, cancer, headache and pain control, asthma, angina, hypertension, depression, cold, flu and the like",
+      "date": "2019-04-16",
+      "patentNumber": "10258738",
+      "abstract": "Systems and methods for longevity, anti-aging, fatigue management, obesity, weight loss, weight management, delivery of nutraceuticals, and treating hyperglycemia, Alzheimer's disease, sleep disorders...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Biosynchronous transdermal drug delivery for longevity, anti-aging, fatigue management, obesity, weight loss, weight management, delivery of nutraceuticals, and the treatment of hyperglycemia, alzheimer's disease, sleep disorders, parkinson's disease, aids, epilepsy, attention deficit disorder, nicotine addiction, cancer, headache and pain control, asthma, angina, hypertension, depression, cold, flu and the like",
+      "date": "2019-04-16",
+      "patentNumber": "10258778",
+      "abstract": "Systems and methods for longevity, anti-aging, fatigue management, obesity, weight loss, weight management, delivery of nutraceuticals, and treating hyperglycemia, Alzheimer's disease, sleep disorders...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Gabaergic ligands and their uses",
+      "date": "2019-04-16",
+      "patentNumber": "10259815",
+      "abstract": "Described herein are α3 or α2 or α2/α3 GABAergic receptor subtype selective ligands, pharmaceutical compositions, and methods of use of such ligands and compositions in treatment of anxiety disorders,...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Compositions and methods for diagnosis and treatment of epilepsy",
+      "date": "2019-04-16",
+      "patentNumber": "10260099",
+      "abstract": "Compositions and methods for diagnosis or treatment of epilepsy disease with EFHC1, EFHC1 agonists, or EFHC1 analogs are provided. Compositions and methods for diagnosis or treatment of epilepsy disea...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "5-HT2C receptor agonists and compositions and methods of use",
+      "date": "2019-04-30",
+      "patentNumber": "10272094",
+      "abstract": "Provided in some embodiments are compounds of Formula A, as defined herein, that modulate the activity of 5-HT2C receptor. Also provided in some embodiments are methods, such as, for weight management...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Subunit selective NMDA receptor potentiators for the treatment of neurological conditions",
+      "date": "2019-04-30",
+      "patentNumber": "10273214",
+      "abstract": "Provided are compounds, pharmaceutical compositions and methods of treating or preventing disorders associated with NMDA receptor activity, including schizophrenia, Parkinson's disease, cognitive diso...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Methods for modulating Tau expression for reducing seizure and modifying a neurodegenerative syndrome",
+      "date": "2019-04-30",
+      "patentNumber": "10273474",
+      "abstract": "Disclosed herein are methods for reducing expression of Tau mRNA and protein in an animal with Tau antisense compounds. Also disclosed are methods for modulating splicing of Tau mRNA in an animal with...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Determination of sleep quality for neurological disorders",
+      "date": "2019-05-28",
+      "patentNumber": "10300283",
+      "abstract": "A device determines values for one or more metrics that indicate the quality of a patient's sleep based on sensed physiological parameter values. Sleep efficiency, sleep latency, and time spent in dee...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "D-serine treatment for neurological disorders that cause seizures",
+      "date": "2019-06-04",
+      "patentNumber": "10307387",
+      "abstract": "D-serine is used to treat a neurological disorder, such as epilepsy, that cases seizures. A composition comprising D-serine is artificially administered to a patient in an effective amount by selectiv...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Controlled inhaler for distributing inhalant according to inhalation velocity",
+      "date": "2019-06-04",
+      "patentNumber": "10307551",
+      "abstract": "An inhaler is provided that includes a controller, a driver, an atomizer and one or more sensors for detecting information about a velocity of inhalation of a user of the inhaler. The controller is co...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "β- and γ-diketones and γ-hydroxyketones as Wnt/β-catenin signaling pathway activators",
+      "date": "2019-06-11",
+      "patentNumber": "10314832",
+      "abstract": "The present application discloses a compound which is which activates Wnt/β-catenin signaling and thus treats or prevents diseases related to signal transduction, such as osteoporosis and osteoarthrop...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Methods for delivery of optical signals to tissue for the treatment of a disease or condition",
+      "date": "2019-06-11",
+      "patentNumber": "10315044",
+      "abstract": "Embodiments described herein provide methods for treating various conditions and diseases using an optical signal. In one or more embodiments an apparatus is providing having an optical window, which ...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "KCNQ potassium channel agonist, and preparation method therefor and use thereof",
+      "date": "2019-06-11",
+      "patentNumber": "10316008",
+      "abstract": "The present invention provides a compound represented by general formula I or a pharmaceutical acceptable salt thereof, the preparation method therefor and the use thereof in preparing a medicine for ...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Method for the treatment of epilepsy, epileptogenesis, seizures or convulsions by an anti-colony-stimulating factor 1 receptor (CSF-1R) antibody",
+      "date": "2019-06-11",
+      "patentNumber": "10316097",
+      "abstract": "The present invention pertain an inhibitor of CSF-1R activity for use in the treatment and/or prophylaxis of neurologic diseases and new method of treatment of neurologic diseases.",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Heterocyclic compound",
+      "date": "2019-06-18",
+      "patentNumber": "10323026",
+      "abstract": "The present invention provides a compound having an MAGL inhibitory action, and useful as an agent for the prophylaxis or treatment of neurodegenerative diseases (e.g., Alzheimer's disease, Parkinson'...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Detecting, assessing and managing epilepsy using a multi-variate, metric-based classification analysis",
+      "date": "2019-07-16",
+      "patentNumber": "10349882",
+      "abstract": "A method for identifying changes in an epilepsy patient's disease state, comprising: receiving at least one body data stream; determining at least one body index from the at least one body data stream...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Lactate dehydrogenase inhibitor and antiepileptic drug containing the same",
+      "date": "2019-07-16",
+      "patentNumber": "10350192",
+      "abstract": "The invention provides a lactate dehydrogenase inhibitor that makes it possible to suppress refractory epilepsy in which conventional antiepileptic drugs are ineffective, and an antiepileptic drug con...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Color blind friendly pick to light system for identifying storage locations",
+      "date": "2019-07-16",
+      "patentNumber": "10354498",
+      "abstract": "Embodiments herein describe techniques for operating lighting systems which can be used by associates who are colorblind or are susceptible to optically induced seizures (e.g., photosensitive epilepsy...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Methods of treating epilepsy using neural stem cells that express nanog, SSEA-4, OCT-4, MIR-34B, MIR-34C and MIR-592",
+      "date": "2019-07-23",
+      "patentNumber": "10357517",
+      "abstract": "Provided herein is a method of diagnosing or prognosing an epilepsy or epilepsy-related disorder. Also provided herein is a method of treating an epilepsy or epilepsy-related disorder. Further provide...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Compositions and methods for uncoupling TrkB receptor from PLC gamma 1 for the treatment of epilepsy and anxiety-like disorder",
+      "date": "2019-08-06",
+      "patentNumber": "10369189",
+      "abstract": "The invention provides pharmaceutical compositions and methods of use thereof for preventing or ameliorating disorders of the nervous system. More specifically, the invention provides pharmaceutical c...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Indolin-2-one derivatives",
+      "date": "2019-08-13",
+      "patentNumber": "10377746",
+      "abstract": "The present invention is concerned with indolin-2-one derivatives of general formula               The compounds may be used in the treatment of CNS diseases related to positive (psychosis) and negati...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Non-invasive vagal nerve stimulation to treat disorders",
+      "date": "2019-08-20",
+      "patentNumber": "10384059",
+      "abstract": "Devices, systems and methods are disclosed for treating a variety of diseases and disorders that are primarily or at least partially driven by an imbalance in neurotransmitters in the brain, such as a...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Compositions and methods for treating neurological diseases or injury",
+      "date": "2019-08-27",
+      "patentNumber": "10391070",
+      "abstract": "Provided are compounds for the treatment of neurological diseases or injuries, including neurodegenerative diseases, stroke, trauma, epilepsy, acute and chronic kidney injuries, diabetes mellitus, and...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Combined use of a vector encoding a modified receptor and its exogenous agonist in the treatment of seizures",
+      "date": "2019-08-27",
+      "patentNumber": "10391145",
+      "abstract": "The invention provides methods and materials for treating a seizure disorder such as epilepsy in a patient which employ a vector encoding a modified receptor, the so-called “DREADD” receptor being cha...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "5-HT2C receptor agonists and compositions and methods of use",
+      "date": "2019-08-27",
+      "patentNumber": "10392390",
+      "abstract": "Provided in some embodiments are compounds herein. Also provided in some embodiments are methods for weight management, inducing satiety, and decreasing food intake, and for preventing and treating ob...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Knockout mouse, method for screening substance for suppressing mesial temporal lobe epilepsy, and method for selecting technique for suppressing mesial temporal lobe epilepsy",
+      "date": "2019-09-03",
+      "patentNumber": "10398134",
+      "abstract": "Provided are a knockout mouse, a method for screening a substance for suppressing mesial temporal lobe epilepsy, and a method for selecting a technique for suppressing mesial temporal lobe epilepsy. A...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Evaluation of efficacy of epilepsy therapy",
+      "date": "2019-09-10",
+      "patentNumber": "10406363",
+      "abstract": "A method of detecting an improvement in a seizure condition of a patient includes identifying a first EEG synchronization of the seizure condition of the patient; applying a therapy configured to impr...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Compounds and methods for reducing Tau expression",
+      "date": "2019-09-10",
+      "patentNumber": "10407680",
+      "abstract": "Provided are compounds, methods, and pharmaceutical compositions for reducing the amount or activity of Tau mRNA in a cell or animal, and in certain instances reducing the amount of Tau protein in a c...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Cyclopropanamine compound and use thereof",
+      "date": "2019-09-17",
+      "patentNumber": "10414761",
+      "abstract": "The present invention provides a compound having a lysine-specific demethylase-1 inhibitory action, and useful as a medicament such as a prophylactic or therapeutic agent for schizophrenia, developmen...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Gelatinase inhibitors and use thereof",
+      "date": "2019-09-17",
+      "patentNumber": "10414797",
+      "abstract": "New gelatinase inhibitors, processes for their preparation, pharmaceutical compositions comprising them, and their use in therapy and/or prophylaxis of conditions wherein inhibition of gelatinases is ...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Method and device for in-home sleep and signal analysis",
+      "date": "2019-10-01",
+      "patentNumber": "10426399",
+      "abstract": "The present invention provides a method of conducting a sleep analysis by collecting physiologic and kinetic data from a subject, preferably via a wireless in-home data acquisition system, while the s...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Heterocycle derivatives and their use for the treatment of CNS disorders",
+      "date": "2019-10-01",
+      "patentNumber": "10428030",
+      "abstract": "The present application relates to novel heterocycle derivatives of Formula (I), to processes for preparing them, pharmaceutical compositions containing them, and their use thereof in the treatment or...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "3,3 disubstituted 19-nor pregnane compounds, compositions, and uses thereof",
+      "date": "2019-10-08",
+      "patentNumber": "10435431",
+      "abstract": "Provided herein are 3,3-disubstituted 19-nor-steroidal compounds according to Formula (I) and (III): where R1, R2, R3, R3′, R4, R6a, R6a, R11a, and R11b are as defined herein. Compounds of the present...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Scorpion venom heat-resistant synthetic peptide and applications thereof",
+      "date": "2019-10-15",
+      "patentNumber": "10442837",
+      "abstract": "A scorpion venom heat-resistant synthetic peptide (SVHRSP) contains an amino acid sequence of SEQ ID NO 1. One or more amino acids the amino acid sequence can be substituted or deleted. A pharmaceutic...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Transdermal and/or topical delivery system comprising clobazam",
+      "date": "2019-10-22",
+      "patentNumber": "10449201",
+      "abstract": "A Transdermal Drug Delivery System (TDDS) of the reservoir or plaster type for administrating clobazam for the treatment of various types of anxiety and epilepsy, for 1 day, 2 day, 3 day, 4 day, 5 day...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Control system for control of distribution of medication",
+      "date": "2019-10-22",
+      "patentNumber": "10452815",
+      "abstract": "A system of controlling distribution of a medication in the treatment or prevention of epilepsy is provided. A central controller of the system has a data store and one or more processors for reading ...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Indolin-2-one derivatives",
+      "date": "2019-10-29",
+      "patentNumber": "10457667",
+      "abstract": "The present invention is concerned with indolin-2-one derivatives of general formula wherein                The compounds may be used in the treatment of CNS diseases related to positive (psychosis) a...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "γ-diketones as Wnt/β-catenin signaling pathway activators",
+      "date": "2019-10-29",
+      "patentNumber": "10457672",
+      "abstract": "The present disclosure provides γ-diketones or analogs thereof, that activate Wnt/β-catenin signaling and thus treat or prevent diseases related to signal transduction, such as osteoporosis and osteoa...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Prodrug of amino acid derivative",
+      "date": "2019-11-05",
+      "patentNumber": "10464884",
+      "abstract": "Provided is an amino acid derivative prodrug represented by general formula (I-A) that is a prodrug form of an amino acid derivative which is a group 2 metabotropic glutamate receptor antagonist, or a...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Substituted benzamides",
+      "date": "2019-12-10",
+      "patentNumber": "10501411",
+      "abstract": "The invention relates to compounds of formula wherein R, R1, R2, X, and Y are as defined herein and to a pharmaceutically suitable acid addition salt thereof. Compounds of formula I have a good affini...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Apparatus, systems and methods for delivery of medication to the brain to treat neurological conditions",
+      "date": "2019-12-17",
+      "patentNumber": "10507313",
+      "abstract": "Various embodiments provide an apparatus, system method for treating neurological conditions by delivering solid form medication to the ventricles or other areas of the brain. Particular embodiments p...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Methods for treating epilepsy",
+      "date": "2019-12-31",
+      "patentNumber": "10517853",
+      "abstract": "Provided herein are methods of treating, preventing, ameliorating or managing a nonsense mutation mediated epileptic disease, comprising administering a 1,2,4-oxadiazole benzoic acid to a patient havi...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Indolin-2-one derivatives",
+      "date": "2019-12-31",
+      "patentNumber": "10519140",
+      "abstract": "The present invention is concerned with indolin-2-one derivatives of general formula wherein the substituents are defined in claim 1. The compounds may be used in the treatment of CNS diseases related...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Combined use of a vector encoding a modified receptor and its exogenous agonist in the treatment of seizures",
+      "date": "2020-01-07",
+      "patentNumber": "10525103",
+      "abstract": "The invention provides methods and materials for treating a seizure disorder such as epilepsy in a patient which employ a vector encoding a modified receptor, the so-called “DREADD” receptor being cha...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Methods, systems, and computer readable media for visualization of resection target during epilepsy surgery and for real time spatiotemporal visualization of neurophysiologic biomarkers",
+      "date": "2020-01-21",
+      "patentNumber": "10537277",
+      "abstract": "The subject matter described herein relates to methods, systems, and computer readable media for visualization of a resection target during epilepsy surgery and for real time spatiotemporal visualizat...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "4-(biphen-3-yl)-1H-pyrazolo[3,4-c]pyridazine derivatives of formula (I) as GABA receptor modulators for use in the treatment of epilepsy and pain",
+      "date": "2020-01-21",
+      "patentNumber": "10538523",
+      "abstract": "The present invention relates to pyrazolopyridazine derivatives. More particularly, it relates to 4-(biphenyl-3-yl)-1H-pyrazolo[3,4-c]pyridazine derivatives of formula (I), and pharmaceutically accept...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Triazine derivatives as interferon-gamma inhibitors",
+      "date": "2020-03-03",
+      "patentNumber": "10576086",
+      "abstract": "The present invention relates to interferon-gamma (IFN-γ) inhibitors, and their utility in treating or controlling diseases that can be treated or controlled through inhibition of IFN-γ production, su...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Use of cannabinoids in the treatment of epilepsy",
+      "date": "2020-03-10",
+      "patentNumber": "10583096",
+      "abstract": "The present invention relates to the use of cannabidiol (CBD) in the treatment of Sturge Weber syndrome. CBD appears particularly effective in reducing all types of seizures and non-seizure symptoms i...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Noninvasive system and method for mapping epileptic networks and surgical planning",
+      "date": "2020-03-17",
+      "patentNumber": "10588561",
+      "abstract": "System and method for processing, non-concurrently collected, electroencephalogram (EEG) data and resting station functional magnetic resonance imaging (rsfMRI) data, non-invasively, to create a patie...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Sodium channel blockers",
+      "date": "2020-03-17",
+      "patentNumber": "10590078",
+      "abstract": "The present invention relates to a compound having a blocking effect against sodium ion channels, particularly Nav1.7, a preparation method thereof and use thereof. The compound represented by the For...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Abnormal motion detector and monitor",
+      "date": "2020-03-24",
+      "patentNumber": "10595766",
+      "abstract": "In an embodiment, a seizure monitor provides intelligent epilepsy seizure detection, monitoring, and alerting for epilepsy patients or people with seizures. In an embodiment, the seizure monitor may b...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Stimulation of the ventral pallidum for the treatment of epilepsy",
+      "date": "2020-03-24",
+      "patentNumber": "10596376",
+      "abstract": "Deep brain stimulation of the ventral pallidum (VP-DBS) prevents or potently attenuates epileptiform activity and behavioral seizures. VP-DBS prior to pilocarpine prevented behavioral partial and gene...",
+      "assignee": "Unknown",
+      "associatedCompetitors": [
+        "Medtronic"
+      ]
+    },
+    {
+      "title": "Use of cannabinoids in the treatment of epilepsy",
+      "date": "2020-03-31",
+      "patentNumber": "10603288",
+      "abstract": "The present disclosure relates to the use of cannabidiol (CBD) for the reduction of total convulsive seizure frequency in the treatment of “treatment-resistant epilepsy” (TRE). In particular, the disc...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Fluorinated amide derivatives and their uses as therapeutic agents",
+      "date": "2020-03-31",
+      "patentNumber": "10604476",
+      "abstract": "The present application relates to novel fluorinated amide derivatives of Formula (I), to processes for preparing them, pharmaceutical compositions containing them, and their use thereof in the treatm...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Assessing susceptibility to epilepsy and epileptic seizures",
+      "date": "2020-04-07",
+      "patentNumber": "10610163",
+      "abstract": "Assessing Susceptibility to Epilepsy and Epileptic Seizures A method and system adapted to assist with assessing susceptibility to epilepsy and/or epileptic seizures in a patient receives (202) patien...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Heterocyclic compound",
+      "date": "2020-04-07",
+      "patentNumber": "10610520",
+      "abstract": "The present invention provides a compound having an MAGL inhibitory action, and useful as an agent for the prophylaxis or treatment of neurodegenerative diseases (e.g., Alzheimer's disease, Parkinson'...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "System and method for correcting photosensitive epilepsy luminance flashes in a video",
+      "date": "2020-04-14",
+      "patentNumber": "10621950",
+      "abstract": "A system and a method for adjusting luminance flashes in a video stream are disclosed. The method includes identifying a sequence of frames, having the luminance flashes, from the video stream. The se...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "5-HT2C receptor agonists and compositions and methods of use",
+      "date": "2020-04-21",
+      "patentNumber": "10624900",
+      "abstract": "Provided in some embodiments are compounds of Formula A, as defined herein, that modulate the activity of 5-HT2C receptor. Also provided in some embodiments are methods, such as, for weight management...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Transdermal and/or topical delivery system comprising clobazam",
+      "date": "2020-04-21",
+      "patentNumber": "10624901",
+      "abstract": "A Transdermal Drug Delivery System (TDDS) of the reservoir or plaster type for administrating clobazam for the treatment of various types of anxiety and epilepsy, for 1 day, 2 day, 3 day, 4 day, 5 day...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Method for prediction, detection, monitoring, analysis and alerting of seizures and other potentially injurious or life-threatening states",
+      "date": "2020-04-28",
+      "patentNumber": "10631760",
+      "abstract": "The present invention provides a method for predicting seizures and for detecting seizures, and other potentially injurious or life-threatening events, optionally in conjunction with a mobile device. ...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Imidazolidinedione derivatives",
+      "date": "2020-04-28",
+      "patentNumber": "10632118",
+      "abstract": "The invention provides a compound of formula (Ia), and pharmaceutically acceptable salts thereof. The invention also provides use of the compounds or salts as modulators of Kv3.1 and/or Kv3.2, and in ...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    },
+    {
+      "title": "Implantable medical device for providing chronic condition therapy and acute condition therapy using vagus nerve stimulation",
+      "date": "2020-05-19",
+      "patentNumber": "10653883",
+      "abstract": "Disclosed herein are methods, systems, and apparatus for treating a medical condition in a patient using an implantable medical device (IMD). The IMD is capable of generating a first electrical signal...",
+      "assignee": "Unknown",
+      "associatedCompetitors": [
+        "LivaNova"
+      ]
+    },
+    {
+      "title": "Benzenesulfonamide compounds and their use as therapeutic agents",
+      "date": "2020-05-26",
+      "patentNumber": "10662184",
+      "abstract": "This invention is directed to methods of preparing benzenesulfonamide compounds, as stereoisomers, enantiomers, tautomers thereof or mixtures thereof; or pharmaceutically acceptable salts, solvates or...",
+      "assignee": "Unknown",
+      "associatedCompetitors": []
+    }
+  ],
+  "fdaApprovals": [
+    {
+      "source": "device510k",
+      "name": "CORTICAL SURF EPILEPSY ELECT DEPTH ELEC EPILEP MON",
+      "description": "Unknown",
+      "date": "1993-11-19",
+      "status": "SESE",
+      "type": "device",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "device510k",
+      "name": "EPIDURAL PEG ELECTRODE (EP), SPHENOIDAL ELECTRODE (EDS) AND FORAMEN, OVALE DEPTH ELECTRODE (ED-FO) FOR EPILEPSY MONITORI",
+      "description": "Unknown",
+      "date": "1997-08-18",
+      "status": "SESE",
+      "type": "device",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "classification",
+      "name": "Stimulator, Thalamic, Epilepsy, Implanted",
+      "description": "3",
+      "date": "Unknown",
+      "status": "",
+      "type": "device",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "classification",
+      "name": "Implanted Brain Stimulator For Epilepsy",
+      "description": "3",
+      "date": "Unknown",
+      "status": "",
+      "type": "device",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "classification",
+      "name": "Stimulator, Autonomic Nerve, Implanted For Epilepsy",
+      "description": "3",
+      "date": "Unknown",
+      "status": "",
+      "type": "device",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "classification",
+      "name": "Stimulator, Subcortical, Implanted  For Epilepsy",
+      "description": "3",
+      "date": "Unknown",
+      "status": "",
+      "type": "device",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "enforcement",
+      "name": "Percept PC Implantable Neurostimulator (INS) - Product Usage: The Percept PC is a neurostimulation device for deep brain stimulation therapy. It is indicated for DBS treatment for Parkinson s disease, essential tremor, dystonia, obsessive-compulsive disorder, and epilepsy.",
+      "description": "A software anomaly in the A620 Patient Programmer application was identified that results in failure to connect with the Percept PC device.",
+      "date": "20201119",
+      "status": "Terminated",
+      "type": "device",
+      "associatedCompetitors": [
+        "Medtronic"
+      ]
+    },
+    {
+      "source": "enforcement",
+      "name": "Medtronic DBS Lead Kit for Deep Brain Stimulation, models 3387, 3387S, 3389, 3389S, 3391, 3391S.  Sterile and Non-Pyrogenic.    Product Usage:    The deep brain stimulation system delivers electrical stimulation to selected targets in the brain. DBS Leads are indicated for Dystonia, Essential Tremor (ET), Obsessive-Compulsive Disorder (OCD), Parkinson\u0019s Disease (PD), and epilepsy.",
+      "description": "There is a potential for lead damage due to the use of the lead cap provided in DBS and Dystonia kits.  Medtronic has received reports of DBS leads being damaged at the connector end of the lead when the lead cap is used. The connector end of the lead is the end of the lead connected to the lead extension. Tightening or loosening of the setscrew may twist the setscrew connector block and may damag",
+      "date": "20130208",
+      "status": "Terminated",
+      "type": "device",
+      "associatedCompetitors": [
+        "Medtronic"
+      ]
+    },
+    {
+      "source": "enforcement",
+      "name": "VNS Therapy¿ AspireHC¿ Generator, VNS Therapy¿ AspireSR¿ Generator.  Model No. 105.    Product Usage:  United States Indications for Use: Epilepsy (PMA 970003): The VNS Therapy System is indicated for use as an adjunctive therapy in reducing the frequency of seizures in adults and adolescents over 12 years of age with partial onset seizures that are refractory to antiepileptic medications. Depression (PMA 970003/S050): VNS Therapy is indicated for the adjunctive long-term treatment of chronic or recurrent depression for patients 18 years of age or older who are experiencing a major depressive episode and have not had an adequate response to four or more adequate antidepressant treatments. Indications outside the U.S.: Epilepsy (Non-US): The VNS Therapy System is indicated for use as an adjunctive therapy in reducing the frequency of seizures in patients whose epileptic disorder is dominated by partial seizure (with or without secondary generalization) or generalized seizures that are refractory to antiepileptic medications. AspireSR (Seizure Response) features the Automatic Stimulation Mode which is intended for patients who experience seizures that are associated with cardiac rhythm increases known as ictal tachycardia. Depression (Non-US): The VNS Therapy System is indicated for the treatment of chronic or recurrent depression in patients who are experiencing a treatment-resistant or treatment-intolerant depressive episode.",
+      "description": "Manufacturing process used to assemble the circuit board may result in some devices experiencing a faster than expected reduction in device longevity.",
+      "date": "20170613",
+      "status": "Terminated",
+      "type": "device",
+      "associatedCompetitors": [
+        "LivaNova"
+      ]
+    },
+    {
+      "source": "enforcement",
+      "name": "VNS Therapy SENTIVA  Generator Model # 1000    Labeling  26-0009-6800 Model 1000 Generator Sample Labels  26-0009-9600 Patient s Manual for Depression  26-0009-9500 Patient s Manual for Epilepsy  76-0000-5000 VNS Therapy System Physician s Manual  (refer to Attachment 1)",
+      "description": "Firm identified a subset of its generators that were sterilized one additional sterilization cycle, which does not meet the firm's quality specifications.",
+      "date": "20190813",
+      "status": "Terminated",
+      "type": "device",
+      "associatedCompetitors": [
+        "LivaNova"
+      ]
+    },
+    {
+      "source": "enforcement",
+      "name": "VNS Therapy¿ AspireHC¿ Generator, VNS Therapy¿ AspireSR¿ Generator.  Model No. 106.    Product Usage:  United States Indications for Use: Epilepsy (PMA 970003): The VNS Therapy System is indicated for use as an adjunctive therapy in reducing the frequency of seizures in adults and adolescents over 12 years of age with partial onset seizures that are refractory to antiepileptic medications. Depression (PMA 970003/S050): VNS Therapy is indicated for the adjunctive long-term treatment of chronic or recurrent depression for patients 18 years of age or older who are experiencing a major depressive episode and have not had an adequate response to four or more adequate antidepressant treatments. Indications outside the U.S.: Epilepsy (Non-US): The VNS Therapy System is indicated for use as an adjunctive therapy in reducing the frequency of seizures in patients whose epileptic disorder is dominated by partial seizure (with or without secondary generalization) or generalized seizures that are refractory to antiepileptic medications. AspireSR (Seizure Response) features the Automatic Stimulation Mode which is intended for patients who experience seizures that are associated with cardiac rhythm increases known as ictal tachycardia. Depression (Non-US): The VNS Therapy System is indicated for the treatment of chronic or recurrent depression in patients who are experiencing a treatment-resistant or treatment-intolerant depressive episode",
+      "description": "Manufacturing process used to assemble the circuit board may result in some devices experiencing a faster than expected reduction in device longevity.",
+      "date": "20170613",
+      "status": "Terminated",
+      "type": "device",
+      "associatedCompetitors": [
+        "LivaNova"
+      ]
+    },
+    {
+      "source": "enforcement",
+      "name": "VNS(R) Therapy Programmer, GMDN:  44077, Model 3000 v1.0.2.2      Intended Use/Indications: United States Indications for Use: Epilepsy : The VNS Therapy System is indicated for use as an adjunctive therapy in reducing the frequency of seizures in patients 4 years of age and older with partial onset seizures that are refractory to antiepileptic medications. Depression : VNS Therapy is indicated for the adjunctive long-term treatment of chronic or recurrent depression for patients 18 years of age or older who are experiencing a major depressive episode and have not had an adequate response to four or more adequate antidepressant treatments.",
+      "description": "Two Model 3000 Programmers were distributed in error by prior to FDA approval of version 1.0.2.2 software.",
+      "date": "20171202",
+      "status": "Terminated",
+      "type": "device",
+      "associatedCompetitors": [
+        "LivaNova"
+      ]
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "IT WAS REPORTED THAT THERE WAS POSSIBLE DEVICE INTERACTION WITH THE PATIENT'S MEDTRONIC IMPLANTABLE NEUROSTIMULATOR AND THEIR VAGUS NERVE STIMULATOR. THROUGH ADDITIONAL FOLLOW-UP IT WAS DETERMINED THA",
+      "date": "20230812",
+      "status": "Malfunction",
+      "type": "device",
+      "associatedCompetitors": [
+        "Medtronic"
+      ]
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "IT WAS REPORTED THAT THE PATIENT EXPERIENCED VOMITING AND NAUSEA. (B)(4). THIS REPORT REFLECTS INFORMATION RECEIVED BY FDA IN THE FORM OF A NOTIFICATION PER 803.22 (B)(2).",
+      "date": "20230812",
+      "status": "Injury",
+      "type": "device",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "THE HEALTH CARE PROFESSIONAL REPORTED THE CLINICIAN PROGRAMMER WOULD NOT COMMUNICATE WITH THE PATIENT'S IMPLANT. IT WAS ALSO REPORTED THE COMPANY REPRESENTATIVE UNPLUGGED THE CLINICIAN PROGRAMMER AS I",
+      "date": "20230812",
+      "status": "Malfunction",
+      "type": "device",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "IT WAS REPORTED THAT THE PATIENT EXPERIENCED DIFFICULTY BREATHING AND BECAME NON-VERBAL WHEN A MAGNET WAS PLACED OVER THEIR CHEST. WHEN THE MAGNET WAS PLACED OVER THE PATIENT'S CHEST AGAIN, THEY BECAM",
+      "date": "20230812",
+      "status": "Injury",
+      "type": "device",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "IT WAS REPORTED THAT THE PATIENT EXPERIENCED PAIN IN THEIR THROAT. (B)(4). THIS REPORT REFLECTS INFORMATION RECEIVED BY FDA IN THE FORM OF A NOTIFICATION PER 803.22 (B)(2).",
+      "date": "20230812",
+      "status": "Injury",
+      "type": "device",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "CYBERONICS VNS - FOR EPILEPSY PATIENTS. TWO SURGERIES. TWO SEPARATE DEVICES, WORSENING, DEPRESSION. DEVICE MALFUNCTION COULD BE FATAL. FIRST VNS - IMPLANT CONSTANTLY MALFUNCTIONED LEFT SCAR TISSUE CAU",
+      "date": "20160602",
+      "status": "Injury",
+      "type": "device",
+      "associatedCompetitors": [
+        "LivaNova"
+      ]
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "Unknown",
+      "date": "20041129",
+      "status": "Malfunction",
+      "type": "device",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "THE DEVICE IS NOT EXPECTED TO BE RETURNED. AN INVESTIGATION HAS BEEN INITIATED BASED ON THE REPORTED INFO.",
+      "date": "20041020",
+      "status": "Malfunction",
+      "type": "device",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "IN 2007, THIS INCIDENT WAS REVIEWED. BECAUSE THE PRODUCT HAD BEEN MOVED TO A DIFFERENT LOCATION WITHIN THE PATIENT, THE DETERMINATION WAS MADE THAT THE PRODUCT HAD NOT MALFUNCTIONED. THIS DECISION HAS",
+      "date": "20070405",
+      "status": "Malfunction",
+      "type": "device",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "recall",
+      "name": "VNS Therapy Demipulse Model 103 Generator Cyberonics, Inc. Houston, Texas, Model 103 Generators are provided in a sterile single use packages as part of the VNS Therapy System.  Product labeling may be found at http://us.cyberonics.com/en/vns-therapy-for-epilepsy/healthcare-professionals/vns-therapy/manuals-page.\n\nProduct Usage:  The VNS Therapy System is indicated for use as an adjunctive therapy in reducing the frequency of seizures in adults and adolescents over 12 years of age with partial onset seizures, which are refractory to antiepileptic medications and for the adjunctive long-term treatment of chronic or recurrent depression for patients 18 years of age or older who are experiencing a major depressive episode and have not had an adequate response to four or more adequate antidepressant treatments.",
+      "description": "An investigation was initiated based on a report from the field in which an Intensive Follow-up Indicator (IFI) message was unexpectedly received by a medical professional when using Model 250 version 8.0 software to interrogate a patient's Model 103 Generator.",
+      "date": "Unknown",
+      "status": "Unknown",
+      "type": "device",
+      "associatedCompetitors": [
+        "LivaNova"
+      ]
+    },
+    {
+      "source": "recall",
+      "name": "Model 104 VNS Therapy Demipulse Duo Generator Cyberonics, Inc. Houston, Texas, Model 104 Generators are provided in a sterile single use packages as part of the VNS Therapy System.  Product labeling may be found at http://us.cyberonics.com/en/vns-therapy-for-epilepsy/healthcare-professionals/vns-therapy/manuals-page.\n\nProduct Usage:  The VNS Therapy System is indicated for use as an adjunctive therapy in reducing the frequency of seizures in adults and adolescents over 12 years of age with partial onset seizures, which are refractory to antiepileptic medications and for the adjunctive long-term treatment of chronic or recurrent depression for patients 18 years of age or older who are experiencing a major depressive episode and have not had an adequate response to four or more adequate antidepressant treatments.",
+      "description": "An investigation was initiated based on a report from the field in which an Intensive Follow-up Indicator (IFI) message was unexpectedly received by a medical professional when using Model 250 version 8.0 software to interrogate a patient's Model 103 Generator.",
+      "date": "Unknown",
+      "status": "Unknown",
+      "type": "device",
+      "associatedCompetitors": [
+        "LivaNova"
+      ]
+    },
+    {
+      "source": "recall",
+      "name": "VNS Therapy Aspire HC Generator and VNS, Model 105\n\nCyberonics, Inc. 100 Cyberonics Blvd., Houston, TX 77058\n\nFor implantation in humans to treat Epilepsy and Depression.",
+      "description": "The devices are being recalled because the output current delivered to the vagus nerve is less than the design intent and there is a potential charge imbalance at the lead cathode and generator-can during stimulation.",
+      "date": "Unknown",
+      "status": "Unknown",
+      "type": "device",
+      "associatedCompetitors": [
+        "LivaNova"
+      ]
+    },
+    {
+      "source": "recall",
+      "name": "VNS(R) Therapy Programmer, GMDN:  44077, Model 3000 v1.0.2.2\r\n\r\n\r\nIntended Use/Indications: United States Indications for Use: Epilepsy : The VNS Therapy System is indicated for use as an adjunctive therapy in reducing the frequency of seizures in patients 4 years of age and older with partial onset seizures that are refractory to antiepileptic medications. Depression : VNS Therapy is indicated for the adjunctive long-term treatment of chronic or recurrent depression for patients 18 years of age or older who are experiencing a major depressive episode and have not had an adequate response to four or more adequate antidepressant treatments.",
+      "description": "Two Model 3000 Programmers were distributed in error by prior to FDA approval of version 1.0.2.2 software.",
+      "date": "Unknown",
+      "status": "Unknown",
+      "type": "device",
+      "associatedCompetitors": [
+        "LivaNova"
+      ]
+    },
+    {
+      "source": "recall",
+      "name": "Percept PC Implantable Neurostimulator (INS) - Product Usage: The Percept PC is a neurostimulation device for deep brain stimulation therapy. It is indicated for DBS treatment for Parkinson s disease, essential tremor, dystonia, obsessive-compulsive disorder, and epilepsy.",
+      "description": "A software anomaly in the A620 Patient Programmer application was identified that results in failure to connect with the Percept PC device.",
+      "date": "Unknown",
+      "status": "Unknown",
+      "type": "device",
+      "associatedCompetitors": [
+        "Medtronic"
+      ]
+    },
+    {
+      "source": "recall",
+      "name": "VNS Therapy SENTIVA  Generator Model # 1000\n\nLabeling\n26-0009-6800 Model 1000 Generator Sample Labels\n26-0009-9600 Patient s Manual for Depression\n26-0009-9500 Patient s Manual for Epilepsy\n76-0000-5000 VNS Therapy System Physician s Manual\n(refer to Attachment 1)",
+      "description": "Firm identified a subset of its generators that were sterilized one additional sterilization cycle, which does not meet the firm's quality specifications.",
+      "date": "Unknown",
+      "status": "Unknown",
+      "type": "device",
+      "associatedCompetitors": [
+        "LivaNova"
+      ]
+    },
+    {
+      "source": "recall",
+      "name": "Medtronic DBS Lead Kit for Deep Brain Stimulation, models 3387, 3387S, 3389, 3389S, 3391, 3391S.  Sterile and Non-Pyrogenic.\n\nProduct Usage:  \nThe deep brain stimulation system delivers electrical stimulation to selected targets in the brain. DBS Leads are indicated for Dystonia, Essential Tremor (ET), Obsessive-Compulsive Disorder (OCD), Parkinsons Disease (PD), and epilepsy.",
+      "description": "There is a potential for lead damage due to the use of the lead cap provided in DBS and Dystonia kits.  Medtronic has received reports of DBS leads being damaged at the connector end of the lead when the lead cap is used. The connector end of the lead is the end of the lead connected to the lead extension. Tightening or loosening of the setscrew may twist the setscrew connector block and may damag",
+      "date": "Unknown",
+      "status": "Unknown",
+      "type": "device",
+      "associatedCompetitors": [
+        "Medtronic"
+      ]
+    },
+    {
+      "source": "recall",
+      "name": "BMSI \"MicroJack\" PN 672-510000 patient interface electrode connection device used during electroencephalography (EEG) /Epilepsy Monitoring evaluations with various EEG monitoring systems. The MicroJack is used with BMSI Models 2000, 3000, 4000, 5000 & 6000, and is used with the BMSI kit upgraded with NicoletOne. Nicolet Biomedical, Inc.",
+      "description": "The BMSI \"MicroJack\" patient interface electrode connection device used  with the EEG monitor systems was found to be mis-wired.  A complainant alleged that during depth electrode EEG study of a patient in preparation for brain surgery there was an observation that was perceived as non-logical data output.",
+      "date": "Unknown",
+      "status": "Unknown",
+      "type": "device",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "recall",
+      "name": "VNS Therapy AspireHC Generator, VNS Therapy AspireSR Generator.  Model No. 105.\n\nProduct Usage:\nUnited States Indications for Use: Epilepsy (PMA 970003): The VNS Therapy System is indicated for use as an adjunctive therapy in reducing the frequency of seizures in adults and adolescents over 12 years of age with partial onset seizures that are refractory to antiepileptic medications. Depression (PMA 970003/S050): VNS Therapy is indicated for the adjunctive long-term treatment of chronic or recurrent depression for patients 18 years of age or older who are experiencing a major depressive episode and have not had an adequate response to four or more adequate antidepressant treatments. Indications outside the U.S.: Epilepsy (Non-US): The VNS Therapy System is indicated for use as an adjunctive therapy in reducing the frequency of seizures in patients whose epileptic disorder is dominated by partial seizure (with or without secondary generalization) or generalized seizures that are refractory to antiepileptic medications. AspireSR (Seizure Response) features the Automatic Stimulation Mode which is intended for patients who experience seizures that are associated with cardiac rhythm increases known as ictal tachycardia. Depression (Non-US): The VNS Therapy System is indicated for the treatment of chronic or recurrent depression in patients who are experiencing a treatment-resistant or treatment-intolerant depressive episode.",
+      "description": "Manufacturing process used to assemble the circuit board may result in some devices experiencing a faster than expected reduction in device longevity.",
+      "date": "Unknown",
+      "status": "Unknown",
+      "type": "device",
+      "associatedCompetitors": [
+        "LivaNova"
+      ]
+    },
+    {
+      "source": "recall",
+      "name": "VNS Therapy AspireHC Generator, VNS Therapy AspireSR Generator.  Model No. 106.\n\nProduct Usage:\nUnited States Indications for Use: Epilepsy (PMA 970003): The VNS Therapy System is indicated for use as an adjunctive therapy in reducing the frequency of seizures in adults and adolescents over 12 years of age with partial onset seizures that are refractory to antiepileptic medications. Depression (PMA 970003/S050): VNS Therapy is indicated for the adjunctive long-term treatment of chronic or recurrent depression for patients 18 years of age or older who are experiencing a major depressive episode and have not had an adequate response to four or more adequate antidepressant treatments. Indications outside the U.S.: Epilepsy (Non-US): The VNS Therapy System is indicated for use as an adjunctive therapy in reducing the frequency of seizures in patients whose epileptic disorder is dominated by partial seizure (with or without secondary generalization) or generalized seizures that are refractory to antiepileptic medications. AspireSR (Seizure Response) features the Automatic Stimulation Mode which is intended for patients who experience seizures that are associated with cardiac rhythm increases known as ictal tachycardia. Depression (Non-US): The VNS Therapy System is indicated for the treatment of chronic or recurrent depression in patients who are experiencing a treatment-resistant or treatment-intolerant depressive episode",
+      "description": "Manufacturing process used to assemble the circuit board may result in some devices experiencing a faster than expected reduction in device longevity.",
+      "date": "Unknown",
+      "status": "Unknown",
+      "type": "device",
+      "associatedCompetitors": [
+        "LivaNova"
+      ]
+    },
+    {
+      "source": "ndc",
+      "name": "Xcopri",
+      "description": "TABLET, FILM COATED - HUMAN PRESCRIPTION DRUG",
+      "date": "20200312",
+      "status": "NDA",
+      "type": "drug",
+      "associatedCompetitors": [
+        "XCOPRI"
+      ]
+    },
+    {
+      "source": "ndc",
+      "name": "Xcopri Maintenance Pack",
+      "description": "KIT - HUMAN PRESCRIPTION DRUG",
+      "date": "20200312",
+      "status": "NDA",
+      "type": "drug",
+      "associatedCompetitors": [
+        "XCOPRI"
+      ]
+    },
+    {
+      "source": "ndc",
+      "name": "Xcopri Maintenance Pack",
+      "description": "KIT - HUMAN PRESCRIPTION DRUG",
+      "date": "20210430",
+      "status": "NDA",
+      "type": "drug",
+      "associatedCompetitors": [
+        "XCOPRI"
+      ]
+    },
+    {
+      "source": "ndc",
+      "name": "Xcopri",
+      "description": "TABLET, FILM COATED - HUMAN PRESCRIPTION DRUG",
+      "date": "20200312",
+      "status": "NDA",
+      "type": "drug",
+      "associatedCompetitors": [
+        "XCOPRI"
+      ]
+    },
+    {
+      "source": "ndc",
+      "name": "Xcopri",
+      "description": "TABLET, FILM COATED - HUMAN PRESCRIPTION DRUG",
+      "date": "20200312",
+      "status": "NDA",
+      "type": "drug",
+      "associatedCompetitors": [
+        "XCOPRI"
+      ]
+    },
+    {
+      "source": "ndc",
+      "name": "Xcopri Titration Pack",
+      "description": "KIT - HUMAN PRESCRIPTION DRUG",
+      "date": "20200312",
+      "status": "NDA",
+      "type": "drug",
+      "associatedCompetitors": [
+        "XCOPRI"
+      ]
+    },
+    {
+      "source": "ndc",
+      "name": "Xcopri Titration Pack",
+      "description": "KIT - HUMAN PRESCRIPTION DRUG",
+      "date": "20200312",
+      "status": "NDA",
+      "type": "drug",
+      "associatedCompetitors": [
+        "XCOPRI"
+      ]
+    },
+    {
+      "source": "ndc",
+      "name": "Xcopri Titration Pack",
+      "description": "KIT - HUMAN PRESCRIPTION DRUG",
+      "date": "20200312",
+      "status": "NDA",
+      "type": "drug",
+      "associatedCompetitors": [
+        "XCOPRI"
+      ]
+    },
+    {
+      "source": "ndc",
+      "name": "Xcopri Titration Pack",
+      "description": "KIT - HUMAN PRESCRIPTION DRUG",
+      "date": "20200312",
+      "status": "NDA",
+      "type": "drug",
+      "associatedCompetitors": [
+        "XCOPRI"
+      ]
+    },
+    {
+      "source": "ndc",
+      "name": "Xcopri",
+      "description": "TABLET, FILM COATED - HUMAN PRESCRIPTION DRUG",
+      "date": "20240406",
+      "status": "NDA",
+      "type": "drug",
+      "associatedCompetitors": [
+        "XCOPRI"
+      ]
+    },
+    {
+      "source": "ndc",
+      "name": "Xcopri",
+      "description": "TABLET, FILM COATED - HUMAN PRESCRIPTION DRUG",
+      "date": "20210430",
+      "status": "NDA",
+      "type": "drug",
+      "associatedCompetitors": [
+        "XCOPRI"
+      ]
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "Oral herpes",
+      "date": "20150212",
+      "status": "1",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "Ageusia",
+      "date": "20170525",
+      "status": "2",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "Generalised tonic-clonic seizure",
+      "date": "20171208",
+      "status": "1",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "Acne pustular",
+      "date": "20180730",
+      "status": "2",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "Viral infection",
+      "date": "20181001",
+      "status": "1",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "Dizziness",
+      "date": "20190406",
+      "status": "1",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "Aggression",
+      "date": "20200504",
+      "status": "1",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "DRUG EXPOSURE DURING PREGNANCY",
+      "date": "20050809",
+      "status": "1",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "DRUG HYPERSENSITIVITY",
+      "date": "20060710",
+      "status": "1",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "BLINDNESS",
+      "date": "20080125",
+      "status": "1",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "ANXIETY",
+      "date": "20100623",
+      "status": "1",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "PULMONARY EMBOLISM",
+      "date": "20100806",
+      "status": "1",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "FLUSHING",
+      "date": "20100721",
+      "status": "2",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "Chondropathy",
+      "date": "20130819",
+      "status": "1",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "PLATELET COUNT DECREASED",
+      "date": "20111205",
+      "status": "1",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "DRUG INTERACTION",
+      "date": "20110803",
+      "status": "1",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "CONVULSION",
+      "date": "20111202",
+      "status": "1",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "DRUG EFFECT DECREASED",
+      "date": "20120406",
+      "status": "1",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "HERNIA REPAIR",
+      "date": "20120409",
+      "status": "1",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "DRUG DOSE OMISSION",
+      "date": "20110311",
+      "status": "2",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "FISTULA",
+      "date": "20120515",
+      "status": "1",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "Hypoaesthesia",
+      "date": "20121204",
+      "status": "2",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "Oral mucosal blistering",
+      "date": "20121102",
+      "status": "1",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "Memory impairment",
+      "date": "20130823",
+      "status": "2",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "Fall",
+      "date": "20140131",
+      "status": "1",
+      "type": "drug",
+      "associatedCompetitors": []
+    },
+    {
+      "source": "event",
+      "name": "Unknown",
+      "description": "Neutropenia",
+      "date": "20140131",
+      "status": "1",
+      "type": "drug",
+      "associatedCompetitors": []
+    }
+  ]
+}

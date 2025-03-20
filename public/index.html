@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en" class="dark-mode-transition">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epilepsy Market Competitors - Marcomm Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'marcomm': {
+                            'orange': '#FF6B35',
+                            'orange-light': '#FF8B5F',
+                            'orange-dark': '#E55A24',
+                            'dark': '#1F2A44',
+                            'gray': '#F5F7FA',
+                            'gray-dark': '#1E293B',
+                            'blue': '#3B82F6',
+                            'blue-dark': '#2563EB',
+                            'green': '#10B981',
+                            'green-light': '#34D399',
+                            'red': '#EF4444',
+                            'yellow': '#F59E0B'
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        .dark-mode-transition {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .skeleton {
+            animation: skeleton-loading 1s linear infinite alternate;
+        }
+        
+        @keyframes skeleton-loading {
+            0% {
+                background-color: rgba(156, 163, 175, 0.1);
+            }
+            100% {
+                background-color: rgba(156, 163, 175, 0.2);
+            }
+        }
+        
+        .dark .skeleton {
+            animation: skeleton-loading-dark 1s linear infinite alternate;
+        }
+        
+        @keyframes skeleton-loading-dark {
+            0% {
+                background-color: rgba(55, 65, 81, 0.3);
+            }
+            100% {
+                background-color: rgba(55, 65, 81, 0.5);
+            }
+        }
+    </style>
+</head>
+<body class="bg-marcomm-gray dark:bg-marcomm-dark font-sans text-gray-900 dark:text-gray-100">
+    <!-- Navigation -->
+     <div style="display: none;">
+    <div id="patents-content" class="tab-content space-y-6">
+        <div class="flex flex-col md:flex-row justify-between mb-4">
+            <h3 class="text-xl font-semibold text-marcomm-dark dark:text-white mb-2 md:mb-0">Patents & IP</h3>
+            <div class="flex space-x-2">
+                <button id="refresh-patents" class="flex items-center px-3 py-1.5 bg-gray-100 dark:bg-gray-700 rounded-md text-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                    <i class="fas fa-sync mr-1.5"></i> Refresh
+                </button>
+            </div>
+        </div>
+        
+        <div id="patents-loading" class="text-center p-8 hidden">
+            <div class="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-marcomm-orange"></div>
+            <p class="mt-2 text-gray-600 dark:text-gray-400">Loading patent data...</p>
+        </div>
+        
+        <div id="patents-error" class="text-center p-8 hidden">
+            <p class="text-red-500"><i class="fas fa-exclamation-circle mr-2"></i>Error loading patent data</p>
+        </div>
+        
+        <div id="patents-content">
+            <!-- Orange Book Section (for drugs) -->
+            <div id="orange-book-section" class="mb-6 hidden">
+                <h4 class="text-lg font-semibold text-marcomm-dark dark:text-white mb-3">Orange Book Data</h4>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                        <h5 class="text-sm font-medium text-gray-500 dark:text-gray-400">Products</h5>
+                        <p id="ob-products-count" class="text-2xl font-semibold text-marcomm-dark dark:text-white mt-1">0</p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                        <h5 class="text-sm font-medium text-gray-500 dark:text-gray-400">Patents</h5>
+                        <p id="ob-patents-count" class="text-2xl font-semibold text-marcomm-dark dark:text-white mt-1">0</p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                        <h5 class="text-sm font-medium text-gray-500 dark:text-gray-400">Exclusivity End</h5>
+                        <p id="ob-exclusivity-end" class="text-2xl font-semibold text-marcomm-dark dark:text-white mt-1">Unknown</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Patents Results -->
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                    <thead class="bg-gray-50 dark:bg-gray-800">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Patent Number</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Title</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Assignee</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Date</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody id="patents-table-body" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                        <!-- Will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      </div>
+    
+      <div id="clinical-trials-old" class="tab-content">
+        <div class="flex flex-col md:flex-row justify-between mb-4">
+            <h3 class="text-xl font-semibold text-marcomm-dark dark:text-white mb-2 md:mb-0">Clinical Trials</h3>
+            <div class="flex space-x-2">
+                <button id="refresh-trials" class="flex items-center px-3 py-1.5 bg-gray-100 dark:bg-gray-700 rounded-md text-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                    <i class="fas fa-sync mr-1.5"></i> Refresh
+                </button>
+            </div>
+        </div>
+        
+        <div id="trials-loading" class="text-center p-8 hidden">
+            <div class="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-marcomm-orange"></div>
+            <p class="mt-2 text-gray-600 dark:text-gray-400">Loading clinical trials data...</p>
+        </div>
+        
+        <div id="trials-error" class="text-center p-8 hidden">
+            trials
+            <p class="text-red-500"><i class="fas fa-exclamation-circle mr-2"></i>Error loading clinical trials data</p>
+        </div>
+        
+        <div id="trials-content">
+            <!-- Trials Status Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                    <h5 class="text-sm font-medium text-gray-500 dark:text-gray-400">Total Trials</h5>
+                    <p id="total-trials-count" class="text-2xl font-semibold text-marcomm-dark dark:text-white mt-1">0</p>
+                </div>
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                    <h5 class="text-sm font-medium text-gray-500 dark:text-gray-400">Recruiting</h5>
+                    <p id="recruiting-trials-count" class="text-2xl font-semibold text-green-600 dark:text-green-500 mt-1">0</p>
+                </div>
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                    <h5 class="text-sm font-medium text-gray-500 dark:text-gray-400">Active, Not Recruiting</h5>
+                    <p id="active-trials-count" class="text-2xl font-semibold text-marcomm-blue mt-1">0</p>
+                </div>
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                    <h5 class="text-sm font-medium text-gray-500 dark:text-gray-400">Completed</h5>
+                    <p id="completed-trials-count" class="text-2xl font-semibold text-marcomm-orange mt-1">0</p>
+                </div>
+            </div>
+            
+            <!-- Trials Results -->
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                    <thead class="bg-gray-50 dark:bg-gray-800">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Status</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Title</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Phase</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Sponsor</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Start Date</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody id="trials-table-body" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                        <!-- Will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+</div>    
+    <nav class="bg-white dark:bg-marcomm-gray-dark shadow-lg sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/GreyTextno-outlineTM+2-dR9GD3ivT092LbXgN7D7iO44je85uD.png" alt="MARCOMM" class="h-8 w-auto">
+                    <div class="ml-6 flex space-x-4">
+                        <a href="#" class="text-marcomm-dark dark:text-white bg-marcomm-orange/10 dark:bg-marcomm-orange/20 px-3 py-2 rounded-md text-sm font-medium hover:bg-marcomm-orange/20">Competitors</a>
+                        <a href="#" class="text-gray-600 dark:text-gray-300 px-3 py-2 rounded-md text-sm font-medium hover:text-marcomm-orange">Intelligence Hub</a>
+                        <a href="#" class="text-gray-600 dark:text-gray-300 px-3 py-2 rounded-md text-sm font-medium hover:text-marcomm-orange">Dashboard</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <div class="flex border border-gray-300 dark:border-gray-600 rounded-md">
+                            <input id="search-input" type="text" placeholder="Search competitors..." class="py-1 px-3 rounded-l-md bg-transparent focus:outline-none focus:ring-1 focus:ring-marcomm-orange border-0">
+                            <button id="search-button" class="px-3 py-1 rounded-r-md text-marcomm-orange hover:bg-marcomm-orange/10 transition-colors">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button id="dark-mode-toggle" class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-marcomm-gray transition-colors">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white dark:bg-marcomm-gray-dark rounded-xl shadow-md p-6 mb-8">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+                <div class="flex items-center space-x-4">
+                    <h1 class="text-2xl sm:text-3xl font-semibold text-marcomm-dark dark:text-white">Epilepsy Market Competitors</h1>
+                    <span class="px-3 py-1 bg-marcomm-blue/10 text-marcomm-blue dark:bg-marcomm-blue/20 dark:text-marcomm-blue-dark rounded-full text-sm">Healthcare</span>
+                </div>
+                <p id="last-updated" class="mt-2 sm:mt-0 text-gray-600 dark:text-gray-400 text-sm">Last updated: Loading...</p>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="bg-white dark:bg-marcomm-gray-dark rounded-xl shadow-md p-4 mb-6">
+            <div class="flex flex-wrap gap-4 items-center">
+                <div>
+                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 block">Competitor Type</label>
+                    <select id="filter-type" class="filter-select bg-white dark:bg-marcomm-gray-dark border border-gray-300 dark:border-gray-600 rounded-md py-1.5 px-3 text-sm">
+                        <option value="all" selected>All Types</option>
+                        <option value="device">Device</option>
+                        <option value="drug">Drug</option>
+                        <option value="early-stage">Early Stage</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 block">Treatment</label>
+                    <select id="filter-treatment" class="filter-select bg-white dark:bg-marcomm-gray-dark border border-gray-300 dark:border-gray-600 rounded-md py-1.5 px-3 text-sm">
+                        <option value="all" selected>All Treatments</option>
+                        <option value="VNS">Vagus Nerve Stimulation</option>
+                        <option value="DBS">Deep Brain Stimulation</option>
+                        <option value="RNS">Responsive Neurostimulation</option>
+                        <option value="Cenobamate">Cenobamate</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 block">Sort By</label>
+                    <select id="filter-sort" class="filter-select bg-white dark:bg-marcomm-gray-dark border border-gray-300 dark:border-gray-600 rounded-md py-1.5 px-3 text-sm">
+                        <option value="name" selected>Company Name</option>
+                        <option value="marketShare">Market Share</option>
+                        <option value="growth">Growth Rate</option>
+                    </select>
+                </div>
+                
+                <div class="ml-auto">
+                    <button id="reset-filters" class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-md text-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                        <i class="fas fa-sync-alt mr-1"></i> Reset
+                    </button>
+                    <button id="apply-filters" class="bg-marcomm-orange text-white px-3 py-1.5 rounded-md text-sm hover:bg-marcomm-orange-dark transition-colors ml-2">
+                        <i class="fas fa-filter mr-1"></i> Apply Filters
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loading-indicator" class="bg-white dark:bg-marcomm-gray-dark rounded-xl shadow-md p-6 mb-8 text-center hidden">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-marcomm-orange"></div>
+            <p class="mt-2 text-gray-600 dark:text-gray-400">Loading competitor data...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div id="error-message" class="bg-white dark:bg-marcomm-gray-dark rounded-xl shadow-md p-6 mb-8 text-center hidden">
+            <div class="text-red-500 text-xl mb-2"><i class="fas fa-exclamation-circle"></i></div>
+            <p class="text-red-500">Error loading competitor data. Please try again later.</p>
+            <button id="retry-button" class="mt-4 bg-marcomm-orange text-white px-3 py-1.5 rounded-md text-sm hover:bg-marcomm-orange-dark transition-colors">
+                <i class="fas fa-redo mr-1"></i> Retry
+            </button>
+        </div>
+
+        <!-- Main Competitors Table -->
+        <div id="main-competitors-container" class="bg-white dark:bg-marcomm-gray-dark rounded-xl shadow-md overflow-hidden mb-8">
+            <div class="border-b border-gray-200 dark:border-gray-700 px-6 py-4">
+                <h2 class="text-xl font-semibold text-marcomm-dark dark:text-white">Main Competitors</h2>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Established companies in the epilepsy treatment market</p>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                    <thead class="bg-gray-50 dark:bg-gray-800">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Company</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Type</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Treatment</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Key Metrics</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Status</th>
+                            <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="main-competitors-body" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                        <!-- Loading skeletons -->
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap"><div class="h-6 w-32 skeleton rounded"></div></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><div class="h-6 w-16 skeleton rounded"></div></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><div class="h-6 w-24 skeleton rounded"></div></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><div class="h-6 w-40 skeleton rounded"></div></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><div class="h-6 w-20 skeleton rounded"></div></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right"><div class="h-6 w-16 skeleton rounded ml-auto"></div></td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap"><div class="h-6 w-32 skeleton rounded"></div></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><div class="h-6 w-16 skeleton rounded"></div></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><div class="h-6 w-24 skeleton rounded"></div></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><div class="h-6 w-40 skeleton rounded"></div></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><div class="h-6 w-20 skeleton rounded"></div></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right"><div class="h-6 w-16 skeleton rounded ml-auto"></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Early-Stage Companies Table -->
+        <div id="early-stage-container" class="bg-white dark:bg-marcomm-gray-dark rounded-xl shadow-md overflow-hidden mb-8">
+            <div class="border-b border-gray-200 dark:border-gray-700 px-6 py-4">
+                <h2 class="text-xl font-semibold text-marcomm-dark dark:text-white">Early-Stage Companies</h2>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Emerging players and potential future competitors</p>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                    <thead class="bg-gray-50 dark:bg-gray-800">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Company</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Type</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Treatment</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Development Stage</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Threat Level</th>
+                            <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="early-stage-body" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                        <!-- Loading skeletons -->
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap"><div class="h-6 w-32 skeleton rounded"></div></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><div class="h-6 w-16 skeleton rounded"></div></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><div class="h-6 w-24 skeleton rounded"></div></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><div class="h-6 w-28 skeleton rounded"></div></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><div class="h-6 w-20 skeleton rounded"></div></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right"><div class="h-6 w-16 skeleton rounded ml-auto"></div></td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap"><div class="h-6 w-32 skeleton rounded"></div></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><div class="h-6 w-16 skeleton rounded"></div></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><div class="h-6 w-24 skeleton rounded"></div></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><div class="h-6 w-28 skeleton rounded"></div></td>
+                            <td class="px-6 py-4 whitespace-nowrap"><div class="h-6 w-20 skeleton rounded"></div></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right"><div class="h-6 w-16 skeleton rounded ml-auto"></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Market Overview Card -->
+        <div id="market-overview" class="bg-white dark:bg-marcomm-gray-dark rounded-xl shadow-md p-6 mb-8">
+            <h2 class="text-xl font-semibold text-marcomm-dark dark:text-white mb-4">Market Overview</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="overflow-hidden rounded-lg bg-gray-50 dark:bg-gray-800 p-4">
+                    <h3 class="text-lg font-medium text-marcomm-dark dark:text-white mb-2">Market Share</h3>
+                    <div class="h-60">
+                        <canvas id="market-share-chart"></canvas>
+                    </div>
+                </div>
+                <div class="overflow-hidden rounded-lg bg-gray-50 dark:bg-gray-800 p-4">
+                    <h3 class="text-lg font-medium text-marcomm-dark dark:text-white mb-2">Growth Rates</h3>
+                    <div class="h-60">
+                        <canvas id="growth-chart"></canvas>
+                    </div>
+                </div>
+                <div class="overflow-hidden rounded-lg bg-gray-50 dark:bg-gray-800 p-4">
+                    <h3 class="text-lg font-medium text-marcomm-dark dark:text-white mb-2">Market Highlights</h3>
+                    <ul class="space-y-3 mt-4">
+                        <li class="flex items-start">
+                            <span class="flex-shrink-0 h-5 w-5 rounded-full bg-marcomm-green flex items-center justify-center text-white">
+                                <i class="fas fa-arrow-up text-xs"></i>
+                            </span>
+                            <p class="ml-3 text-sm text-gray-700 dark:text-gray-300">
+                                <span class="font-medium text-gray-900 dark:text-white">Device market</span> growing at 8.1% annually
+                            </p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="flex-shrink-0 h-5 w-5 rounded-full bg-marcomm-orange flex items-center justify-center text-white">
+                                <i class="fas fa-pills text-xs"></i>
+                            </span>
+                            <p class="ml-3 text-sm text-gray-700 dark:text-gray-300">
+                                <span class="font-medium text-gray-900 dark:text-white">Drug market</span> valued at approximately $3.5B
+                            </p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="flex-shrink-0 h-5 w-5 rounded-full bg-marcomm-blue flex items-center justify-center text-white">
+                                <i class="fas fa-user-md text-xs"></i>
+                            </span>
+                            <p class="ml-3 text-sm text-gray-700 dark:text-gray-300">
+                                <span class="font-medium text-gray-900 dark:text-white">Refractory patients</span> represent 30% of epilepsy cases
+                            </p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="flex-shrink-0 h-5 w-5 rounded-full bg-marcomm-red flex items-center justify-center text-white">
+                                <i class="fas fa-lightbulb text-xs"></i>
+                            </span>
+                            <p class="ml-3 text-sm text-gray-700 dark:text-gray-300">
+                                <span class="font-medium text-gray-900 dark:text-white">Early-stage innovation</span> focused on non-invasive solutions
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div id="quick-view-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white dark:bg-marcomm-gray-dark rounded-xl shadow-lg max-w-3xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="border-b border-gray-200 dark:border-gray-700 px-6 py-4 flex justify-between items-center">
+                <h3 id="modal-title" class="text-xl font-semibold text-marcomm-dark dark:text-white">Competitor Quick View</h3>
+                <button id="modal-close" class="text-gray-500 hover:text-marcomm-orange transition-colors">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="modal-content" class="p-6">
+                <!-- Content will be dynamically inserted here -->
+                <div class="animate-pulse">
+                    <div class="h-6 w-48 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+                    <div class="h-4 w-full bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
+                    <div class="h-4 w-5/6 bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
+                    <div class="h-4 w-3/4 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+                    
+                    <div class="h-6 w-36 bg-gray-200 dark:bg-gray-700 rounded mb-4 mt-6"></div>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="h-20 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                        <div class="h-20 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                    </div>
+                    
+                    <div class="h-6 w-36 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+                    <div class="h-32 bg-gray-200 dark:bg-gray-700 rounded mb-6"></div>
+                    
+                    <div class="h-6 w-36 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+                    <div class="h-4 w-full bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
+                    <div class="h-4 w-5/6 bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
+                    <div class="h-4 w-3/4 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 dark:border-gray-700 px-6 py-4 flex justify-end">
+                <a id="view-full-details" href="#" class="bg-marcomm-orange text-white px-4 py-2 rounded-md text-sm hover:bg-marcomm-orange-dark transition-colors">
+                    View Full Details
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src="competitor-list.js"></script>
+</body>
+</html>
