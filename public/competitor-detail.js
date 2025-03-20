@@ -3241,12 +3241,13 @@ renderPatentTable() {
            class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md text-sm transition-colors">
            View on Google Patents
         </a>
+        <button class="view-patent-details hover:underline" data-patent-id="${patent.patentNumber || ''}" style="display: none;">View Details</button>
       </div>
         </td>
       `;
       
       tableBody.appendChild(row);
-                // <button class="view-patent-details hover:underline" data-patent-id="${patent.patentNumber || ''}">View Details</button>
+                // 
       // Add event listener to patent detail button
       const button = row.querySelector('.view-patent-details');
       button.addEventListener('click', () => this.showPatentDetails(patent));
