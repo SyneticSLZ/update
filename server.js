@@ -713,7 +713,7 @@ async function fetchCmsPartBData(cptCode, year) {
   let allData = [];
   let pageOffset = 0;
   let hasMoreData = true;
-  let maxRecords = 2000; // Reasonable limit
+  let maxRecords = 5000; // Reasonable limit
   let apiMetadata = {
     dataSourceType,
     cptCode,
@@ -1655,7 +1655,7 @@ async function fetchCmsPartDData(drugName, year) {
   let allData = [];
   let pageOffset = 0;
   let hasMoreData = true;
-  let maxRecords = 2000; // Reasonable limit
+  let maxRecords = 5000; // Reasonable limit
   let apiMetadata = {
     dataSourceType,
     drugName,
