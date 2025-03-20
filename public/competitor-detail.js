@@ -144,6 +144,7 @@ const app = {
             }
 
             const competitorData = await competitorResponse.json();
+            console.log(competitorResponse)
             const marketData = await marketResponse.json();
             this.competitorData = { ...competitorData, marketData: marketData.data };
 
