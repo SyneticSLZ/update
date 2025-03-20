@@ -906,6 +906,7 @@ async function fetchCmsPartBData(cptCode, year) {
   }
 }
 // Helper to process endpoint-specific results into standardized format
+// Enhanced function to process endpoint-specific results into standardized format
 function processEndpointResults(endpoint, results, searchTerm, type) {
   const processed = [];
   
@@ -917,100 +918,233 @@ function processEndpointResults(endpoint, results, searchTerm, type) {
       if (type === "drug") {
         switch (endpoint) {
           case "drugsFda":
-            result.name = safeExtract(item, 'products.0.brand_name') || safeExtract(item, 'products.0.generic_name') || "Unknown";
-            result.description = `${safeExtract(item, 'sponsor_name')} - ${safeExtract(item, 'products.0.dosage_form')}`;
-            result.date = safeExtract(item, 'application_details.approval_date') || safeExtract(item, 'products.0.marketing_status_date');
-            result.status = safeExtract(item, 'application_type');
+            result.name = safeExtract(item, 'openfda.brand_name.0') || 
+                          safeExtract(item, 'openfda.generic_name.0') || 
+                          safeExtract(item, 'products.0.brand_name') || 
+                          safeExtract(item, 'products.0.generic_name') || 
+                          searchTerm;
+            result.description = `${safeExtract(item, 'sponsor_name') || 'Unknown manufacturer'} - ${safeExtract(item, 'products.0.dosage_form') || 'Unknown form'}`;
+            result.date = safeExtract(item, 'effective_time') || 
+                          safeExtract(item, 'products.0.marketing_status_date') || 
+                          safeExtract(item, 'application_number_extension') || 
+                          'Unknown date';
+            result.status = safeExtract(item, 'application_type') || 'Unknown status';
+            result.applicationNumber = safeExtract(item, 'application_number') || 'Unknown';
+            result.marketingStatus = safeExtract(item, 'products.0.marketing_status') || 'Unknown';
+            result.routeOfAdministration = safeExtract(item, 'products.0.route') || 'Unknown';
+            result.drugDetails = {
+              sponsor: safeExtract(item, 'sponsor_name'),
+              productNo: safeExtract(item, 'products.0.product_number'),
+              strength: safeExtract(item, 'products.0.active_ingredients.0.strength'),
+              pharm_class: safeExtract(item, 'openfda.pharm_class_epc.0')
+            };
             break;
             
           case "label":
-            result.name = safeExtract(item, 'openfda.brand_name.0') || safeExtract(item, 'openfda.generic_name.0');
-            result.description = safeExtract(item, 'indications_and_usage.0')?.substring(0, 200) || "No description available";
-            result.date = safeExtract(item, 'effective_time');
-            result.status = safeExtract(item, 'openfda.product_type.0');
+            result.name = safeExtract(item, 'openfda.brand_name.0') || 
+                          safeExtract(item, 'openfda.generic_name.0') || 
+                          searchTerm;
+            const indicationsText = safeExtract(item, 'indications_and_usage.0') || 'No indication information available';
+            // Limit description to a reasonable length but preserve meaning
+            result.description = indicationsText.length > 300 ? 
+                                indicationsText.substring(0, 297) + '...' : 
+                                indicationsText;
+            result.date = safeExtract(item, 'effective_time') || 'Unknown date';
+            result.status = safeExtract(item, 'openfda.product_type.0') || 'Unknown status';
+            result.manufacturerName = safeExtract(item, 'openfda.manufacturer_name.0') || 'Unknown manufacturer';
+            result.rxcui = safeExtract(item, 'openfda.rxcui.0') || 'Not available';
+            result.ndc = safeExtract(item, 'openfda.package_ndc.0') || 'Not available';
+            result.drugDetails = {
+              route: safeExtract(item, 'openfda.route.0'),
+              warnings: safeExtract(item, 'warnings.0')?.substring(0, 200) + '...',
+              boxed_warning: safeExtract(item, 'boxed_warning') ? 'Yes' : 'No',
+              pregnancy: safeExtract(item, 'pregnancy.0')?.substring(0, 100) + '...',
+              dosage: safeExtract(item, 'dosage_and_administration.0')?.substring(0, 100) + '...'
+            };
             break;
             
           case "ndc":
-            result.name = safeExtract(item, 'brand_name') || safeExtract(item, 'generic_name');
-            result.description = `${safeExtract(item, 'dosage_form')} - ${safeExtract(item, 'product_type')}`;
-            result.date = safeExtract(item, 'marketing_start_date');
-            result.status = safeExtract(item, 'marketing_category');
+            result.name = safeExtract(item, 'brand_name') || 
+                          safeExtract(item, 'generic_name') || 
+                          searchTerm;
+            result.description = `${safeExtract(item, 'dosage_form') || 'Unknown form'} - ${safeExtract(item, 'product_type') || 'Unknown type'}`;
+            result.date = safeExtract(item, 'marketing_start_date') || 'Unknown date';
+            result.status = safeExtract(item, 'marketing_category') || 'Unknown status';
+            result.productNdc = safeExtract(item, 'product_ndc') || 'Unknown NDC';
+            result.substanceName = safeExtract(item, 'active_ingredients.0.name') || 'Unknown substance';
+            result.labelerName = safeExtract(item, 'labeler_name') || 'Unknown manufacturer';
+            result.drugDetails = {
+              packaging: safeExtract(item, 'packaging.0.description'),
+              pharm_class: safeExtract(item, 'pharm_class'),
+              dea_schedule: safeExtract(item, 'dea_schedule') || 'Not scheduled',
+              listing_expiration_date: safeExtract(item, 'listing_expiration_date')
+            };
             break;
             
           case "enforcement":
-            result.name = safeExtract(item, 'product_description');
-            result.description = safeExtract(item, 'reason_for_recall') || "No reason provided";
-            result.date = safeExtract(item, 'recall_initiation_date');
-            result.status = safeExtract(item, 'status');
+            result.name = safeExtract(item, 'product_description') || searchTerm;
+            result.description = safeExtract(item, 'reason_for_recall') || 'No reason provided';
+            result.date = safeExtract(item, 'recall_initiation_date') || 'Unknown date';
+            result.status = safeExtract(item, 'status') || 'Unknown status';
+            result.recallingFirm = safeExtract(item, 'recalling_firm') || 'Unknown firm';
+            result.classification = safeExtract(item, 'classification') || 'Unknown classification';
+            result.codeInfo = safeExtract(item, 'code_info') || 'No code information';
+            result.drugDetails = {
+              distribution_pattern: safeExtract(item, 'distribution_pattern'),
+              recall_number: safeExtract(item, 'recall_number'),
+              voluntary_mandated: safeExtract(item, 'voluntary_mandated'),
+              initial_firm_notification: safeExtract(item, 'initial_firm_notification')
+            };
             break;
             
           case "event":
-            const drug = item.patient?.drug?.find(d => 
-              (d.openfda?.brand_name && d.openfda.brand_name.includes(searchTerm)) || 
-              (d.openfda?.generic_name && d.openfda.generic_name.includes(searchTerm))
-            );
-            result.name = safeExtract(drug, 'openfda.brand_name.0') || safeExtract(drug, 'openfda.generic_name.0');
-            result.description = safeExtract(item, 'patient.reaction.0.reactionmeddrapt') || "No reaction description";
-            result.date = safeExtract(item, 'receiptdate');
-            result.status = safeExtract(item, 'serious');
+            const drug = findDrugInEvent(item, searchTerm);
+            result.name = drug ? 
+                          (safeExtract(drug, 'openfda.brand_name.0') || 
+                           safeExtract(drug, 'openfda.generic_name.0') || 
+                           safeExtract(drug, 'medicinalproduct')) : 
+                          searchTerm;
+            
+            // Get primary reaction if available
+            const reactions = item.patient?.reaction || [];
+            const primaryReaction = reactions.length > 0 ? reactions[0]?.reactionmeddrapt : 'Unknown reaction';
+            
+            result.description = `Reported reaction: ${primaryReaction}`;
+            result.date = safeExtract(item, 'receiptdate') || 'Unknown date';
+            result.status = item.serious ? 'Serious' : 'Non-serious';
+            result.reporterType = safeExtract(item, 'primarysource.qualification') || 'Unknown reporter';
+            result.patientAge = item.patient?.patientonsetage ? `${item.patient.patientonsetage} ${item.patient.patientonsetageunit || 'years'}` : 'Unknown';
+            result.patientSex = safeExtract(item, 'patient.patientsex') === '1' ? 'Male' : 
+                                safeExtract(item, 'patient.patientsex') === '2' ? 'Female' : 'Unknown';
+            result.drugDetails = {
+              drugIndication: safeExtract(drug, 'drugindication'),
+              drugstructuredosagenumb: safeExtract(drug, 'drugstructuredosagenumb'),
+              drugstructuredosageunit: safeExtract(drug, 'drugstructuredosageunit'),
+              actiondrug: safeExtract(drug, 'actiondrug')
+            };
             break;
             
           default:
-            result.name = "Data from " + endpoint;
+            result.name = `Data from ${endpoint}`;
             result.description = "Raw data available in detailed view";
             result.date = "Unknown";
             result.status = "Unknown";
         }
       } else {
-        // Device endpoint processing
+        // Device endpoint processing with better field extraction
         switch (endpoint) {
           case "device510k":
-            result.name = safeExtract(item, 'device_name');
-            result.description = safeExtract(item, 'device_description') || "No description available";
-            result.date = safeExtract(item, 'decision_date');
-            result.status = safeExtract(item, 'decision_code');
+            result.name = safeExtract(item, 'device_name') || searchTerm;
+            result.description = safeExtract(item, 'device_description') || 'No description available';
+            result.date = safeExtract(item, 'decision_date') || 'Unknown date';
+            result.status = safeExtract(item, 'decision_code') || 'Unknown status';
+            result.decisionDescription = getDeviceDecisionDescription(safeExtract(item, 'decision_code'));
+            result.submissionType = safeExtract(item, 'submission_type_code') || 'Unknown type';
+            result.applicant = safeExtract(item, 'applicant') || 'Unknown applicant';
+            result.deviceDetails = {
+              product_code: safeExtract(item, 'product_code'),
+              advisory_committee: safeExtract(item, 'advisory_committee'),
+              k_number: safeExtract(item, 'k_number'),
+              expedited_review_flag: safeExtract(item, 'expedited_review_flag') === 'Y' ? 'Yes' : 'No'
+            };
             break;
             
           case "classification":
-            result.name = safeExtract(item, 'device_name');
-            result.description = safeExtract(item, 'device_class') || "No class info";
-            result.date = safeExtract(item, 'medical_specialty_description');
-            result.status = safeExtract(item, 'regulation_number');
+            result.name = safeExtract(item, 'device_name') || searchTerm;
+            result.description = `Class ${safeExtract(item, 'device_class')} - ${safeExtract(item, 'medical_specialty_description') || 'Unknown specialty'}`;
+            result.date = safeExtract(item, 'medical_specialty_description') || 'Unknown date';
+            result.status = safeExtract(item, 'regulation_number') || 'Unknown regulation';
+            result.productCode = safeExtract(item, 'product_code') || 'Unknown code';
+            result.gmpExempt = safeExtract(item, 'gmp_exempt_flag') === 'Y' ? 'Yes' : 'No';
+            result.implantFlag = safeExtract(item, 'implant_flag') === 'Y' ? 'Yes' : 'No';
+            result.deviceDetails = {
+              review_panel: safeExtract(item, 'review_panel'),
+              submission_type: safeExtract(item, 'submission_type_id'),
+              regulation_name: safeExtract(item, 'regulation_name')?.substring(0, 200)
+            };
             break;
             
           case "enforcement":
-            result.name = safeExtract(item, 'product_description');
-            result.description = safeExtract(item, 'reason_for_recall') || "No reason provided";
-            result.date = safeExtract(item, 'recall_initiation_date');
-            result.status = safeExtract(item, 'status');
+            result.name = safeExtract(item, 'product_description') || searchTerm;
+            result.description = safeExtract(item, 'reason_for_recall') || 'No reason provided';
+            result.date = safeExtract(item, 'recall_initiation_date') || 'Unknown date';
+            result.status = safeExtract(item, 'status') || 'Unknown status';
+            result.recallingFirm = safeExtract(item, 'recalling_firm') || 'Unknown firm';
+            result.classification = safeExtract(item, 'classification') || 'Unknown classification';
+            result.codeInfo = safeExtract(item, 'code_info') || 'No code information';
+            result.deviceDetails = {
+              distribution_pattern: safeExtract(item, 'distribution_pattern'),
+              recall_number: safeExtract(item, 'recall_number'),
+              voluntary_mandated: safeExtract(item, 'voluntary_mandated'),
+              initial_firm_notification: safeExtract(item, 'initial_firm_notification')
+            };
             break;
             
           case "event":
-            result.name = safeExtract(item, 'device.brand_name');
-            result.description = safeExtract(item, 'mdr_text.0.text')?.substring(0, 200) || "No description available";
-            result.date = safeExtract(item, 'date_received');
-            result.status = safeExtract(item, 'event_type');
+            result.name = safeExtract(item, 'device.brand_name') || searchTerm;
+            
+            // Extract text from MDR text if available
+            let eventDescription = 'No description available';
+            if (item.mdr_text && item.mdr_text.length > 0) {
+              const textBlock = item.mdr_text.find(t => t.text && t.text_type_code === 'D');
+              if (textBlock && textBlock.text) {
+                eventDescription = textBlock.text.substring(0, 200) + (textBlock.text.length > 200 ? '...' : '');
+              }
+            }
+            
+            result.description = eventDescription;
+            result.date = safeExtract(item, 'date_received') || 'Unknown date';
+            result.status = safeExtract(item, 'event_type') || 'Unknown type';
+            result.reportType = safeExtract(item, 'report_source_code') || 'Unknown source';
+            result.deviceDetails = {
+              manufacturer: safeExtract(item, 'device.manufacturer_d_name'),
+              model_number: safeExtract(item, 'device.model_number'),
+              device_report_product_code: safeExtract(item, 'device.device_report_product_code'),
+              device_operator: safeExtract(item, 'device_operator_code')
+            };
             break;
             
           case "pma":
-            result.name = safeExtract(item, 'device_name');
-            result.description = safeExtract(item, 'product_code') || "No description available";
-            result.date = safeExtract(item, 'decision_date');
-            result.status = safeExtract(item, 'decision');
+            result.name = safeExtract(item, 'device_name') || searchTerm;
+            result.description = safeExtract(item, 'product_code') || 'No description available';
+            result.date = safeExtract(item, 'decision_date') || 'Unknown date';
+            result.status = safeExtract(item, 'decision') || 'Unknown decision';
+            result.submissionType = safeExtract(item, 'submission_type') || 'Unknown type';
+            result.applicant = safeExtract(item, 'applicant') || 'Unknown applicant';
+            result.deviceDetails = {
+              pma_number: safeExtract(item, 'pma_number'),
+              advisory_committee: safeExtract(item, 'advisory_committee'),
+              expedited_review_flag: safeExtract(item, 'expedited_review_flag') === '1' ? 'Yes' : 'No',
+              supplement_number: safeExtract(item, 'supplement_number')
+            };
             break;
             
           case "recall":
-            result.name = safeExtract(item, 'product_description');
-            result.description = safeExtract(item, 'reason_for_recall') || "No reason provided";
-            result.date = safeExtract(item, 'recall_initiation_date');
-            result.status = safeExtract(item, 'status');
+            result.name = safeExtract(item, 'product_description') || searchTerm;
+            result.description = safeExtract(item, 'reason_for_recall') || 'No reason provided';
+            result.date = safeExtract(item, 'recall_initiation_date') || 'Unknown date';
+            result.status = safeExtract(item, 'status') || 'Unknown status';
+            result.recallingFirm = safeExtract(item, 'recalling_firm') || 'Unknown firm';
+            result.classification = safeExtract(item, 'classification') || 'Unknown classification';
+            result.deviceDetails = {
+              root_cause: safeExtract(item, 'root_cause_description'),
+              device_id: safeExtract(item, 'reference_510k_number') || safeExtract(item, 'reference_pma_number'),
+              res_event_number: safeExtract(item, 'res_event_number')
+            };
             break;
             
           case "registrationlisting":
-            result.name = safeExtract(item, 'device_name');
-            result.description = `${safeExtract(item, 'device_class')} - ${safeExtract(item, 'medical_specialty_description')}`;
-            result.date = safeExtract(item, 'completion_date_formatted');
-            result.status = safeExtract(item, 'registration_status');
+            result.name = safeExtract(item, 'device_name') || searchTerm;
+            result.description = `${safeExtract(item, 'device_class') || 'Unknown class'} - ${safeExtract(item, 'medical_specialty_description') || 'Unknown specialty'}`;
+            result.date = safeExtract(item, 'completion_date_formatted') || 'Unknown date';
+            result.status = safeExtract(item, 'registration_status') || 'Unknown status';
+            result.proprietaryName = safeExtract(item, 'proprietary_name') || 'N/A';
+            result.establishment = safeExtract(item, 'owner_operator.name') || 'Unknown operator';
+            result.deviceDetails = {
+              product_code: safeExtract(item, 'product_code'),
+              regulation_number: safeExtract(item, 'regulation_number'),
+              premarket_submission: safeExtract(item, 'premarket_submission') || 'None listed'
+            };
             break;
             
           default:
@@ -1036,6 +1170,77 @@ function processEndpointResults(endpoint, results, searchTerm, type) {
   }
   
   return processed;
+}
+
+// Helper function to find a drug in an adverse event report that matches the search term
+function findDrugInEvent(item, searchTerm) {
+  if (!item || !item.patient || !item.patient.drug || !Array.isArray(item.patient.drug)) {
+    return null;
+  }
+  
+  const searchTermLower = searchTerm.toLowerCase();
+  
+  // First try to find direct match
+  let matchedDrug = item.patient.drug.find(d => {
+    // Check brand name
+    if (d.openfda && d.openfda.brand_name && 
+        d.openfda.brand_name.some(name => name.toLowerCase().includes(searchTermLower))) {
+      return true;
+    }
+    
+    // Check generic name
+    if (d.openfda && d.openfda.generic_name && 
+        d.openfda.generic_name.some(name => name.toLowerCase().includes(searchTermLower))) {
+      return true;
+    }
+    
+    // Check medicinal product name
+    if (d.medicinalproduct && d.medicinalproduct.toLowerCase().includes(searchTermLower)) {
+      return true;
+    }
+    
+    return false;
+  });
+  
+  // If no match found, return the first drug (as fallback)
+  if (!matchedDrug && item.patient.drug.length > 0) {
+    matchedDrug = item.patient.drug[0];
+  }
+  
+  return matchedDrug;
+}
+
+// Function to get descriptive text for device decision codes
+function getDeviceDecisionDescription(decisionCode) {
+  const decisions = {
+    'SESE': 'Substantially Equivalent',
+    'SESK': 'Substantially Equivalent - Kit',
+    'SESD': 'Substantially Equivalent - Duplicate',
+    'SESL': 'Substantially Equivalent - Licensed',
+    'SEST': 'Substantially Equivalent - Transferred',
+    'SESU': 'Substantially Equivalent - Unclassified',
+    'NSE': 'Not Substantially Equivalent',
+    'NSEK': 'Not Substantially Equivalent - Kit',
+    'NSED': 'Not Substantially Equivalent - Duplicate',
+    'SEKM': 'Exempt - Kit Member',
+    'DENG': 'Denied Government Jurisdiction',
+    'DENR': 'Denied - Rescind Recommendation',
+    'DLET': 'Deleted - Device found to be exempt',
+    'DREU': 'Direct De Novo (RFD) Granted - Exempt & Unclassified',
+    'DREP': 'Direct De Novo (RFD) Granted - Exempt & Class I',
+    'DREQ': 'Direct De Novo (RFD) Granted - Exempt & Class II',
+    'DRES': 'Direct De Novo (RFD) Granted - Special Controls & Class II',
+    'POST': 'Post De Novo (NSE) Granted - Exempt & Unclassified',
+    'PEXU': 'Post De Novo (NSE) Granted - Exempt & Unclassified',
+    'PEXP': 'Post De Novo (NSE) Granted - Exempt & Class I',
+    'PEXQ': 'Post De Novo (NSE) Granted - Exempt & Class II',
+    'PEQS': 'Post De Novo (NSE) Granted - Special Controls & Class II',
+    'REJ': 'Rejected - Without Prejudice',
+    'WDN': 'Withdrawn',
+    'WDU': 'Withdrawn - Before Review'
+  };
+  
+  return decisions[decisionCode] || 'Unknown decision';
 }
 
 // Improved Patents API with fallback to mock data
