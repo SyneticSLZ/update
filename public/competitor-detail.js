@@ -3709,7 +3709,7 @@ renderMarketData() {
   
     // Charts
     this.renderDeviceTrendsChart(partB);
-    this.renderDeviceCompanyComparisonChart(marketData.companyComparisons);
+    // this.renderDeviceCompanyComparisonChart(marketData.companyComparisons);
   
     // Enhanced table with data source indicators and pagination
     this.renderDeviceDataTable(partB, marketData.companyComparisons);
