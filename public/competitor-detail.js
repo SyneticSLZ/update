@@ -1,5 +1,5 @@
 // Base API URL
-const API_BASE_URL = 'https://update-g6ic.onrender.com0/api';
+const API_BASE_URL = 'https://update-g6ic.onrender.com/api';
 
 // App state
 const app = {

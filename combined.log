@@ -451,3 +451,10 @@
 2025-03-20T19:17:29.475Z [info]: Simulating partD data for XCOPRI, year 2026 based on 2023 data with 8.5% annual growth
 2025-03-20T19:17:29.475Z [info]: Successfully fetched market data for XCOPRI
 2025-03-20T19:17:29.515Z [info]: Success! Found FDA data from event for Cenobamate
+2025-03-20T19:21:10.902Z [info]: Data directory exists
+2025-03-20T19:21:10.905Z [info]: File exists: products_data.json
+2025-03-20T19:21:10.906Z [info]: File exists: patent_data.json
+2025-03-20T19:21:10.906Z [info]: File exists: exclusivity_data.json
+2025-03-20T19:21:10.909Z [info]: Server running on port 3000
+2025-03-20T19:21:10.909Z [info]: Health check available at: http://localhost:3000/health
+2025-03-20T19:21:10.910Z [info]: Competitors list available at: http://localhost:3000/api/competitors
