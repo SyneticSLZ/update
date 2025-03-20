@@ -1,0 +1,54 @@
+2025-03-20T18:56:52.729Z [info]: Data directory exists
+2025-03-20T18:56:52.733Z [info]: File exists: products_data.json
+2025-03-20T18:56:52.733Z [info]: File exists: patent_data.json
+2025-03-20T18:56:52.734Z [info]: File exists: exclusivity_data.json
+2025-03-20T18:56:52.736Z [info]: Server running on port 3000
+2025-03-20T18:56:52.737Z [info]: Health check available at: http://localhost:3000/health
+2025-03-20T18:56:52.737Z [info]: Competitors list available at: http://localhost:3000/api/competitors
+2025-03-20T18:56:57.327Z [info]: GET /api/market/company/Flow%20Medical - Query params: 
+2025-03-20T18:56:57.330Z [info]: Fetching market data for company: Flow Medical
+2025-03-20T18:56:57.331Z [info]: Successfully fetched market data for Flow Medical
+2025-03-20T18:56:57.334Z [info]: GET /api/competitors/Flow%20Medical - Query params: 
+2025-03-20T18:56:57.336Z [info]: Fetching FDA data from device510k: https://api.fda.gov/device/510k.json?search=device_name:"Depression Device"+OR+device_name:Depression Device&limit=100
+2025-03-20T18:56:57.399Z [info]: Fetching clinical trials for: Flow Medical epilepsy
+2025-03-20T18:56:57.401Z [info]: Fetching trials matching: Flow Medical epilepsy (first page)
+2025-03-20T18:56:57.408Z [error]: Uncaught Exception: fetchPatents is not defined
+2025-03-20T18:56:57.415Z [error]: ReferenceError: fetchPatents is not defined
+    at C:\Users\sinis\Desktop\update\server.js:3023:12
+    at Layer.handle [as handle_request] (C:\Users\sinis\Desktop\update\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\sinis\Desktop\update\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\sinis\Desktop\update\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\sinis\Desktop\update\node_modules\expres... [truncated]
+2025-03-20T18:56:57.607Z [info]: Found 31 trials on this page
+2025-03-20T18:56:58.121Z [info]: Total trials found for Flow Medical epilepsy: 31
+2025-03-20T18:58:00.343Z [info]: Data directory exists
+2025-03-20T18:58:00.346Z [info]: File exists: products_data.json
+2025-03-20T18:58:00.347Z [info]: File exists: patent_data.json
+2025-03-20T18:58:00.347Z [info]: File exists: exclusivity_data.json
+2025-03-20T18:58:00.350Z [info]: Server running on port 3000
+2025-03-20T18:58:00.350Z [info]: Health check available at: http://localhost:3000/health
+2025-03-20T18:58:00.351Z [info]: Competitors list available at: http://localhost:3000/api/competitors
+2025-03-20T18:58:05.348Z [info]: GET /api/market/company/Flow%20Medical - Query params: 
+2025-03-20T18:58:05.350Z [info]: Fetching market data for company: Flow Medical
+2025-03-20T18:58:05.351Z [info]: Successfully fetched market data for Flow Medical
+2025-03-20T18:58:05.354Z [info]: GET /api/competitors/Flow%20Medical - Query params: 
+2025-03-20T18:58:05.356Z [info]: Fetching FDA data from device510k: https://api.fda.gov/device/510k.json?search=device_name:"Depression Device"+OR+device_name:Depression Device&limit=100
+2025-03-20T18:58:05.415Z [info]: Fetching clinical trials for: Flow Medical epilepsy
+2025-03-20T18:58:05.416Z [info]: Fetching trials matching: Flow Medical epilepsy (first page)
+2025-03-20T18:58:05.418Z [info]: Searching USPTO for up to 1000 patents related to: Flow Medical
+2025-03-20T18:58:05.419Z [info]: Fetching USPTO patents batch (start: 0)
+2025-03-20T18:58:05.611Z [info]: Found 31 trials on this page
+2025-03-20T18:58:05.786Z [error]: USPTO API error for Flow Medical: Request failed with status code 404
+2025-03-20T18:58:05.787Z [info]: Trying alternative USPTO endpoint for: Flow Medical
+2025-03-20T18:58:05.887Z [error]: Alternative USPTO API error for Flow Medical: Request failed with status code 404
+2025-03-20T18:58:06.115Z [info]: Total trials found for Flow Medical epilepsy: 31
+2025-03-20T18:58:06.699Z [info]: Fetching FDA data from classification: https://api.fda.gov/device/classification.json?search=device_name:"Depression Device"+OR+device_name:Depression Device&limit=100
+2025-03-20T18:58:06.969Z [info]: Fetching FDA data from enforcement: https://api.fda.gov/device/enforcement.json?search=product_description:"Depression Device"&limit=100
+2025-03-20T18:58:07.232Z [error]: FDA enforcement API error for Depression Device: Request failed with status code 404
+2025-03-20T18:58:07.232Z [info]: Fetching FDA data from event: https://api.fda.gov/device/event.json?search=device.brand_name:"Depression Device"&limit=100
+2025-03-20T18:58:07.472Z [error]: FDA event API error for Depression Device: Request failed with status code 404
+2025-03-20T18:58:07.472Z [info]: Fetching FDA data from pma: https://api.fda.gov/device/pma.json?search=device_name:"Depression Device"+OR+device_name:Depression Device&limit=100
+2025-03-20T18:58:07.944Z [info]: Fetching FDA data from recall: https://api.fda.gov/device/recall.json?search=product_description:"Depression Device"&limit=100
+2025-03-20T18:58:08.178Z [error]: FDA recall API error for Depression Device: Request failed with status code 404
+2025-03-20T18:58:08.179Z [info]: Fetching FDA data from registrationlisting: https://api.fda.gov/device/registrationlisting.json?search=device_name:"Depression Device"&limit=100
+2025-03-20T18:58:08.413Z [error]: FDA registrationlisting API error for Depression Device: Request failed with status code 404

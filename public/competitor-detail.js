@@ -3234,12 +3234,19 @@ renderPatentTable() {
           ${this.formatDate(patent.date) || 'Unknown'}
         </td>
         <td class="px-4 py-3 whitespace-nowrap text-sm text-blue-600 dark:text-blue-400">
-          <button class="view-patent-details hover:underline" data-patent-id="${patent.patentNumber || ''}">View Details</button>
+
+                <div class="mt-6 flex justify-end space-x-3">
+        <a href="https://patents.google.com/patent/US${patent.patentNumber?.replace(/[^\d]/g, '')}" 
+           target="_blank" 
+           class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md text-sm transition-colors">
+           View on Google Patents
+        </a>
+      </div>
         </td>
       `;
       
       tableBody.appendChild(row);
-      
+                // <button class="view-patent-details hover:underline" data-patent-id="${patent.patentNumber || ''}">View Details</button>
       // Add event listener to patent detail button
       const button = row.querySelector('.view-patent-details');
       button.addEventListener('click', () => this.showPatentDetails(patent));

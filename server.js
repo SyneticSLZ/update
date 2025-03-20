@@ -1119,87 +1119,73 @@ function processEndpointResults(endpoint, results, searchTerm, type) {
 //     throw error;
 //   }
 // }
+
 async function fetchPatents(keyword, maxResults = 1000) {
   return retryRequest(async () => {
-    const url = `https://search.patentsview.org/api/v1/patent/`;
+    // USPTO API endpoints
+    const baseUrl = 'https://developer.uspto.gov/ibd-api/v1/patent/application';
     let allPatents = [];
     const patentIdSet = new Set();
     
     try {
-      logger.info(`Searching for up to ${maxResults} patents related to: ${keyword}`);
+      logger.info(`Searching USPTO for up to ${maxResults} patents related to: ${keyword}`);
       
       // Set up pagination parameters
-      const perPage = 100; // API max is 100 per page
+      const perPage = 100; // Adjust based on USPTO API limits
+      let start = 0;
       let hasMoreResults = true;
-      let afterCursor = null;
       
       // Main query loop to fetch multiple pages
       while (hasMoreResults && allPatents.length < maxResults) {
-        // Create payload for the current request
-        const payload = {
-          q: { 
-            "_or": [
-              { "_text_any": { "patent_title": keyword } },
-              { "_text_all": { "patent_abstract": keyword } }
-            ]
-          },
-          f: [
-            "patent_id", 
-            "patent_title", 
-            "patent_date", 
-            "patent_abstract", 
-            "assignees.assignee_organization", 
-            "patent_number",
-            "patent_type",
-            "inventors.inventor_first_name",
-            "inventors.inventor_last_name"
-          ],
-          s: [{"patent_date": "desc"}], // Sort by date, most recent first
-          o: { 
-            "size": perPage,
-            "matched_subentities_only": false
-          }
-        };
+        // Construct search query using USPTO syntax
+        const queryParams = new URLSearchParams({
+          searchText: `${keyword}`,
+          start: start,
+          rows: perPage,
+          sortField: 'patentIssueDate',
+          sortOrder: 'desc'
+        });
         
-        // Add cursor for pagination after first page
-        if (afterCursor) {
-          payload.o.after = afterCursor;
-        }
+        const url = `${baseUrl}/search?${queryParams.toString()}`;
         
-        logger.info(`Fetching patents batch (page cursor: ${afterCursor || 'initial'})`);
+        logger.info(`Fetching USPTO patents batch (start: ${start})`);
         
-        const response = await axios.post(url, payload, {
+        const response = await axios.get(url, {
           headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'X-Api-Key': 'sQ4l3fCxqzkaf0hP5YKpBxDDixBNy1RD'
+            'accept': 'application/json',
+            'X-Api-Key': process.env.USPTO_API_KEY
           },
           timeout: 30000 // 30 second timeout
         });
         
         // Process response if we got valid data
-        if (response.data && !response.data.error && response.data.patents && Array.isArray(response.data.patents)) {
-          const pageResults = response.data.patents;
+        if (response.data && response.data.results && Array.isArray(response.data.results)) {
+          const pageResults = response.data.results;
+          const totalAvailable = response.data.recordTotalQuantity || 0;
           
           if (pageResults.length > 0) {
-            logger.info(`Found ${pageResults.length} patents in current batch`);
+            logger.info(`Found ${pageResults.length} patents in current batch (${start+1}-${start+pageResults.length} of ${totalAvailable})`);
             
             // Filter out duplicates and add new patents
-            const newPatents = pageResults.filter(patent => !patentIdSet.has(patent.patent_id));
+            const newPatents = pageResults.filter(patent => {
+              const patentId = patent.patentNumber || patent.applicationNumber;
+              return patentId && !patentIdSet.has(patentId);
+            });
             
             // Add new patent IDs to the set
-            newPatents.forEach(patent => patentIdSet.add(patent.patent_id));
+            newPatents.forEach(patent => {
+              const patentId = patent.patentNumber || patent.applicationNumber;
+              patentIdSet.add(patentId);
+            });
             
             // Add patents to our collection
             allPatents = [...allPatents, ...newPatents];
             
             // Set up for next page
-            const lastPatent = pageResults[pageResults.length - 1];
-            afterCursor = lastPatent.patent_id;
+            start += perPage;
             
             // Check if we should continue pagination
-            if (pageResults.length < perPage) {
-              // Received fewer results than requested, likely the last page
+            if (pageResults.length < perPage || start >= totalAvailable) {
               hasMoreResults = false;
             }
           } else {
@@ -1208,113 +1194,327 @@ async function fetchPatents(keyword, maxResults = 1000) {
           }
         } else {
           // Error in response
-          const errorMessage = response.data?.error_message || "Unknown API error";
-          logger.error(`Patents API error: ${errorMessage}`);
+          const errorMessage = response.data?.errorMessage || "Unknown USPTO API error";
+          logger.error(`USPTO API error: ${errorMessage}`);
           hasMoreResults = false;
         }
         
-        // Add a delay between requests to avoid rate limiting (45 requests/minute allowed)
-        await new Promise(resolve => setTimeout(resolve, 1350)); // ~44 requests per minute
+        // Add a delay between requests to avoid rate limiting
+        await new Promise(resolve => setTimeout(resolve, 1000));
       }
       
-      logger.info(`Total unique patents found in main query: ${allPatents.length}`);
-      
-      // If we don't have enough patents yet, try a fallback query
-      if (allPatents.length < maxResults) {
-        logger.info(`Trying fallback query to find more patents for: ${keyword}`);
-        
-        // Create a broader fallback query
-        const fallbackPayload = {
-          q: { 
-            "_or": [
-              { "_contains": { "patent_title": keyword } },
-              { "_contains": { "patent_abstract": keyword } }
-            ]
-          },
-          f: [
-            "patent_id", 
-            "patent_title", 
-            "patent_date", 
-            "patent_abstract", 
-            "assignees.assignee_organization", 
-            "patent_number",
-            "patent_type",
-            "inventors.inventor_first_name",
-            "inventors.inventor_last_name"
-          ],
-          s: [{"patent_date": "desc"}],
-          o: {
-            "size": maxResults - allPatents.length,
-            "matched_subentities_only": false
-          }
-        };
-        
-        const fallbackResponse = await axios.post(url, fallbackPayload, {
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'X-Api-Key': process.env.PATENTSVIEW_API_KEY
-          },
-          timeout: 30000
-        });
-        
-        if (fallbackResponse.data && !fallbackResponse.data.error && 
-            fallbackResponse.data.patents && Array.isArray(fallbackResponse.data.patents)) {
-          
-          // Filter out duplicates
-          const newPatents = fallbackResponse.data.patents.filter(
-            patent => !patentIdSet.has(patent.patent_id)
-          );
-          
-          logger.info(`Found ${newPatents.length} additional patents in fallback query`);
-          
-          // Add new patents to our collection
-          allPatents = [...allPatents, ...newPatents];
-        }
-      }
+      logger.info(`Total unique patents found: ${allPatents.length}`);
       
       // Process and return the final results
       if (allPatents.length > 0) {
         logger.info(`Returning ${Math.min(allPatents.length, maxResults)} patents`);
         
         return allPatents.slice(0, maxResults).map(p => {
-          // Process assignee organization
-          let assignee = 'Unknown';
-          if (p.assignees && p.assignees.length > 0 && p.assignees[0].assignee_organization) {
-            assignee = p.assignees[0].assignee_organization;
+          // Process inventors (USPTO API format differs from PatentsView)
+          let inventors = 'Unknown';
+          if (p.inventorNameArrayText && p.inventorNameArrayText.length > 0) {
+            inventors = p.inventorNameArrayText.join(', ');
           }
           
-          // Process inventor name
-          let inventor = 'Unknown';
-          if (p.inventors && p.inventors.length > 0) {
-            const inv = p.inventors[0];
-            const firstName = inv.inventor_first_name || '';
-            const lastName = inv.inventor_last_name || '';
-            inventor = [firstName, lastName].filter(Boolean).join(' ') || 'Unknown';
+          // Process assignees
+          let assignee = 'Unknown';
+          if (p.assigneeEntityName) {
+            assignee = p.assigneeEntityName;
+          } else if (p.assigneeNameArrayText && p.assigneeNameArrayText.length > 0) {
+            assignee = p.assigneeNameArrayText.join(', ');
+          }
+          
+          // Format date properly
+          let patentDate = p.patentIssueDate || p.publicationDate || 'Unknown';
+          if (patentDate && patentDate !== 'Unknown') {
+            // Convert USPTO date format to YYYY-MM-DD if needed
+            if (patentDate.includes('/')) {
+              const parts = patentDate.split('/');
+              patentDate = `${parts[2]}-${parts[0].padStart(2, '0')}-${parts[1].padStart(2, '0')}`;
+            }
           }
           
           return {
-            title: p.patent_title || 'Unknown',
-            date: p.patent_date || 'Unknown',
-            patentNumber: p.patent_id || 'Unknown',
-            patentType: p.patent_type || 'Unknown',
-            abstract: p.patent_abstract || 'No abstract available',
+            title: p.inventionTitle || p.patentTitle || 'Unknown',
+            date: patentDate,
+            patentNumber: p.patentNumber || p.applicationNumber || 'Unknown',
+            patentType: p.patentType || p.applicationTypeCategory || 'Unknown',
+            abstract: p.abstractText || 'No abstract available',
             assignee: assignee,
-            inventor: inventor
+            inventors: inventors,
+            applicationNumber: p.applicationNumber || 'Unknown',
+            filingDate: p.filingDate || 'Unknown'
           };
         });
       }
       
-      // If we got no results at all, return mock data
-      logger.warn(`No patent data found for ${keyword}, returning mock data`);
-      return generateMockPatentData(keyword);
+      // If no patents found, try alternative USPTO endpoint
+      return await tryAlternativeUSPTOEndpoint(keyword, maxResults);
       
     } catch (error) {
-      logger.error(`Patents API error for ${keyword}: ${error.message}`);
-      return generateMockPatentData(keyword);
+      logger.error(`USPTO API error for ${keyword}: ${error.message}`);
+      return await tryAlternativeUSPTOEndpoint(keyword, maxResults);
     }
   });
 }
+
+// Alternative USPTO API endpoint as fallback
+async function tryAlternativeUSPTOEndpoint(keyword, maxResults) {
+  try {
+    // Alternative USPTO endpoint for patent examination data
+    const alternativeUrl = 'https://developer.uspto.gov/ds-api/ped/v1/patent/application';
+    
+    logger.info(`Trying alternative USPTO endpoint for: ${keyword}`);
+    
+    const queryParams = new URLSearchParams({
+      searchText: `${keyword}`,
+      start: 0,
+      rows: maxResults,
+      sortField: 'lastModifiedDate',
+      sortOrder: 'desc'
+    });
+    
+    const url = `${alternativeUrl}/search?${queryParams.toString()}`;
+    
+    const response = await axios.get(url, {
+      headers: {
+        'accept': 'application/json',
+        'X-Api-Key': process.env.USPTO_API_KEY
+      },
+      timeout: 30000
+    });
+    
+    if (response.data && response.data.results && Array.isArray(response.data.results)) {
+      const results = response.data.results;
+      
+      logger.info(`Found ${results.length} patents using alternative USPTO endpoint`);
+      
+      if (results.length > 0) {
+        return results.slice(0, maxResults).map(p => {
+          return {
+            title: p.inventionTitle || 'Unknown',
+            date: p.patentIssueDate || p.publicationDate || 'Unknown',
+            patentNumber: p.patentNumber || p.applicationNumber || 'Unknown',
+            patentType: p.patentType || p.applicationTypeCategory || 'Unknown',
+            abstract: p.abstractText || 'No abstract available',
+            assignee: p.assigneeEntityName || 'Unknown',
+            inventors: Array.isArray(p.inventorNameArrayText) ? p.inventorNameArrayText.join(', ') : 'Unknown',
+            applicationNumber: p.applicationNumber || 'Unknown',
+            filingDate: p.filingDate || 'Unknown'
+          };
+        });
+      }
+    }
+    
+    // If all else fails, return mock data
+    logger.warn(`No patent data found via USPTO API for ${keyword}, returning mock data`);
+    return generateMockPatentData(keyword);
+    
+  } catch (error) {
+    logger.error(`Alternative USPTO API error for ${keyword}: ${error.message}`);
+    return generateMockPatentData(keyword);
+  }
+}
+
+
+
+
+// async function fetchPatents(keyword, maxResults = 1000) {
+//   return retryRequest(async () => {
+//     const url = `https://search.patentsview.org/api/v1/patent/`;
+//     let allPatents = [];
+//     const patentIdSet = new Set();
+    
+//     try {
+//       logger.info(`Searching for up to ${maxResults} patents related to: ${keyword}`);
+      
+//       // Set up pagination parameters
+//       const perPage = 100; // API max is 100 per page
+//       let hasMoreResults = true;
+//       let afterCursor = null;
+      
+//       // Main query loop to fetch multiple pages
+//       while (hasMoreResults && allPatents.length < maxResults) {
+//         // Create payload for the current request
+//         const payload = {
+//           q: { 
+//             "_or": [
+//               { "_text_any": { "patent_title": keyword } },
+//               { "_text_all": { "patent_abstract": keyword } }
+//             ]
+//           },
+//           f: [
+//             "patent_id", 
+//             "patent_title", 
+//             "patent_date", 
+//             "patent_abstract", 
+//             "assignees.assignee_organization", 
+//             "patent_number",
+//             "patent_type",
+//             "inventors.inventor_first_name",
+//             "inventors.inventor_last_name"
+//           ],
+//           s: [{"patent_date": "desc"}], // Sort by date, most recent first
+//           o: { 
+//             "size": perPage,
+//             "matched_subentities_only": false
+//           }
+//         };
+        
+//         // Add cursor for pagination after first page
+//         if (afterCursor) {
+//           payload.o.after = afterCursor;
+//         }
+        
+//         logger.info(`Fetching patents batch (page cursor: ${afterCursor || 'initial'})`);
+        
+//         const response = await axios.post(url, payload, {
+//           headers: {
+//             'Content-Type': 'application/json',
+//             'Accept': 'application/json',
+//             'X-Api-Key': 'sQ4l3fCxqzkaf0hP5YKpBxDDixBNy1RD'
+//           },
+//           timeout: 30000 // 30 second timeout
+//         });
+        
+//         // Process response if we got valid data
+//         if (response.data && !response.data.error && response.data.patents && Array.isArray(response.data.patents)) {
+//           const pageResults = response.data.patents;
+          
+//           if (pageResults.length > 0) {
+//             logger.info(`Found ${pageResults.length} patents in current batch`);
+            
+//             // Filter out duplicates and add new patents
+//             const newPatents = pageResults.filter(patent => !patentIdSet.has(patent.patent_id));
+            
+//             // Add new patent IDs to the set
+//             newPatents.forEach(patent => patentIdSet.add(patent.patent_id));
+            
+//             // Add patents to our collection
+//             allPatents = [...allPatents, ...newPatents];
+            
+//             // Set up for next page
+//             const lastPatent = pageResults[pageResults.length - 1];
+//             afterCursor = lastPatent.patent_id;
+            
+//             // Check if we should continue pagination
+//             if (pageResults.length < perPage) {
+//               // Received fewer results than requested, likely the last page
+//               hasMoreResults = false;
+//             }
+//           } else {
+//             // No results on this page
+//             hasMoreResults = false;
+//           }
+//         } else {
+//           // Error in response
+//           const errorMessage = response.data?.error_message || "Unknown API error";
+//           logger.error(`Patents API error: ${errorMessage}`);
+//           hasMoreResults = false;
+//         }
+        
+//         // Add a delay between requests to avoid rate limiting (45 requests/minute allowed)
+//         await new Promise(resolve => setTimeout(resolve, 1350)); // ~44 requests per minute
+//       }
+      
+//       logger.info(`Total unique patents found in main query: ${allPatents.length}`);
+      
+//       // If we don't have enough patents yet, try a fallback query
+//       if (allPatents.length < maxResults) {
+//         logger.info(`Trying fallback query to find more patents for: ${keyword}`);
+        
+//         // Create a broader fallback query
+//         const fallbackPayload = {
+//           q: { 
+//             "_or": [
+//               { "_contains": { "patent_title": keyword } },
+//               { "_contains": { "patent_abstract": keyword } }
+//             ]
+//           },
+//           f: [
+//             "patent_id", 
+//             "patent_title", 
+//             "patent_date", 
+//             "patent_abstract", 
+//             "assignees.assignee_organization", 
+//             "patent_number",
+//             "patent_type",
+//             "inventors.inventor_first_name",
+//             "inventors.inventor_last_name"
+//           ],
+//           s: [{"patent_date": "desc"}],
+//           o: {
+//             "size": maxResults - allPatents.length,
+//             "matched_subentities_only": false
+//           }
+//         };
+        
+//         const fallbackResponse = await axios.post(url, fallbackPayload, {
+//           headers: {
+//             'Content-Type': 'application/json',
+//             'Accept': 'application/json',
+//             'X-Api-Key': process.env.PATENTSVIEW_API_KEY
+//           },
+//           timeout: 30000
+//         });
+        
+//         if (fallbackResponse.data && !fallbackResponse.data.error && 
+//             fallbackResponse.data.patents && Array.isArray(fallbackResponse.data.patents)) {
+          
+//           // Filter out duplicates
+//           const newPatents = fallbackResponse.data.patents.filter(
+//             patent => !patentIdSet.has(patent.patent_id)
+//           );
+          
+//           logger.info(`Found ${newPatents.length} additional patents in fallback query`);
+          
+//           // Add new patents to our collection
+//           allPatents = [...allPatents, ...newPatents];
+//         }
+//       }
+      
+//       // Process and return the final results
+//       if (allPatents.length > 0) {
+//         logger.info(`Returning ${Math.min(allPatents.length, maxResults)} patents`);
+        
+//         return allPatents.slice(0, maxResults).map(p => {
+//           // Process assignee organization
+//           let assignee = 'Unknown';
+//           if (p.assignees && p.assignees.length > 0 && p.assignees[0].assignee_organization) {
+//             assignee = p.assignees[0].assignee_organization;
+//           }
+          
+//           // Process inventor name
+//           let inventor = 'Unknown';
+//           if (p.inventors && p.inventors.length > 0) {
+//             const inv = p.inventors[0];
+//             const firstName = inv.inventor_first_name || '';
+//             const lastName = inv.inventor_last_name || '';
+//             inventor = [firstName, lastName].filter(Boolean).join(' ') || 'Unknown';
+//           }
+          
+//           return {
+//             title: p.patent_title || 'Unknown',
+//             date: p.patent_date || 'Unknown',
+//             patentNumber: p.patent_id || 'Unknown',
+//             patentType: p.patent_type || 'Unknown',
+//             abstract: p.patent_abstract || 'No abstract available',
+//             assignee: assignee,
+//             inventor: inventor
+//           };
+//         });
+//       }
+      
+//       // If we got no results at all, return mock data
+//       logger.warn(`No patent data found for ${keyword}, returning mock data`);
+//       return generateMockPatentData(keyword);
+      
+//     } catch (error) {
+//       logger.error(`Patents API error for ${keyword}: ${error.message}`);
+//       return generateMockPatentData(keyword);
+//     }
+//   });
+// }
 // Helper function to generate mock patent data
 function generateMockPatentData(keyword) {
   const today = new Date();

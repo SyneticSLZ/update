@@ -1,0 +1,13 @@
+2025-03-20T18:56:57.408Z [error]: Uncaught Exception: fetchPatents is not defined
+2025-03-20T18:56:57.415Z [error]: ReferenceError: fetchPatents is not defined
+    at C:\Users\sinis\Desktop\update\server.js:3023:12
+    at Layer.handle [as handle_request] (C:\Users\sinis\Desktop\update\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\sinis\Desktop\update\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\sinis\Desktop\update\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\sinis\Desktop\update\node_modules\expres... [truncated]
+2025-03-20T18:58:05.786Z [error]: USPTO API error for Flow Medical: Request failed with status code 404
+2025-03-20T18:58:05.887Z [error]: Alternative USPTO API error for Flow Medical: Request failed with status code 404
+2025-03-20T18:58:07.232Z [error]: FDA enforcement API error for Depression Device: Request failed with status code 404
+2025-03-20T18:58:07.472Z [error]: FDA event API error for Depression Device: Request failed with status code 404
+2025-03-20T18:58:08.178Z [error]: FDA recall API error for Depression Device: Request failed with status code 404
+2025-03-20T18:58:08.413Z [error]: FDA registrationlisting API error for Depression Device: Request failed with status code 404
