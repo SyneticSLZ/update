@@ -29,3 +29,15 @@
 2025-03-20T19:13:23.605Z [error]: FDA event API error for Depression Device: Request failed with status code 404
 2025-03-20T19:13:24.157Z [error]: FDA recall API error for Depression Device: Request failed with status code 404
 2025-03-20T19:13:24.400Z [error]: FDA registrationlisting API error for Depression Device: Request failed with status code 404
+2025-03-20T19:16:54.722Z [error]: USPTO API error for Flow Medical: Request failed with status code 404
+2025-03-20T19:16:54.809Z [error]: Alternative USPTO API error for Flow Medical: Request failed with status code 404
+2025-03-20T19:16:56.296Z [error]: FDA enforcement API error for Depression Device: Request failed with status code 404
+2025-03-20T19:16:56.549Z [error]: FDA event API error for Depression Device: Request failed with status code 404
+2025-03-20T19:16:57.183Z [error]: FDA recall API error for Depression Device: Request failed with status code 404
+2025-03-20T19:16:57.421Z [error]: FDA registrationlisting API error for Depression Device: Request failed with status code 404
+2025-03-20T19:17:25.427Z [error]: CMS Part D error for 2022: cmsData.reduce is not a function
+2025-03-20T19:17:25.487Z [error]: CMS Part D error for 2021: cmsData.reduce is not a function
+2025-03-20T19:17:25.551Z [error]: USPTO API error for XCOPRI: Request failed with status code 404
+2025-03-20T19:17:25.557Z [error]: Company facts API error: Request failed with status code 404
+2025-03-20T19:17:25.642Z [error]: Alternative USPTO API error for XCOPRI: Request failed with status code 404
+2025-03-20T19:17:25.679Z [error]: CMS Part D error for 2020: cmsData.reduce is not a function

@@ -8,7 +8,7 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(cors({
-  origin: 'http://localhost:3000', // Replace with your frontend port (e.g., 5500 if using VS Code Live Server)
+  origin: 'https://update-g6ic.onrender.com0', // Replace with your frontend port (e.g., 5500 if using VS Code Live Server)
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type']
 }));

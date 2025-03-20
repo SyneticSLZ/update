@@ -3,8 +3,8 @@
 2025-03-20T18:56:52.733Z [info]: File exists: patent_data.json
 2025-03-20T18:56:52.734Z [info]: File exists: exclusivity_data.json
 2025-03-20T18:56:52.736Z [info]: Server running on port 3000
-2025-03-20T18:56:52.737Z [info]: Health check available at: http://localhost:3000/health
-2025-03-20T18:56:52.737Z [info]: Competitors list available at: http://localhost:3000/api/competitors
+2025-03-20T18:56:52.737Z [info]: Health check available at: https://update-g6ic.onrender.com0/health
+2025-03-20T18:56:52.737Z [info]: Competitors list available at: https://update-g6ic.onrender.com0/api/competitors
 2025-03-20T18:56:57.327Z [info]: GET /api/market/company/Flow%20Medical - Query params: 
 2025-03-20T18:56:57.330Z [info]: Fetching market data for company: Flow Medical
 2025-03-20T18:56:57.331Z [info]: Successfully fetched market data for Flow Medical
@@ -26,8 +26,8 @@
 2025-03-20T18:58:00.347Z [info]: File exists: patent_data.json
 2025-03-20T18:58:00.347Z [info]: File exists: exclusivity_data.json
 2025-03-20T18:58:00.350Z [info]: Server running on port 3000
-2025-03-20T18:58:00.350Z [info]: Health check available at: http://localhost:3000/health
-2025-03-20T18:58:00.351Z [info]: Competitors list available at: http://localhost:3000/api/competitors
+2025-03-20T18:58:00.350Z [info]: Health check available at: https://update-g6ic.onrender.com0/health
+2025-03-20T18:58:00.351Z [info]: Competitors list available at: https://update-g6ic.onrender.com0/api/competitors
 2025-03-20T18:58:05.348Z [info]: GET /api/market/company/Flow%20Medical - Query params: 
 2025-03-20T18:58:05.350Z [info]: Fetching market data for company: Flow Medical
 2025-03-20T18:58:05.351Z [info]: Successfully fetched market data for Flow Medical
@@ -151,15 +151,15 @@
 2025-03-20T19:11:20.464Z [info]: File exists: patent_data.json
 2025-03-20T19:11:20.465Z [info]: File exists: exclusivity_data.json
 2025-03-20T19:11:20.467Z [info]: Server running on port 3000
-2025-03-20T19:11:20.468Z [info]: Health check available at: http://localhost:3000/health
-2025-03-20T19:11:20.468Z [info]: Competitors list available at: http://localhost:3000/api/competitors
+2025-03-20T19:11:20.468Z [info]: Health check available at: https://update-g6ic.onrender.com0/health
+2025-03-20T19:11:20.468Z [info]: Competitors list available at: https://update-g6ic.onrender.com0/api/competitors
 2025-03-20T19:11:44.724Z [info]: Data directory exists
 2025-03-20T19:11:44.728Z [info]: File exists: products_data.json
 2025-03-20T19:11:44.729Z [info]: File exists: patent_data.json
 2025-03-20T19:11:44.729Z [info]: File exists: exclusivity_data.json
 2025-03-20T19:11:44.732Z [info]: Server running on port 3000
-2025-03-20T19:11:44.732Z [info]: Health check available at: http://localhost:3000/health
-2025-03-20T19:11:44.732Z [info]: Competitors list available at: http://localhost:3000/api/competitors
+2025-03-20T19:11:44.732Z [info]: Health check available at: https://update-g6ic.onrender.com0/health
+2025-03-20T19:11:44.732Z [info]: Competitors list available at: https://update-g6ic.onrender.com0/api/competitors
 2025-03-20T19:11:47.885Z [info]: GET /api/market/company/Flow%20Medical - Query params: 
 2025-03-20T19:11:47.888Z [info]: Fetching market data for company: Flow Medical
 2025-03-20T19:11:47.888Z [info]: Successfully fetched market data for Flow Medical
@@ -189,8 +189,8 @@
 2025-03-20T19:12:53.142Z [info]: File exists: patent_data.json
 2025-03-20T19:12:53.143Z [info]: File exists: exclusivity_data.json
 2025-03-20T19:12:53.145Z [info]: Server running on port 3000
-2025-03-20T19:12:53.146Z [info]: Health check available at: http://localhost:3000/health
-2025-03-20T19:12:53.146Z [info]: Competitors list available at: http://localhost:3000/api/competitors
+2025-03-20T19:12:53.146Z [info]: Health check available at: https://update-g6ic.onrender.com0/health
+2025-03-20T19:12:53.146Z [info]: Competitors list available at: https://update-g6ic.onrender.com0/api/competitors
 2025-03-20T19:12:55.760Z [info]: GET /api/competitors/Flow%20Medical - Query params: 
 2025-03-20T19:12:55.762Z [info]: Fetching FDA data from device510k: https://api.fda.gov/device/510k.json?search=device_name:"Depression Device"+OR+device_name:Depression Device&limit=100
 2025-03-20T19:12:55.823Z [info]: Fetching clinical trials for: Flow Medical epilepsy
@@ -220,8 +220,8 @@
 2025-03-20T19:13:18.309Z [info]: File exists: patent_data.json
 2025-03-20T19:13:18.310Z [info]: File exists: exclusivity_data.json
 2025-03-20T19:13:18.313Z [info]: Server running on port 3000
-2025-03-20T19:13:18.313Z [info]: Health check available at: http://localhost:3000/health
-2025-03-20T19:13:18.314Z [info]: Competitors list available at: http://localhost:3000/api/competitors
+2025-03-20T19:13:18.313Z [info]: Health check available at: https://update-g6ic.onrender.com0/health
+2025-03-20T19:13:18.314Z [info]: Competitors list available at: https://update-g6ic.onrender.com0/api/competitors
 2025-03-20T19:13:21.528Z [info]: GET /api/market/company/Flow%20Medical - Query params: 
 2025-03-20T19:13:21.530Z [info]: Fetching market data for company: Flow Medical
 2025-03-20T19:13:21.531Z [info]: Successfully fetched market data for Flow Medical
@@ -246,3 +246,208 @@
 2025-03-20T19:13:24.157Z [error]: FDA recall API error for Depression Device: Request failed with status code 404
 2025-03-20T19:13:24.158Z [info]: Fetching FDA data from registrationlisting: https://api.fda.gov/device/registrationlisting.json?search=device_name:"Depression Device"&limit=100
 2025-03-20T19:13:24.400Z [error]: FDA registrationlisting API error for Depression Device: Request failed with status code 404
+2025-03-20T19:16:50.567Z [info]: Data directory exists
+2025-03-20T19:16:50.570Z [info]: File exists: products_data.json
+2025-03-20T19:16:50.571Z [info]: File exists: patent_data.json
+2025-03-20T19:16:50.572Z [info]: File exists: exclusivity_data.json
+2025-03-20T19:16:50.574Z [info]: Server running on port 3000
+2025-03-20T19:16:50.574Z [info]: Health check available at: https://update-g6ic.onrender.com0/health
+2025-03-20T19:16:50.575Z [info]: Competitors list available at: https://update-g6ic.onrender.com0/api/competitors
+2025-03-20T19:16:54.292Z [info]: GET /api/market/company/Flow%20Medical - Query params: 
+2025-03-20T19:16:54.294Z [info]: Fetching market data for company: Flow Medical
+2025-03-20T19:16:54.294Z [info]: Successfully fetched market data for Flow Medical
+2025-03-20T19:16:54.296Z [info]: GET /api/competitors/Flow%20Medical - Query params: 
+2025-03-20T19:16:54.297Z [info]: Fetching FDA data from device510k: https://api.fda.gov/device/510k.json?search=device_name:"Depression Device"+OR+device_name:Depression Device&limit=100
+2025-03-20T19:16:54.361Z [info]: Fetching clinical trials for: Flow Medical epilepsy
+2025-03-20T19:16:54.362Z [info]: Fetching trials matching: Flow Medical epilepsy (first page)
+2025-03-20T19:16:54.364Z [info]: Searching USPTO for up to 1000 patents related to: Flow Medical
+2025-03-20T19:16:54.365Z [info]: Fetching USPTO patents batch (start: 0)
+2025-03-20T19:16:54.570Z [info]: Found 31 trials on this page
+2025-03-20T19:16:54.722Z [error]: USPTO API error for Flow Medical: Request failed with status code 404
+2025-03-20T19:16:54.722Z [info]: Trying alternative USPTO endpoint for: Flow Medical
+2025-03-20T19:16:54.809Z [error]: Alternative USPTO API error for Flow Medical: Request failed with status code 404
+2025-03-20T19:16:55.085Z [info]: Total trials found for Flow Medical epilepsy: 31
+2025-03-20T19:16:55.720Z [info]: Fetching FDA data from classification: https://api.fda.gov/device/classification.json?search=device_name:"Depression Device"+OR+device_name:Depression Device&limit=100
+2025-03-20T19:16:56.003Z [info]: Fetching FDA data from enforcement: https://api.fda.gov/device/enforcement.json?search=product_description:"Depression Device"&limit=100
+2025-03-20T19:16:56.296Z [error]: FDA enforcement API error for Depression Device: Request failed with status code 404
+2025-03-20T19:16:56.297Z [info]: Fetching FDA data from event: https://api.fda.gov/device/event.json?search=device.brand_name:"Depression Device"&limit=100
+2025-03-20T19:16:56.549Z [error]: FDA event API error for Depression Device: Request failed with status code 404
+2025-03-20T19:16:56.549Z [info]: Fetching FDA data from pma: https://api.fda.gov/device/pma.json?search=device_name:"Depression Device"+OR+device_name:Depression Device&limit=100
+2025-03-20T19:16:56.934Z [info]: Fetching FDA data from recall: https://api.fda.gov/device/recall.json?search=product_description:"Depression Device"&limit=100
+2025-03-20T19:16:57.183Z [error]: FDA recall API error for Depression Device: Request failed with status code 404
+2025-03-20T19:16:57.184Z [info]: Fetching FDA data from registrationlisting: https://api.fda.gov/device/registrationlisting.json?search=device_name:"Depression Device"&limit=100
+2025-03-20T19:16:57.421Z [error]: FDA registrationlisting API error for Depression Device: Request failed with status code 404
+2025-03-20T19:17:19.112Z [info]: GET /api/competitors - Query params: 
+2025-03-20T19:17:19.132Z [info]: GET /api/analytics/marketshare - Query params: 
+2025-03-20T19:17:19.133Z [info]: Processing market data for LivaNova
+2025-03-20T19:17:19.134Z [info]: Fetching CMS Part B data for CPT: 64568, year: 2020 (confirmed)
+2025-03-20T19:17:19.394Z [info]: Found 8 records for CPT 64568, year 2020 (page 1)
+2025-03-20T19:17:19.395Z [warn]: No data found for LivaNova, code 64568, year 2020
+2025-03-20T19:17:19.395Z [info]: Fetching CMS Part B data for CPT: 64568, year: 2021 (confirmed)
+2025-03-20T19:17:19.408Z [info]: Found 8 records for CPT 64568, year 2021 (page 1)
+2025-03-20T19:17:19.409Z [warn]: No data found for LivaNova, code 64568, year 2021
+2025-03-20T19:17:19.409Z [info]: Fetching CMS Part B data for CPT: 64568, year: 2022 (confirmed)
+2025-03-20T19:17:19.424Z [info]: Found 8 records for CPT 64568, year 2022 (page 1)
+2025-03-20T19:17:19.424Z [warn]: No data found for LivaNova, code 64568, year 2022
+2025-03-20T19:17:19.424Z [info]: Fetching CMS Part B data for CPT: 61885, year: 2020 (confirmed)
+2025-03-20T19:17:19.442Z [info]: Found 48 records for CPT 61885, year 2020 (page 1)
+2025-03-20T19:17:19.443Z [warn]: No data found for LivaNova, code 61885, year 2020
+2025-03-20T19:17:19.443Z [info]: Fetching CMS Part B data for CPT: 61885, year: 2021 (confirmed)
+2025-03-20T19:17:19.463Z [info]: Found 48 records for CPT 61885, year 2021 (page 1)
+2025-03-20T19:17:19.463Z [warn]: No data found for LivaNova, code 61885, year 2021
+2025-03-20T19:17:19.463Z [info]: Fetching CMS Part B data for CPT: 61885, year: 2022 (confirmed)
+2025-03-20T19:17:19.489Z [info]: Found 48 records for CPT 61885, year 2022 (page 1)
+2025-03-20T19:17:19.489Z [warn]: No data found for LivaNova, code 61885, year 2022
+2025-03-20T19:17:19.490Z [info]: Processing market data for Medtronic
+2025-03-20T19:17:19.490Z [info]: Fetching CMS Part B data for CPT: 61863, year: 2020 (confirmed)
+2025-03-20T19:17:19.502Z [info]: Found 24 records for CPT 61863, year 2020 (page 1)
+2025-03-20T19:17:19.503Z [warn]: No data found for Medtronic, code 61863, year 2020
+2025-03-20T19:17:19.503Z [info]: Fetching CMS Part B data for CPT: 61863, year: 2021 (confirmed)
+2025-03-20T19:17:19.516Z [info]: Found 24 records for CPT 61863, year 2021 (page 1)
+2025-03-20T19:17:19.516Z [warn]: No data found for Medtronic, code 61863, year 2021
+2025-03-20T19:17:19.517Z [info]: Fetching CMS Part B data for CPT: 61863, year: 2022 (confirmed)
+2025-03-20T19:17:19.532Z [info]: Found 24 records for CPT 61863, year 2022 (page 1)
+2025-03-20T19:17:19.533Z [warn]: No data found for Medtronic, code 61863, year 2022
+2025-03-20T19:17:19.533Z [info]: Fetching CMS Part B data for CPT: 61864, year: 2020 (confirmed)
+2025-03-20T19:17:19.557Z [info]: Found 19 records for CPT 61864, year 2020 (page 1)
+2025-03-20T19:17:19.557Z [warn]: No data found for Medtronic, code 61864, year 2020
+2025-03-20T19:17:19.557Z [info]: Fetching CMS Part B data for CPT: 61864, year: 2021 (confirmed)
+2025-03-20T19:17:19.569Z [info]: Found 19 records for CPT 61864, year 2021 (page 1)
+2025-03-20T19:17:19.569Z [warn]: No data found for Medtronic, code 61864, year 2021
+2025-03-20T19:17:19.570Z [info]: Fetching CMS Part B data for CPT: 61864, year: 2022 (confirmed)
+2025-03-20T19:17:19.582Z [info]: Found 19 records for CPT 61864, year 2022 (page 1)
+2025-03-20T19:17:19.582Z [warn]: No data found for Medtronic, code 61864, year 2022
+2025-03-20T19:17:19.583Z [warn]: No data found for Medtronic, code 61885, year 2020
+2025-03-20T19:17:19.583Z [warn]: No data found for Medtronic, code 61885, year 2021
+2025-03-20T19:17:19.583Z [warn]: No data found for Medtronic, code 61885, year 2022
+2025-03-20T19:17:19.583Z [info]: Fetching CMS Part B data for CPT: 61886, year: 2020 (confirmed)
+2025-03-20T19:17:19.595Z [info]: Found 49 records for CPT 61886, year 2020 (page 1)
+2025-03-20T19:17:19.595Z [warn]: No data found for Medtronic, code 61886, year 2020
+2025-03-20T19:17:19.596Z [info]: Fetching CMS Part B data for CPT: 61886, year: 2021 (confirmed)
+2025-03-20T19:17:19.607Z [info]: Found 49 records for CPT 61886, year 2021 (page 1)
+2025-03-20T19:17:19.607Z [warn]: No data found for Medtronic, code 61886, year 2021
+2025-03-20T19:17:19.607Z [info]: Fetching CMS Part B data for CPT: 61886, year: 2022 (confirmed)
+2025-03-20T19:17:19.619Z [info]: Found 49 records for CPT 61886, year 2022 (page 1)
+2025-03-20T19:17:19.620Z [warn]: No data found for Medtronic, code 61886, year 2022
+2025-03-20T19:17:19.620Z [info]: Processing market data for NeuroPace
+2025-03-20T19:17:19.620Z [info]: Fetching CMS Part B data for CPT: 61850, year: 2020 (confirmed)
+2025-03-20T19:17:19.632Z [info]: Found 1 records for CPT 61850, year 2020 (page 1)
+2025-03-20T19:17:19.632Z [warn]: No data found for NeuroPace, code 61850, year 2020
+2025-03-20T19:17:19.633Z [info]: Fetching CMS Part B data for CPT: 61850, year: 2021 (confirmed)
+2025-03-20T19:17:19.660Z [info]: Found 1 records for CPT 61850, year 2021 (page 1)
+2025-03-20T19:17:19.660Z [warn]: No data found for NeuroPace, code 61850, year 2021
+2025-03-20T19:17:19.661Z [info]: Fetching CMS Part B data for CPT: 61850, year: 2022 (confirmed)
+2025-03-20T19:17:19.673Z [info]: Found 1 records for CPT 61850, year 2022 (page 1)
+2025-03-20T19:17:19.673Z [warn]: No data found for NeuroPace, code 61850, year 2022
+2025-03-20T19:17:19.673Z [info]: Fetching CMS Part B data for CPT: 61860, year: 2020 (confirmed)
+2025-03-20T19:17:19.685Z [info]: Found 1 records for CPT 61860, year 2020 (page 1)
+2025-03-20T19:17:19.685Z [warn]: No data found for NeuroPace, code 61860, year 2020
+2025-03-20T19:17:19.686Z [info]: Fetching CMS Part B data for CPT: 61860, year: 2021 (confirmed)
+2025-03-20T19:17:19.697Z [info]: Found 1 records for CPT 61860, year 2021 (page 1)
+2025-03-20T19:17:19.697Z [warn]: No data found for NeuroPace, code 61860, year 2021
+2025-03-20T19:17:19.697Z [info]: Fetching CMS Part B data for CPT: 61860, year: 2022 (confirmed)
+2025-03-20T19:17:19.710Z [info]: Found 1 records for CPT 61860, year 2022 (page 1)
+2025-03-20T19:17:19.710Z [warn]: No data found for NeuroPace, code 61860, year 2022
+2025-03-20T19:17:19.710Z [warn]: No data found for NeuroPace, code 61863, year 2020
+2025-03-20T19:17:19.711Z [warn]: No data found for NeuroPace, code 61863, year 2021
+2025-03-20T19:17:19.711Z [warn]: No data found for NeuroPace, code 61863, year 2022
+2025-03-20T19:17:19.711Z [warn]: No data found for NeuroPace, code 61885, year 2020
+2025-03-20T19:17:19.711Z [warn]: No data found for NeuroPace, code 61885, year 2021
+2025-03-20T19:17:19.711Z [warn]: No data found for NeuroPace, code 61885, year 2022
+2025-03-20T19:17:19.711Z [info]: Fetching CMS Part B data for CPT: 61889, year: 2020 (confirmed)
+2025-03-20T19:17:19.729Z [warn]: No data found for CPT 61889, year 2020
+2025-03-20T19:17:19.729Z [info]: Using fallback API for CPT 61889, year 2020
+2025-03-20T19:17:19.747Z [warn]: No data found for NeuroPace, code 61889, year 2020
+2025-03-20T19:17:19.748Z [info]: Fetching CMS Part B data for CPT: 61889, year: 2021 (confirmed)
+2025-03-20T19:17:19.759Z [warn]: No data found for CPT 61889, year 2021
+2025-03-20T19:17:19.759Z [info]: Using fallback API for CPT 61889, year 2021
+2025-03-20T19:17:19.771Z [warn]: No data found for NeuroPace, code 61889, year 2021
+2025-03-20T19:17:19.771Z [info]: Fetching CMS Part B data for CPT: 61889, year: 2022 (confirmed)
+2025-03-20T19:17:19.789Z [warn]: No data found for CPT 61889, year 2022
+2025-03-20T19:17:19.790Z [info]: Using fallback API for CPT 61889, year 2022
+2025-03-20T19:17:19.801Z [warn]: No data found for NeuroPace, code 61889, year 2022
+2025-03-20T19:17:19.801Z [info]: Estimating market share from 0 CMS records
+2025-03-20T19:17:19.801Z [info]: Market share calculation: total implants = 0
+2025-03-20T19:17:19.801Z [info]: Market shares by competitor: {}
+2025-03-20T19:17:25.209Z [info]: GET /api/competitors/XCOPRI - Query params: 
+2025-03-20T19:17:25.209Z [info]: Trying FDA drugsFda with search term: Cenobamate
+2025-03-20T19:17:25.212Z [info]: Fetching CMS Part D data for drug: Cenobamate, year: 2020 (confirmed)
+2025-03-20T19:17:25.213Z [info]: Fetching CMS Part D data for drug: Cenobamate, year: 2021 (confirmed)
+2025-03-20T19:17:25.215Z [info]: Fetching CMS Part D data for drug: Cenobamate, year: 2022 (confirmed)
+2025-03-20T19:17:25.218Z [info]: Fetching clinical trials for: Cenobamate
+2025-03-20T19:17:25.218Z [info]: Fetching trials matching: Cenobamate (first page)
+2025-03-20T19:17:25.220Z [info]: Searching USPTO for up to 1000 patents related to: XCOPRI
+2025-03-20T19:17:25.220Z [info]: Fetching USPTO patents batch (start: 0)
+2025-03-20T19:17:25.224Z [info]: Fetching SEC filings for CIK: 0001815957
+2025-03-20T19:17:25.227Z [info]: GET /api/market/company/XCOPRI - Query params: 
+2025-03-20T19:17:25.228Z [info]: Fetching market data for company: XCOPRI
+2025-03-20T19:17:25.229Z [info]: Fetching CMS Part D data for drug: XCOPRI, year: 2021 (confirmed)
+2025-03-20T19:17:25.384Z [info]: Found 6 products entries for Cenobamate
+2025-03-20T19:17:25.391Z [warn]: No data found for drug Cenobamate, year 2022
+2025-03-20T19:17:25.391Z [info]: Using fallback API for drug Cenobamate, year 2022
+2025-03-20T19:17:25.393Z [info]: Found 100 records for drug XCOPRI, year 2021 (page 1)
+2025-03-20T19:17:25.426Z [info]: Found 0 patents entries for Cenobamate
+2025-03-20T19:17:25.427Z [error]: CMS Part D error for 2022: cmsData.reduce is not a function
+2025-03-20T19:17:25.430Z [info]: Found 0 exclusivity entries for Cenobamate
+2025-03-20T19:17:25.435Z [info]: Successfully retrieved SEC data for CIK 0001815957
+2025-03-20T19:17:25.435Z [info]: Found 2 recent filings
+2025-03-20T19:17:25.435Z [info]: No recent filings found, checking files array
+2025-03-20T19:17:25.435Z [info]: No filings found in submissions API, trying company facts API
+2025-03-20T19:17:25.452Z [info]: Found 25 trials on this page
+2025-03-20T19:17:25.475Z [warn]: No data found for drug Cenobamate, year 2021
+2025-03-20T19:17:25.475Z [info]: Using fallback API for drug Cenobamate, year 2021
+2025-03-20T19:17:25.487Z [error]: CMS Part D error for 2021: cmsData.reduce is not a function
+2025-03-20T19:17:25.551Z [error]: USPTO API error for XCOPRI: Request failed with status code 404
+2025-03-20T19:17:25.552Z [info]: Trying alternative USPTO endpoint for: XCOPRI
+2025-03-20T19:17:25.557Z [error]: Company facts API error: Request failed with status code 404
+2025-03-20T19:17:25.557Z [warn]: No filings found for CIK 0001815957 in any API
+2025-03-20T19:17:25.627Z [info]: Found 500 records for drug XCOPRI, year 2021 (page 1)
+2025-03-20T19:17:25.642Z [error]: Alternative USPTO API error for XCOPRI: Request failed with status code 404
+2025-03-20T19:17:25.665Z [warn]: No data found for drug Cenobamate, year 2020
+2025-03-20T19:17:25.665Z [info]: Using fallback API for drug Cenobamate, year 2020
+2025-03-20T19:17:25.679Z [error]: CMS Part D error for 2020: cmsData.reduce is not a function
+2025-03-20T19:17:25.940Z [warn]: Failed FDA drugsFda request for Cenobamate: Request failed with status code 404
+2025-03-20T19:17:25.940Z [info]: Trying FDA drugsFda with search term: XCOPRI
+2025-03-20T19:17:25.962Z [info]: Total trials found for Cenobamate: 25
+2025-03-20T19:17:26.110Z [info]: Found 500 records for drug XCOPRI, year 2021 (page 2)
+2025-03-20T19:17:26.185Z [warn]: Failed FDA drugsFda request for XCOPRI: Request failed with status code 404
+2025-03-20T19:17:26.185Z [info]: Trying FDA drugsFda with search term: SK Biopharmaceuticals
+2025-03-20T19:17:26.426Z [warn]: Failed FDA drugsFda request for SK Biopharmaceuticals: Request failed with status code 404
+2025-03-20T19:17:26.426Z [info]: Trying FDA label with search term: Cenobamate
+2025-03-20T19:17:26.434Z [info]: Found 120 records for drug XCOPRI, year 2021 (page 3)
+2025-03-20T19:17:26.434Z [info]: Fetching CMS Part D data for drug: XCOPRI, year: 2022 (confirmed)
+2025-03-20T19:17:26.574Z [info]: Found 100 records for drug XCOPRI, year 2022 (page 1)
+2025-03-20T19:17:26.669Z [warn]: Failed FDA label request for Cenobamate: Request failed with status code 404
+2025-03-20T19:17:26.669Z [info]: Trying FDA label with search term: XCOPRI
+2025-03-20T19:17:26.822Z [info]: Found 500 records for drug XCOPRI, year 2022 (page 1)
+2025-03-20T19:17:26.910Z [warn]: Failed FDA label request for XCOPRI: Request failed with status code 404
+2025-03-20T19:17:26.910Z [info]: Trying FDA label with search term: SK Biopharmaceuticals
+2025-03-20T19:17:27.041Z [info]: Found 500 records for drug XCOPRI, year 2022 (page 2)
+2025-03-20T19:17:27.157Z [warn]: Failed FDA label request for SK Biopharmaceuticals: Request failed with status code 404
+2025-03-20T19:17:27.158Z [info]: Trying FDA ndc with search term: Cenobamate
+2025-03-20T19:17:27.413Z [info]: Success! Found FDA data from ndc for Cenobamate
+2025-03-20T19:17:27.413Z [info]: Trying FDA enforcement with search term: Cenobamate
+2025-03-20T19:17:27.434Z [info]: Found 120 records for drug XCOPRI, year 2022 (page 3)
+2025-03-20T19:17:27.435Z [info]: Fetching CMS Part D data for drug: XCOPRI, year: 2023 (confirmed)
+2025-03-20T19:17:27.658Z [warn]: Failed FDA enforcement request for Cenobamate: Request failed with status code 404
+2025-03-20T19:17:27.659Z [info]: Trying FDA enforcement with search term: XCOPRI
+2025-03-20T19:17:27.667Z [info]: Found 100 records for drug XCOPRI, year 2023 (page 1)
+2025-03-20T19:17:27.903Z [warn]: Failed FDA enforcement request for XCOPRI: Request failed with status code 404
+2025-03-20T19:17:27.904Z [info]: Trying FDA enforcement with search term: SK Biopharmaceuticals
+2025-03-20T19:17:28.047Z [info]: Found 500 records for drug XCOPRI, year 2023 (page 1)
+2025-03-20T19:17:28.143Z [warn]: Failed FDA enforcement request for SK Biopharmaceuticals: Request failed with status code 404
+2025-03-20T19:17:28.144Z [info]: Trying FDA event with search term: Cenobamate
+2025-03-20T19:17:28.282Z [info]: Found 500 records for drug XCOPRI, year 2023 (page 2)
+2025-03-20T19:17:28.498Z [info]: Found 120 records for drug XCOPRI, year 2023 (page 3)
+2025-03-20T19:17:28.499Z [info]: Attempting to fetch data for drug XCOPRI, year 2024 - data may be incomplete
+2025-03-20T19:17:28.499Z [info]: Fetching CMS Part D data for drug: XCOPRI, year: 2024 (potential)
+2025-03-20T19:17:28.610Z [info]: Found 100 records for drug XCOPRI, year 2024 (page 1)
+2025-03-20T19:17:28.835Z [info]: Found 500 records for drug XCOPRI, year 2024 (page 1)
+2025-03-20T19:17:29.259Z [info]: Found 500 records for drug XCOPRI, year 2024 (page 2)
+2025-03-20T19:17:29.473Z [info]: Found 120 records for drug XCOPRI, year 2024 (page 3)
+2025-03-20T19:17:29.473Z [info]: Using simulated data for drug XCOPRI, year 2025
+2025-03-20T19:17:29.474Z [info]: Simulating partD data for XCOPRI, year 2025 based on 2023 data with 8.5% annual growth
+2025-03-20T19:17:29.475Z [info]: Using simulated data for drug XCOPRI, year 2026
+2025-03-20T19:17:29.475Z [info]: Simulating partD data for XCOPRI, year 2026 based on 2023 data with 8.5% annual growth
+2025-03-20T19:17:29.475Z [info]: Successfully fetched market data for XCOPRI
+2025-03-20T19:17:29.515Z [info]: Success! Found FDA data from event for Cenobamate
