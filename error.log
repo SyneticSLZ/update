@@ -11,3 +11,15 @@
 2025-03-20T18:58:07.472Z [error]: FDA event API error for Depression Device: Request failed with status code 404
 2025-03-20T18:58:08.178Z [error]: FDA recall API error for Depression Device: Request failed with status code 404
 2025-03-20T18:58:08.413Z [error]: FDA registrationlisting API error for Depression Device: Request failed with status code 404
+2025-03-20T19:11:48.309Z [error]: USPTO API error for Flow Medical: Request failed with status code 404
+2025-03-20T19:11:48.398Z [error]: Alternative USPTO API error for Flow Medical: Request failed with status code 404
+2025-03-20T19:11:49.755Z [error]: FDA enforcement API error for Depression Device: Request failed with status code 404
+2025-03-20T19:11:50.001Z [error]: FDA event API error for Depression Device: Request failed with status code 404
+2025-03-20T19:11:50.679Z [error]: FDA recall API error for Depression Device: Request failed with status code 404
+2025-03-20T19:11:50.911Z [error]: FDA registrationlisting API error for Depression Device: Request failed with status code 404
+2025-03-20T19:12:56.193Z [error]: USPTO API error for Flow Medical: Request failed with status code 404
+2025-03-20T19:12:56.289Z [error]: Alternative USPTO API error for Flow Medical: Request failed with status code 404
+2025-03-20T19:12:57.677Z [error]: FDA enforcement API error for Depression Device: Request failed with status code 404
+2025-03-20T19:12:59.111Z [error]: FDA event API error for Depression Device: Request failed with status code 404
+2025-03-20T19:12:59.699Z [error]: FDA recall API error for Depression Device: Request failed with status code 404
+2025-03-20T19:12:59.942Z [error]: FDA registrationlisting API error for Depression Device: Request failed with status code 404
