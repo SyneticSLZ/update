@@ -952,9 +952,7 @@ const app = {
                                             </span>` : 
                                             ''}
                                     </div>
-                                    <div class="text-sm text-gray-500 dark:text-gray-400">
-                                        ${item.description?.substring(0, 100) || 'No description'}${item.description?.length > 100 ? '...' : ''}
-                                    </div>
+
                                 </div>
                                 <div class="flex items-center space-x-4">
                                     <span class="px-2 py-1 text-sm rounded-full ${this.getStatusBadgeColor(item.status)}">
